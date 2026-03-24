@@ -2,199 +2,163 @@
 
 ## Purpose
 
-This file documents the architecture decisions for Pantrio v1. Every decision here is intentional and settled. Claude Code should not deviate from these choices or propose alternatives unless a blocking technical problem is encountered — in which case, flag it before changing anything.
+This file documents the architecture decisions for Pantrio v1. Every decision here is intentional and settled. Do not deviate from these choices or propose alternatives unless a blocking technical problem is encountered — in which case, flag it before changing anything.
 
 ---
 
-## Navigation — Expo Router
+## Framework — Next.js (App Router)
 
-**Decision:** Use Expo Router (file-based routing, built into Expo).
+**Decision:** Next.js with the App Router.
 
-**Why:** Expo Router is the current standard for Expo projects. It uses a file-based system (like Next.js) where each file in `/app` becomes a screen automatically. For a solo beginner-friendly setup, this means less manual wiring — you create the file, the route exists. React Navigation is more flexible but requires more boilerplate configuration that adds complexity without benefit at Pantrio's scale.
+**Why:** File-based routing (like Expo Router was for the original build), excellent TypeScript support, deploys to Vercel in one click. App Router gives us layout files, clean page components, and easy navigation. For a 3-screen linear app this is straightforward and familiar to anyone who knows React.
 
 **What this means in practice:**
-- Screens live in `/app/` not `/src/screens/`
-- Navigation between screens uses `router.push('/ingredient-review')` not a navigator config
-- The back button behavior is handled automatically
+- Pages live in `/app/` — each folder/file is a route
+- Shared layouts live in `/app/layout.tsx`
+- No API routes needed — everything is client-side
 
 ---
 
-## State Management — Zustand
+## Styling — Tailwind CSS
 
-**Decision:** Use Zustand for shared session state.
+**Decision:** Tailwind CSS for all styling.
 
-**Why:** Pantrio's core flow passes data across multiple screens — photos captured on screen 1 need to reach screen 2, detected ingredients from screen 2 need to reach screen 3. Without a state solution, this requires prop-drilling through navigation params, which gets messy fast.
+**Why:** Replaces the `StyleSheet` + `tokens.ts` approach from the React Native build. Tailwind's utility classes are fast to write, and custom design tokens (colors, fonts, spacing) are defined once in `tailwind.config.ts` and used everywhere. No inline styles. No one-off class names.
 
-Zustand is the right fit here because:
-- It's minimal (no boilerplate, no providers)
-- Simple to learn as a beginner — it's just a store with getters and setters
-- Appropriate for the scale of this app (one session's worth of data, not a complex app-wide state tree)
+**What this means in practice:**
+- Design tokens live in `tailwind.config.ts` under `theme.extend`
+- All components use Tailwind utility classes
+- No inline `style={}` props — ever
+- Global styles (font imports, base resets) live in `/app/globals.css`
 
-React Context was considered but Zustand is cleaner for cross-screen data that isn't purely UI state.
+---
 
-**Store structure:**
+## Recipe Data — Static JSON
+
+**Decision:** All recipe data lives in a single static JSON file at `/data/recipes.json`.
+
+**Why:** No backend needed. No database. No API calls. The recipe directory is curated and hand-authored — it doesn't change at runtime. A static JSON file is the simplest possible data layer that works correctly.
+
+**What this means in practice:**
+- `/data/recipes.json` is the single source of truth for all recipe content
+- Recipes are loaded at build time or imported directly — no fetch calls
+- Adding a recipe = editing the JSON file
+- The JSON shape must match the `Recipe` type in `/src/types/index.ts` exactly
+
+---
+
+## Matching Logic — Client-Side Utility Function
+
+**Decision:** Ingredient matching is a pure utility function, not a hook or API call.
+
+**Why:** Matching is synchronous and deterministic — given a list of user ingredients and the recipe directory, it always returns the same ranked list. There's no async, no loading state, no side effects. A plain function is the right tool.
+
+**Location:** `/src/lib/matchRecipes.ts`
+
+**Function signature:**
 ```typescript
-// /src/store/sessionStore.ts
-interface SessionStore {
-  // Step 1: Captured photos
-  photos: string[]                    // base64 encoded images
-  addPhoto: (photo: string) => void
-  removePhoto: (index: number) => void
-  clearPhotos: () => void
-
-  // Step 2: Detected ingredients
-  ingredients: Ingredient[]
-  setIngredients: (ingredients: Ingredient[]) => void
-  addIngredient: (ingredient: Ingredient) => void
-  removeIngredient: (id: string) => void
-
-  // Step 3: Recipe suggestions
+export function matchRecipes(
+  userIngredients: string[],
   recipes: Recipe[]
-  setRecipes: (recipes: Recipe[]) => void
-
-  // Reset entire session
-  resetSession: () => void
-}
+): MatchedRecipe[]
 ```
 
-**Rule:** This store holds one session at a time. When the user starts over (goes back to capture), call `resetSession()` to clear everything.
-
----
-
-## API Calls — Custom Hooks Per Feature
-
-**Decision:** Each AI feature gets its own custom hook. Loading, success, and error states live in those hooks — not scattered across screen components.
-
-**Why:** Screens should be responsible for UI, not API logic. Mixing fetch logic and render logic in the same component makes both harder to read and harder to debug. Custom hooks let each screen stay clean.
-
-**The two hooks:**
-
-```
-/src/hooks/useIngredientDetection.ts   ← handles photo → ingredients API call
-/src/hooks/useRecipeGeneration.ts      ← handles ingredients → recipes API call
-```
-
-**Each hook returns:**
+**Returns:**
 ```typescript
-{
-  execute: () => Promise<void>   // trigger the API call
-  isLoading: boolean
-  error: string | null
-  reset: () => void              // clear error state
+interface MatchedRecipe {
+  recipe: Recipe
+  matchedIngredients: string[]   // ingredients the user has
+  missingIngredients: string[]   // ingredients the user is missing
+  matchScore: number             // 0–1, matched ÷ total
 }
 ```
 
-**Results are written directly to the Zustand store** — hooks don't return data, they populate the store. Screens read from the store.
+**Matching rules:**
+- Normalize everything to lowercase and trim whitespace before comparing
+- Filter out results below 0.3 (30%) match score
+- Sort by match score descending
 
 ---
 
-## Camera — expo-camera
+## State — React useState + URL Params
 
-**Decision:** Use `expo-camera` directly.
+**Decision:** No global state library. Ingredient list lives in component state on the input screen, selected recipe is passed via URL param.
 
-**Why:** `expo-camera` gives a live camera viewfinder that renders inside the app UI, which matches the design intent in SPEC.md (camera-first, capture button prominent). `expo-image-picker` opens the native camera app and returns when done — it takes the user out of Pantrio's UI, which breaks the experience. The extra control `expo-camera` requires is worth it for the UX.
+**Why:** The data flow is simple enough not to need Zustand or Context. The input screen owns the ingredient list. When the user navigates to results, the ingredients are passed as a URL query param (serialized as a comma-separated string). When the user taps a recipe, the recipe ID is passed as a URL param to the detail page. Each page reads what it needs from the URL.
 
-**Constraint:** Camera permission must be requested before the viewfinder renders. Handle this at the Capture screen level with a clear permission-request state.
+**What this means in practice:**
+- Ingredient list: `useState<string[]>` on the input page
+- Results page reads ingredients from `searchParams`
+- Detail page reads recipe ID from `params`, looks up the recipe from the JSON
+- No store. No context provider. No Zustand.
+
+**URL structure:**
+```
+/                          ← Ingredient input
+/results?ingredients=garlic,chicken,lemon   ← Recipe results
+/recipe/[id]               ← Recipe detail
+```
 
 ---
 
 ## Project Structure
 
-Given the Expo Router decision, the structure from CLAUDE.md is updated:
-
 ```
 /app
-  index.tsx                  ← Capture screen (entry point)
-  ingredient-review.tsx      ← Ingredient Review screen
-  recipe-suggestions.tsx     ← Recipe Suggestions screen
-  recipe-detail.tsx          ← Recipe Detail screen
+  layout.tsx               ← Root layout (fonts, global styles)
+  page.tsx                 ← Ingredient Input screen
+  /results
+    page.tsx               ← Recipe Results screen
+  /recipe
+    /[id]
+      page.tsx             ← Recipe Detail screen
+  globals.css              ← Base styles, font imports
+
+/data
+  recipes.json             ← The recipe directory (source of truth)
 
 /src
-  /api                       ← Raw Claude API calls (detection, recipes)
-  /hooks                     ← useIngredientDetection, useRecipeGeneration
-  /store                     ← sessionStore.ts (Zustand)
-  /components                ← Shared UI components
-  /types                     ← Shared TypeScript types (Ingredient, Recipe, etc.)
-  /constants                 ← tokens.ts, config
+  /components              ← Shared UI components
+  /lib
+    matchRecipes.ts        ← Matching algorithm
+  /types
+    index.ts               ← Shared TypeScript types
 
-SPEC.md
-TASTE.md
-CLAUDE.md
-ARCHITECTURE.md
-DECISIONS.md
-PROGRESS.md
-```
-
----
-
-## Data Flow (End to End)
-
-```
-Capture Screen
-  → User takes photo(s)
-  → Photos stored in sessionStore.photos (base64)
-  → User taps "Analyze"
-  → useIngredientDetection.execute() called
-      → reads sessionStore.photos
-      → calls /src/api/detectIngredients.ts
-      → on success: writes to sessionStore.ingredients
-  → Navigate to Ingredient Review
-
-Ingredient Review Screen
-  → Reads sessionStore.ingredients
-  → User edits list (add/remove)
-  → Mutations go directly to sessionStore
-  → User taps "Find Recipes"
-  → useRecipeGeneration.execute() called
-      → reads sessionStore.ingredients
-      → calls /src/api/generateRecipes.ts
-      → on success: writes to sessionStore.recipes
-  → Navigate to Recipe Suggestions
-
-Recipe Suggestions Screen
-  → Reads sessionStore.recipes
-  → User taps a recipe card
-  → Recipe id passed via navigation param
-  → Navigate to Recipe Detail
-
-Recipe Detail Screen
-  → Reads recipe by id from sessionStore.recipes
-  → No async calls — data already in store
+tailwind.config.ts         ← Design tokens and Tailwind config
 ```
 
 ---
 
 ## TypeScript Types
 
-All shared types live in `/src/types/index.ts`. These match the data shapes in SPEC.md exactly:
+All shared types live in `/src/types/index.ts`:
 
 ```typescript
-export type Confidence = 'high' | 'medium' | 'low'
 export type Difficulty = 'easy' | 'medium' | 'hard'
-
-export interface Ingredient {
-  id: string
-  name: string
-  confidence: Confidence
-  confirmed: boolean
-}
-
-export interface RecipeSuggestion {
-  id: string
-  name: string
-  estimatedTime: string
-  difficulty: Difficulty
-  keyIngredients: string[]
-  summary: string
-  servings: number
-  ingredients: RecipeIngredient[]
-  steps: string[]
-}
 
 export interface RecipeIngredient {
   name: string
   quantity: string
   unit: string
+}
+
+export interface Recipe {
+  id: string
+  name: string
+  description: string
+  time: string
+  difficulty: Difficulty
+  servings: number
+  tags: string[]
+  ingredients: RecipeIngredient[]
+  steps: string[]
+}
+
+export interface MatchedRecipe {
+  recipe: Recipe
+  matchedIngredients: string[]
+  missingIngredients: string[]
+  matchScore: number
 }
 ```
 
@@ -202,8 +166,9 @@ export interface RecipeIngredient {
 
 ## Key Rules
 
-- **Never call the Claude API directly from a screen component** — always go through `/src/api` via a hook
-- **Never store API keys in code** — use `ANTHROPIC_API_KEY` environment variable only
-- **Never pass large data objects through navigation params** — use the store
-- **Never skip loading, error, and empty states** — every async operation needs all three
-- **Reset the session store** when the user starts a new capture flow
+- **No inline styles** — Tailwind classes only
+- **No API calls** — all data is local
+- **No global state library** — component state + URL params only
+- **Design tokens in `tailwind.config.ts`** — never hardcode color or spacing values
+- **All copy follows TASTE.md** — no placeholder strings, no generic UI text
+- **Matching logic stays in `/src/lib/matchRecipes.ts`** — not inline in components

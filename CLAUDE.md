@@ -2,7 +2,7 @@
 
 ## What Is This Project
 
-Pantrio is an Android app that detects ingredients from fridge/pantry photos and suggests recipes. Built by a solo designer-developer using Claude Code as the primary coding tool.
+Pantrio is a web app that takes the ingredients you have and finds the best matching recipes from a curated directory. Built by a solo designer-developer using Claude Code as the primary coding tool.
 
 Read SPEC.md for full product definition and screen specs.
 Read TASTE.md for brand direction and aesthetic constraints before touching any UI.
@@ -11,30 +11,45 @@ Read TASTE.md for brand direction and aesthetic constraints before touching any 
 
 ## Stack
 
-- **Framework:** React Native (Expo)
-- **Platform:** Android only (v1)
-- **AI:** Anthropic Claude API — vision for ingredient detection, text for recipe generation
-- **Component library:** Shadcn/UI (React Native compatible primitives)
+- **Framework:** Next.js (App Router)
+- **Platform:** Web (desktop + mobile browser)
+- **Deployment:** Vercel
+- **Styling:** Tailwind CSS
 - **Language:** TypeScript
+- **Data:** Static JSON recipe directory (`/data/recipes.json`)
+- **AI:** None in v1
 
 ---
 
 ## Project Structure
 
 ```
+/app
+  layout.tsx               ← Root layout (fonts, global styles)
+  page.tsx                 ← Ingredient Input screen
+  /results
+    page.tsx               ← Recipe Results screen
+  /recipe
+    /[id]
+      page.tsx             ← Recipe Detail screen
+  globals.css
+
+/data
+  recipes.json             ← Curated recipe directory (source of truth)
+
 /src
-  /screens        ← one file per screen
-  /components     ← shared UI components
-  /api            ← Claude API calls (detection, recipes)
-  /types          ← shared TypeScript types
-  /hooks          ← custom hooks
-  /constants      ← tokens, config, static values
-/specs            ← per-screen specs, read before building that screen
-SPEC.md           ← master product spec
-TASTE.md          ← brand and aesthetic north star
-ARCHITECTURE.md   ← architecture decisions (written after first session)
-DECISIONS.md      ← key decisions log
-PROGRESS.md       ← current build status
+  /components              ← Shared UI components
+  /lib
+    matchRecipes.ts        ← Ingredient matching algorithm
+  /types
+    index.ts               ← Shared TypeScript types
+
+tailwind.config.ts         ← Design tokens
+SPEC.md                    ← Master product spec
+TASTE.md                   ← Brand and aesthetic north star
+ARCHITECTURE.md            ← Architecture decisions
+DECISIONS.md               ← Key decisions log
+PROGRESS.md                ← Current build status
 ```
 
 ---
@@ -43,7 +58,7 @@ PROGRESS.md       ← current build status
 
 1. Read SPEC.md — understand what exists and why
 2. Read TASTE.md — understand the aesthetic constraints
-3. If building a specific screen, read /specs/[screen].md if it exists
+3. Read ARCHITECTURE.md — understand the structure and rules
 
 ---
 
@@ -52,28 +67,27 @@ PROGRESS.md       ← current build status
 - TypeScript strict mode — no `any`
 - Functional components only — no class components
 - One component per file
-- Named exports only — no default exports except screens
+- Named exports only — no default exports except pages
 - Descriptive variable names — no abbreviations except standard ones (e.g. `id`, `url`)
-- All Claude API calls live in `/src/api` — never inline in components
+- Matching logic lives in `/src/lib/matchRecipes.ts` — never inline in components
 
 ---
 
-## Claude API Usage
+## Styling Conventions
 
-- Model: `claude-sonnet-4-6` for both vision and text tasks
-- All prompts are defined in `/src/api` — not hardcoded in components
-- Responses are always JSON — parse and validate before use
-- Every API call must handle: loading, success, error states
-- Never expose the API key in client code — use environment variables
+- Tailwind utility classes only — no inline `style={}` props
+- Design tokens (colors, fonts, spacing) defined in `tailwind.config.ts`
+- Never hardcode color or spacing values — always use token-based classes
+- Global styles and font imports live in `/app/globals.css`
 
 ---
 
 ## Design Constraints
 
 - Reference TASTE.md before generating any UI, copy, or component
-- Design tokens live in `/src/constants/tokens.ts` — always use tokens, never hardcode values
-- Every screen must have loading, success, empty, and error states designed intentionally
+- Every screen must have its states designed intentionally (results, empty, etc.)
 - Copy must match the voice defined in TASTE.md — no generic placeholder text
+- Do not generate UI that looks like a health app, SaaS dashboard, or recipe blog
 
 ---
 
@@ -81,18 +95,17 @@ PROGRESS.md       ← current build status
 
 - Do not install new dependencies without flagging it first
 - Do not add features outside v1 scope defined in SPEC.md
-- Do not use inline styles — use StyleSheet or token-based styles
-- Do not write placeholder copy like "Loading..." or "Error occurred" — check TASTE.md for voice
-- Do not skip error states — every async operation needs one
+- Do not use inline styles — Tailwind only
+- Do not write placeholder copy like "Loading..." or "No results found" — check TASTE.md for voice
+- Do not skip empty states — every screen that can have zero results needs one
+- Do not call any external APIs — all data is local
 - Do not generate UI that looks like a health app, SaaS dashboard, or recipe blog
 
 ---
 
 ## Environment Variables
 
-```
-ANTHROPIC_API_KEY=           ← Claude API key from console.anthropic.com
-```
+None required for v1.
 
 ---
 
@@ -102,11 +115,11 @@ ANTHROPIC_API_KEY=           ← Claude API key from console.anthropic.com
 # Install dependencies
 npm install
 
-# Start Expo dev server
-npx expo start
+# Start dev server
+npm run dev
 
-# Run on Android
-npx expo start --android
+# Build for production
+npm run build
 ```
 
 ---
