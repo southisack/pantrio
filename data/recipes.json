@@ -1,0 +1,190 @@
+[
+  {
+    "id": "aglio-e-olio",
+    "name": "Aglio e Olio",
+    "summary": "A classic for people who haven't been grocery shopping in three weeks. Garlic, oil, pasta. Done.",
+    "time": 15,
+    "servings": 2,
+    "difficulty": "easy",
+    "ingredients": [
+      { "name": "spaghetti", "quantity": "200", "unit": "g" },
+      { "name": "garlic", "quantity": "6", "unit": "cloves" },
+      { "name": "olive oil", "quantity": "60", "unit": "ml" },
+      { "name": "chili flakes", "quantity": "1", "unit": "tsp" },
+      { "name": "parsley", "quantity": "1", "unit": "handful" },
+      { "name": "parmesan", "quantity": "30", "unit": "g" }
+    ],
+    "steps": [
+      { "instruction": "Bring a large pot of well-salted water to a boil. Cook spaghetti until al dente. Reserve 1 cup of pasta water before draining." },
+      { "instruction": "While pasta cooks, thinly slice all the garlic. Heat olive oil in a large pan over medium-low. Add garlic and chili flakes. Cook slowly until the garlic turns golden — 5 to 7 minutes. Don't rush this." },
+      { "instruction": "Add the drained pasta directly to the pan. Add a splash of pasta water and toss hard to emulsify into a silky sauce. Add more water as needed." },
+      { "instruction": "Remove from heat. Add parsley and half the parmesan. Toss again. Serve immediately with remaining parmesan on top." }
+    ]
+  },
+  {
+    "id": "shakshuka",
+    "name": "Shakshuka",
+    "summary": "Eggs poached in spiced tomato sauce. The kind of thing that sounds fancier than it is and tastes better than it sounds.",
+    "time": 25,
+    "servings": 2,
+    "difficulty": "easy",
+    "ingredients": [
+      { "name": "eggs", "quantity": "4", "unit": "" },
+      { "name": "canned tomatoes", "quantity": "400", "unit": "g" },
+      { "name": "onion", "quantity": "1", "unit": "" },
+      { "name": "garlic", "quantity": "3", "unit": "cloves" },
+      { "name": "cumin", "quantity": "1", "unit": "tsp" },
+      { "name": "smoked paprika", "quantity": "1", "unit": "tsp" },
+      { "name": "olive oil", "quantity": "2", "unit": "tbsp" },
+      { "name": "feta", "quantity": "50", "unit": "g" }
+    ],
+    "steps": [
+      { "instruction": "Dice the onion. Heat olive oil in a wide, lidded pan over medium heat. Cook the onion until soft and starting to colour, about 8 minutes." },
+      { "instruction": "Add sliced garlic, cumin, and paprika. Stir for 1 minute until fragrant." },
+      { "instruction": "Pour in the tomatoes. Crush them with a spoon, season generously, and simmer for 10 minutes until thickened." },
+      { "instruction": "Make 4 wells in the sauce. Crack an egg into each. Cover and cook for 5 to 7 minutes — whites set, yolks still runny. Crumble feta over the top and serve straight from the pan." }
+    ]
+  },
+  {
+    "id": "fried-rice",
+    "name": "Fried Rice",
+    "summary": "The correct use of yesterday's leftover rice. Better than ordering in, faster than boiling water.",
+    "time": 15,
+    "servings": 2,
+    "difficulty": "easy",
+    "ingredients": [
+      { "name": "cooked rice", "quantity": "300", "unit": "g" },
+      { "name": "eggs", "quantity": "2", "unit": "" },
+      { "name": "soy sauce", "quantity": "3", "unit": "tbsp" },
+      { "name": "garlic", "quantity": "2", "unit": "cloves" },
+      { "name": "spring onions", "quantity": "3", "unit": "" },
+      { "name": "sesame oil", "quantity": "1", "unit": "tbsp" },
+      { "name": "frozen peas", "quantity": "80", "unit": "g" }
+    ],
+    "steps": [
+      { "instruction": "Get your wok or largest pan screaming hot. Add a neutral oil and let it smoke. Add garlic and cook for 30 seconds." },
+      { "instruction": "Push everything to the side. Scramble the eggs in the empty space until just set, then break them up and mix into the garlic." },
+      { "instruction": "Add the cold rice. Press it into the pan and leave it alone for 1 minute to get crispy on the bottom. Then stir and repeat." },
+      { "instruction": "Add frozen peas, soy sauce, and sesame oil. Toss everything together over high heat for 2 minutes. Serve topped with sliced spring onions." }
+    ]
+  },
+  {
+    "id": "chickpea-soup",
+    "name": "Spiced Chickpea Soup",
+    "summary": "A can of chickpeas, some pantry spices, and 30 minutes. Genuinely warming. No apologies needed.",
+    "time": 30,
+    "servings": 3,
+    "difficulty": "easy",
+    "ingredients": [
+      { "name": "chickpeas", "quantity": "400", "unit": "g" },
+      { "name": "canned tomatoes", "quantity": "400", "unit": "g" },
+      { "name": "onion", "quantity": "1", "unit": "" },
+      { "name": "garlic", "quantity": "4", "unit": "cloves" },
+      { "name": "cumin", "quantity": "2", "unit": "tsp" },
+      { "name": "spinach", "quantity": "80", "unit": "g" },
+      { "name": "lemon", "quantity": "1", "unit": "" },
+      { "name": "olive oil", "quantity": "2", "unit": "tbsp" }
+    ],
+    "steps": [
+      { "instruction": "Dice the onion and cook in olive oil over medium heat until soft, about 7 minutes. Add sliced garlic and cumin, stir for 1 minute." },
+      { "instruction": "Add the tomatoes and a can's worth of water. Simmer for 10 minutes." },
+      { "instruction": "Add the drained chickpeas. Use a potato masher or the back of a spoon to crush about a third of them — this thickens the soup without blending it." },
+      { "instruction": "Stir in the spinach until wilted. Squeeze in the lemon juice, adjust seasoning, and serve." }
+    ]
+  },
+  {
+    "id": "black-bean-tacos",
+    "name": "Black Bean Tacos",
+    "summary": "Fast, loud, satisfying. Works on a Tuesday night when you've got 20 minutes and low expectations.",
+    "time": 20,
+    "servings": 2,
+    "difficulty": "easy",
+    "ingredients": [
+      { "name": "black beans", "quantity": "400", "unit": "g" },
+      { "name": "tortillas", "quantity": "6", "unit": "" },
+      { "name": "lime", "quantity": "2", "unit": "" },
+      { "name": "cumin", "quantity": "1", "unit": "tsp" },
+      { "name": "red onion", "quantity": "1", "unit": "" },
+      { "name": "coriander", "quantity": "1", "unit": "handful" },
+      { "name": "avocado", "quantity": "1", "unit": "" }
+    ],
+    "steps": [
+      { "instruction": "Drain and rinse the beans. Add to a pan with cumin, a pinch of salt, and a splash of water. Cook over medium heat for 5 minutes, mashing slightly." },
+      { "instruction": "Dice the red onion small. Slice the avocado. Roughly chop the coriander. Squeeze lime over the avocado to stop it going brown." },
+      { "instruction": "Warm the tortillas directly over a gas flame or in a dry pan for 30 seconds each side." },
+      { "instruction": "Layer beans, avocado, red onion, and coriander in each tortilla. Squeeze more lime. Eat immediately." }
+    ]
+  },
+  {
+    "id": "lemon-chicken-thighs",
+    "name": "Lemon Chicken Thighs",
+    "summary": "Bone-in, crispy-skinned, properly lemony. The kind of thing you make when you want to feel like you've got it together.",
+    "time": 45,
+    "servings": 3,
+    "difficulty": "medium",
+    "ingredients": [
+      { "name": "chicken thighs", "quantity": "6", "unit": "" },
+      { "name": "lemon", "quantity": "2", "unit": "" },
+      { "name": "garlic", "quantity": "6", "unit": "cloves" },
+      { "name": "olive oil", "quantity": "3", "unit": "tbsp" },
+      { "name": "thyme", "quantity": "4", "unit": "sprigs" },
+      { "name": "butter", "quantity": "30", "unit": "g" }
+    ],
+    "steps": [
+      { "instruction": "Preheat oven to 200°C. Pat the chicken dry — this is the most important step for crispy skin." },
+      { "instruction": "Season the thighs aggressively on both sides. Heat olive oil in an ovenproof pan until almost smoking. Lay thighs skin-side down. Don't touch them for 8 minutes." },
+      { "instruction": "Flip, add butter, crushed garlic cloves, thyme, and sliced lemon. Baste the chicken with the butter as it melts." },
+      { "instruction": "Transfer the pan to the oven. Roast for 25 minutes until cooked through and the skin is deep golden. Rest for 5 minutes before serving." }
+    ]
+  },
+  {
+    "id": "mushroom-risotto",
+    "name": "Mushroom Risotto",
+    "summary": "Requires attention but rewards it. Creamy, earthy, the kind of thing you eat in silence because it deserves it.",
+    "time": 45,
+    "servings": 3,
+    "difficulty": "medium",
+    "ingredients": [
+      { "name": "arborio rice", "quantity": "280", "unit": "g" },
+      { "name": "mushrooms", "quantity": "300", "unit": "g" },
+      { "name": "onion", "quantity": "1", "unit": "" },
+      { "name": "garlic", "quantity": "2", "unit": "cloves" },
+      { "name": "white wine", "quantity": "150", "unit": "ml" },
+      { "name": "parmesan", "quantity": "60", "unit": "g" },
+      { "name": "butter", "quantity": "50", "unit": "g" },
+      { "name": "vegetable stock", "quantity": "1.2", "unit": "litres" }
+    ],
+    "steps": [
+      { "instruction": "Keep your stock warm in a separate pan. Dice the onion finely. Slice the mushrooms. Grate the parmesan." },
+      { "instruction": "Melt half the butter in a wide, heavy pan. Cook the onion over low heat until completely soft, about 10 minutes. Add garlic for 1 minute." },
+      { "instruction": "Add mushrooms, turn up the heat, and cook until they release their liquid and it evaporates. This takes patience — don't rush." },
+      { "instruction": "Add the rice and stir for 2 minutes until the edges turn translucent. Pour in the wine and stir until absorbed." },
+      { "instruction": "Add hot stock one ladle at a time, stirring constantly and adding more only when each addition is absorbed. This takes 18 to 20 minutes. The rice should be creamy and just cooked." },
+      { "instruction": "Remove from heat. Add remaining butter and parmesan. Stir vigorously for 1 minute. Season and serve immediately." }
+    ]
+  },
+  {
+    "id": "peanut-noodles",
+    "name": "Peanut Noodles",
+    "summary": "Cold noodles, big peanut sauce, ready in 15 minutes. Good at room temperature. Good cold. Good always.",
+    "time": 15,
+    "servings": 2,
+    "difficulty": "easy",
+    "ingredients": [
+      { "name": "noodles", "quantity": "200", "unit": "g" },
+      { "name": "peanut butter", "quantity": "4", "unit": "tbsp" },
+      { "name": "soy sauce", "quantity": "3", "unit": "tbsp" },
+      { "name": "sriracha", "quantity": "1", "unit": "tbsp" },
+      { "name": "garlic", "quantity": "2", "unit": "cloves" },
+      { "name": "sesame oil", "quantity": "2", "unit": "tbsp" },
+      { "name": "lime", "quantity": "1", "unit": "" },
+      { "name": "cucumber", "quantity": "1", "unit": "" }
+    ],
+    "steps": [
+      { "instruction": "Cook noodles according to packet instructions. Drain and rinse under cold water. Toss with a little sesame oil so they don't stick." },
+      { "instruction": "Whisk together peanut butter, soy sauce, sriracha, sesame oil, grated garlic, and lime juice. Add warm water a tablespoon at a time until you have a pourable sauce." },
+      { "instruction": "Julienne or thinly slice the cucumber. Toss noodles with the sauce until well coated." },
+      { "instruction": "Serve topped with cucumber. Add more sriracha if you mean it." }
+    ]
+  }
+]
