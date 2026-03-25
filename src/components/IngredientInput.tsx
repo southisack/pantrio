@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 
 const CHIP_COLORS = [
   'bg-red-600 text-white',
-  'bg-blue-700 text-white',
+  'bg-olive-700 text-white',
   'bg-amber-400 text-zinc-950',
   'bg-zinc-950 text-white',
 ]
@@ -76,34 +76,33 @@ export function IngredientInput() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white border-b-8 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center px-6 py-4">
-        <span className="font-display font-black italic tracking-tighter text-4xl text-red-600">
+      <nav className="sticky top-0 z-50 bg-white border-b-2 border-black shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] flex items-center px-6 py-3">
+        <span className="font-display tracking-tighter text-2xl text-red-600">
           PANTRIO
         </span>
       </nav>
 
-      <main className="flex flex-col lg:flex-row min-h-[calc(100svh-73px)]">
+      <main className="flex flex-col lg:flex-row min-h-[calc(100svh-49px)]">
 
-        {/* Left: headline */}
-        <div className="flex flex-col justify-center px-6 md:px-10 lg:px-16 pt-12 lg:pt-0 pb-4 lg:pb-0 lg:flex-1">
-          <h1 className="font-display font-black uppercase tracking-tighter leading-[0.85] text-5xl sm:text-6xl lg:text-8xl">
-            WHAT ARE
+        {/* Left: content */}
+        <div className="flex flex-col justify-center px-8 md:px-12 lg:px-16 py-12 lg:py-0 lg:flex-1 lg:max-w-[55%]">
+
+          {/* Eyebrow */}
+          <p className="font-sans font-black uppercase text-xs tracking-widest text-zinc-950 opacity-50 mb-6">
+            OPEN YOUR FRIDGE. START TYPING.
+          </p>
+
+          {/* Headline */}
+          <h1 className="font-display uppercase tracking-tighter leading-[0.9] text-5xl sm:text-6xl lg:text-7xl mb-8">
+            WHAT ARE YOU
             <br />
-            YOU
-            <br />
-            <span className="text-red-600 italic">COOKING</span>
+            <span className="text-red-600">COOKING</span>
             <br />
             WITH?
           </h1>
-        </div>
 
-        {/* Divider — desktop only */}
-        <div className="hidden lg:block w-2 bg-black flex-shrink-0" />
-
-        {/* Right: form */}
-        <div className="flex flex-col justify-center px-6 md:px-10 lg:px-16 pb-16 pt-4 lg:pt-0 lg:w-[520px] xl:w-[600px] flex-shrink-0">
-
-          <div className="mb-4">
+          {/* Input */}
+          <div className="mb-3">
             <input
               ref={inputRef}
               type="text"
@@ -111,27 +110,28 @@ export function IngredientInput() {
               onChange={e => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
               onPaste={handlePaste}
-              placeholder="harissa, chickpeas..."
+              placeholder="garlic, olive oil, chickpeas..."
               autoFocus
-              className="w-full bg-white border-8 border-black px-5 py-4 text-2xl md:text-3xl font-display font-black uppercase placeholder:text-zinc-300 focus:outline-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+              className="w-full bg-white border-2 border-black px-4 py-2.5 text-sm font-sans font-bold uppercase placeholder:text-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]"
             />
           </div>
 
           {emptyError && (
-            <p className="mb-3 font-sans font-bold uppercase tracking-tight text-red-600 text-sm">
+            <p className="mb-2 font-sans font-bold uppercase tracking-tight text-red-600 text-xs">
               Add something first. Even one ingredient.
             </p>
           )}
 
           <button
             onClick={handleFindRecipes}
-            className="w-full bg-red-600 text-white border-8 border-black px-5 py-5 font-display font-black text-3xl md:text-4xl uppercase tracking-tighter shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-x-2 active:translate-y-2 active:shadow-none transition-none mb-10"
+            className="w-full bg-red-600 text-white border-2 border-black px-4 py-2.5 font-sans font-black text-sm uppercase tracking-tight shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none active:translate-x-1 active:translate-y-1 active:shadow-none transition-none mb-8"
           >
             FIND RECIPES
           </button>
 
+          {/* Chips */}
           {ingredients.length > 0 && (
-            <div className="flex flex-wrap gap-3 items-start">
+            <div className="flex flex-wrap gap-2 items-start">
               {ingredients.map((ingredient, index) => (
                 <button
                   key={ingredient}
@@ -139,11 +139,11 @@ export function IngredientInput() {
                   className={`
                     ${CHIP_COLORS[index % CHIP_COLORS.length]}
                     ${CHIP_ROTATIONS[index % CHIP_ROTATIONS.length]}
-                    border-4 border-black px-4 py-2
-                    font-sans font-black text-sm uppercase tracking-tight
-                    shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                    active:translate-x-1 active:translate-y-1 active:shadow-none
-                    flex items-center gap-2 transition-none
+                    border-2 border-black px-3 py-1.5
+                    font-sans font-black text-xs uppercase tracking-tight
+                    shadow-[3px_3px_0px_0px_rgba(28,20,16,1)]
+                    active:translate-x-[3px] active:translate-y-[3px] active:shadow-none
+                    flex items-center gap-1.5 transition-none
                   `}
                 >
                   {ingredient}
@@ -152,8 +152,20 @@ export function IngredientInput() {
               ))}
             </div>
           )}
-
         </div>
+
+        {/* Right: image placeholder */}
+        <div className="hidden lg:flex flex-1 border-l-2 border-black items-center justify-center bg-zinc-50 relative overflow-hidden">
+          <div className="border-2 border-black border-dashed m-10 flex-1 h-[70%] flex flex-col items-center justify-center gap-4 shadow-[6px_6px_0px_0px_rgba(28,20,16,1)]">
+            <span className="font-display uppercase tracking-tighter text-3xl text-zinc-300">
+              IMAGE
+            </span>
+            <span className="font-sans font-black uppercase text-xs tracking-widest text-zinc-300">
+              COMING SOON
+            </span>
+          </div>
+        </div>
+
       </main>
     </>
   )

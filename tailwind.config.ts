@@ -8,32 +8,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand red — primary action, logo, key highlights
+        // Warm near-black — borders, shadows, body text
+        black: '#1C1410',
+        // Deep crimson — primary action, logo, key highlights
         red: {
-          600: '#EB0000',
-          700: '#BC0100',
+          600: '#A51C30',
+          700: '#7D1524',
         },
-        // Accent yellow — chips, hover states, secondary containers
+        // Warm golden mustard — chips, accents
         amber: {
-          300: '#FDBF2E',
-          400: '#FFC130',
+          400: '#D4A843',
         },
-        // Tertiary blue — badges, tags, accents
-        blue: {
-          500: '#3467FF',
-          700: '#004BE4',
+        // Herb olive — section badges, secondary accents
+        olive: {
+          700: '#5C6B3A',
         },
-        // Neutrals — backgrounds, surfaces, borders
+        // Neutrals — backgrounds, surfaces, muted text
         zinc: {
-          50:  '#F9F9F9',
-          100: '#EEEEEE',
-          200: '#E2E2E2',
-          300: '#DADADA',
-          950: '#1B1B1B',
-        },
-        // Muted warm tone — secondary text, outlines
-        stone: {
-          400: '#946E68',
+          50:  '#F7F3EC',  // warm cream background
+          100: '#EDE8DE',  // matched ingredient bg
+          200: '#DDD8CE',
+          300: '#C8C2B5',  // placeholder text
+          400: '#9E9488',  // muted/strikethrough text
+          950: '#1C1410',  // warm near-black
         },
       },
       fontFamily: {

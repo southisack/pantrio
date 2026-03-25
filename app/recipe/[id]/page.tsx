@@ -44,62 +44,62 @@ export default async function RecipeDetailPage({
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white border-b-8 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center justify-between px-6 py-4">
-        <span className="font-display font-black italic tracking-tighter text-4xl text-red-600">
+      <nav className="sticky top-0 z-50 bg-white border-b-2 border-black shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] flex items-center justify-between px-6 py-3">
+        <span className="font-display font-black italic tracking-tighter text-2xl text-red-600">
           PANTRIO
         </span>
         <Link
           href={resultsHref}
-          className="font-sans font-black uppercase text-sm tracking-tight border-4 border-black px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-none"
+          className="font-sans font-black uppercase text-xs tracking-tight border-2 border-black px-3 py-1.5 shadow-[3px_3px_0px_0px_rgba(28,20,16,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-none"
         >
           ← RESULTS
         </Link>
       </nav>
 
-      <main className="px-6 md:px-10 lg:px-16 py-12">
+      <main className="px-6 md:px-10 lg:px-16 py-8">
 
         {/* Title + summary */}
-        <div className="mb-10 max-w-4xl">
-          <h1 className="font-display font-black uppercase tracking-tighter leading-[0.85] text-5xl sm:text-6xl lg:text-8xl mb-6">
+        <div className="mb-6 max-w-3xl">
+          <h1 className="font-display font-black uppercase tracking-tighter leading-[0.85] text-3xl sm:text-4xl lg:text-5xl mb-4">
             {recipe.name}
           </h1>
-          <p className="font-sans text-xl leading-snug border-l-8 border-black pl-6">
+          <p className="font-sans text-sm leading-snug border-l-4 border-black pl-4">
             {recipe.summary}
           </p>
         </div>
 
         {/* Meta row */}
-        <div className="grid grid-cols-3 gap-4 mb-12 max-w-lg">
-          <div className="border-8 border-black p-4 text-center">
-            <span className="block font-sans font-black uppercase text-xs mb-1">TIME</span>
-            <span className="font-display font-black text-xl uppercase leading-tight">
+        <div className="grid grid-cols-3 gap-2 mb-8 max-w-xs">
+          <div className="border-2 border-black p-2.5 text-center">
+            <span className="block font-sans font-black uppercase text-xs mb-0.5">TIME</span>
+            <span className="font-display font-black text-sm uppercase leading-tight">
               {formatTime(recipe.time)}
             </span>
           </div>
-          <div className="border-8 border-black p-4 text-center">
-            <span className="block font-sans font-black uppercase text-xs mb-1">SERVES</span>
-            <span className="font-display font-black text-xl uppercase leading-tight">
+          <div className="border-2 border-black p-2.5 text-center">
+            <span className="block font-sans font-black uppercase text-xs mb-0.5">SERVES</span>
+            <span className="font-display font-black text-sm uppercase leading-tight">
               {recipe.servings}
             </span>
           </div>
-          <div className="border-8 border-black p-4 text-center">
-            <span className="block font-sans font-black uppercase text-xs mb-1">EFFORT</span>
-            <span className="font-display font-black text-xl uppercase leading-tight">
+          <div className="border-2 border-black p-2.5 text-center">
+            <span className="block font-sans font-black uppercase text-xs mb-0.5">EFFORT</span>
+            <span className="font-display font-black text-sm uppercase leading-tight">
               {difficultyLabel[recipe.difficulty]}
             </span>
           </div>
         </div>
 
         {/* Two column: ingredients + steps */}
-        <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-col lg:flex-row gap-10">
 
           {/* THE KIT */}
           <section className="lg:w-1/3">
-            <div className="inline-block bg-zinc-950 text-white font-display font-black uppercase tracking-tighter text-3xl px-4 py-2 mb-8 rotate-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="inline-block bg-zinc-950 text-white font-display font-black uppercase tracking-tighter text-base px-3 py-1.5 mb-5 rotate-1 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]">
               THE KIT
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               {recipe.ingredients.map(ingredient => {
                 const matched = isMatched(ingredient.name)
                 return (
@@ -107,20 +107,20 @@ export default async function RecipeDetailPage({
                     key={ingredient.name}
                     className={
                       matched
-                        ? 'border-4 border-black p-4 bg-zinc-100 flex items-center justify-between'
-                        : 'border-4 border-black p-4 bg-white flex items-center justify-between shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] translate-x-1'
+                        ? 'border-2 border-black p-2.5 bg-zinc-100 flex items-center justify-between'
+                        : 'border-2 border-black p-2.5 bg-white flex items-center justify-between shadow-[3px_3px_0px_0px_rgba(28,20,16,1)] translate-x-[3px]'
                     }
                   >
                     <div>
                       <span
                         className={
                           matched
-                            ? 'font-sans font-bold uppercase text-zinc-400 line-through'
-                            : 'font-sans font-black uppercase text-red-600 text-lg'
+                            ? 'font-sans font-bold uppercase text-zinc-400 line-through text-sm'
+                            : 'font-sans font-black uppercase text-red-600 text-sm'
                         }
                       >
                         {ingredient.quantity && ingredient.unit
-                          ? `${ingredient.quantity}${ingredient.unit} ${ingredient.name}`
+                          ? `${ingredient.quantity} ${ingredient.unit} ${ingredient.name}`
                           : ingredient.quantity
                           ? `${ingredient.quantity} ${ingredient.name}`
                           : ingredient.name}
@@ -129,8 +129,8 @@ export default async function RecipeDetailPage({
                     <span
                       className={
                         matched
-                          ? 'font-sans font-black uppercase text-xs text-zinc-400 flex-shrink-0 ml-4'
-                          : 'font-sans font-black uppercase text-xs bg-red-600 text-white px-2 py-1 flex-shrink-0 ml-4'
+                          ? 'font-sans font-black uppercase text-xs text-zinc-400 flex-shrink-0 ml-3'
+                          : 'font-sans font-black uppercase text-xs bg-red-600 text-white px-1.5 py-0.5 flex-shrink-0 ml-3'
                       }
                     >
                       {matched ? 'GOT IT' : 'NEED IT'}
@@ -143,18 +143,18 @@ export default async function RecipeDetailPage({
 
           {/* DO THIS */}
           <section className="lg:w-2/3">
-            <div className="inline-block bg-blue-700 text-white font-display font-black uppercase tracking-tighter text-3xl px-4 py-2 mb-8 -rotate-1 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="inline-block bg-olive-700 text-white font-display uppercase tracking-tighter text-base px-3 py-1.5 mb-5 -rotate-1 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]">
               DO THIS
             </div>
 
-            <div className="space-y-10">
+            <div className="space-y-6">
               {recipe.steps.map((step, index) => (
-                <div key={index} className="flex gap-6">
-                  <div className="flex-none w-20 h-20 border-8 border-black bg-zinc-950 text-white flex items-center justify-center font-display font-black text-4xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                <div key={index} className="flex gap-4">
+                  <div className="flex-none w-10 h-10 border-2 border-black bg-zinc-950 text-white flex items-center justify-center font-display font-black text-base shadow-[3px_3px_0px_0px_rgba(28,20,16,1)]">
                     {String(index + 1).padStart(2, '0')}
                   </div>
-                  <div className="flex-grow pt-2">
-                    <p className="font-sans text-lg leading-relaxed">
+                  <div className="flex-grow pt-1">
+                    <p className="font-sans text-sm leading-relaxed">
                       {step.instruction}
                     </p>
                   </div>

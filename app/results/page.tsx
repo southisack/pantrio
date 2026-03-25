@@ -38,22 +38,22 @@ export default async function ResultsPage({
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white border-b-8 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center justify-between px-6 py-4">
-        <span className="font-display font-black italic tracking-tighter text-4xl text-red-600">
+      <nav className="sticky top-0 z-50 bg-white border-b-2 border-black shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] flex items-center justify-between px-6 py-3">
+        <span className="font-display italic tracking-tighter text-2xl text-red-600">
           PANTRIO
         </span>
         <Link
           href="/"
-          className="font-sans font-black uppercase text-sm tracking-tight border-4 border-black px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-none"
+          className="font-sans font-black uppercase text-xs tracking-tight border-2 border-black px-3 py-1.5 shadow-[3px_3px_0px_0px_rgba(28,20,16,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-none"
         >
           ← BACK
         </Link>
       </nav>
 
-      <main className="px-6 md:px-10 lg:px-16 py-12">
+      <main className="px-6 md:px-10 lg:px-16 py-8">
 
-        <div className="mb-10">
-          <h1 className="font-display font-black uppercase tracking-tighter leading-[0.85] text-5xl sm:text-6xl lg:text-8xl mb-6">
+        <div className="mb-8">
+          <h1 className="font-display uppercase tracking-tighter leading-[0.85] text-3xl sm:text-4xl lg:text-5xl mb-4">
             HERE'S WHAT
             <br />
             YOU CAN
@@ -64,29 +64,29 @@ export default async function ResultsPage({
           </h1>
 
           {results.length > 0 && (
-            <p className="font-sans font-bold uppercase text-xl tracking-tight border-t-8 border-black pt-4">
+            <p className="font-sans font-bold uppercase text-sm tracking-tight border-t-2 border-black pt-3">
               {resultsHeadline(results.length)}
             </p>
           )}
         </div>
 
         {results.length === 0 ? (
-          <div className="border-8 border-black border-dashed p-12 md:p-16 text-center">
-            <p className="font-display font-black uppercase tracking-tighter text-4xl md:text-5xl mb-4">
+          <div className="border-2 border-black border-dashed p-8 text-center max-w-lg">
+            <p className="font-display uppercase tracking-tighter text-2xl mb-2">
               NOTHING MATCHED.
             </p>
-            <p className="font-sans font-bold text-xl max-w-md mx-auto">
+            <p className="font-sans font-bold text-sm max-w-sm mx-auto">
               Either your fridge is very sparse or very unusual. Try adding a few more ingredients.
             </p>
             <Link
               href="/"
-              className="inline-block mt-8 bg-red-600 text-white font-display font-black uppercase tracking-tighter text-2xl border-8 border-black px-8 py-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-x-2 active:translate-y-2 active:shadow-none transition-none"
+              className="inline-block mt-6 bg-red-600 text-white font-sans font-black uppercase tracking-tight text-sm border-2 border-black px-5 py-2.5 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none active:translate-x-1 active:translate-y-1 active:shadow-none transition-none"
             >
               TRY AGAIN
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             {results.map(({ recipe, matchScore, matchedIngredients }) => {
               const matchedCount = matchedIngredients.length
               const totalCount = recipe.ingredients.length
@@ -97,50 +97,50 @@ export default async function ResultsPage({
                 <Link
                   key={recipe.id}
                   href={detailHref}
-                  className="group block bg-white border-8 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-none"
+                  className="group block bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(28,20,16,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[3px_3px_0px_0px_rgba(28,20,16,1)] transition-none"
                 >
-                  <div className="p-8">
-                    <div className="flex items-start justify-between gap-4 mb-6">
-                      <h2 className="font-display font-black uppercase tracking-tighter leading-none text-4xl sm:text-5xl flex-1">
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h2 className="font-display uppercase tracking-tighter leading-none text-xl sm:text-2xl flex-1">
                         {recipe.name}
                       </h2>
-                      <div className="flex-shrink-0 bg-red-600 text-white font-display font-black text-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] px-3 py-2 leading-none">
+                      <div className="flex-shrink-0 bg-red-600 text-white font-display text-sm border-2 border-black shadow-[2px_2px_0px_0px_rgba(28,20,16,1)] px-2 py-1 leading-none">
                         {pct}%
                       </div>
                     </div>
 
-                    <p className="font-sans text-base leading-snug mb-8 text-zinc-950">
+                    <p className="font-sans text-sm leading-snug mb-4 text-zinc-950">
                       {recipe.summary}
                     </p>
 
-                    <div className="grid grid-cols-3 gap-4 mb-8">
-                      <div className="border-4 border-black p-3">
-                        <span className="block font-sans font-black uppercase text-xs text-zinc-950 mb-1">
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                      <div className="border-2 border-black p-2">
+                        <span className="block font-sans font-black uppercase text-xs text-zinc-950 mb-0.5">
                           INGREDIENTS
                         </span>
-                        <span className="font-display font-black text-lg text-red-600 uppercase leading-tight">
+                        <span className="font-display text-sm text-red-600 uppercase leading-tight">
                           {matchedCount} OF {totalCount}
                         </span>
                       </div>
-                      <div className="border-4 border-black p-3">
-                        <span className="block font-sans font-black uppercase text-xs text-zinc-950 mb-1">
+                      <div className="border-2 border-black p-2">
+                        <span className="block font-sans font-black uppercase text-xs text-zinc-950 mb-0.5">
                           TIME
                         </span>
-                        <span className="font-display font-black text-lg uppercase leading-tight">
+                        <span className="font-display text-sm uppercase leading-tight">
                           {formatTime(recipe.time)}
                         </span>
                       </div>
-                      <div className="border-4 border-black p-3">
-                        <span className="block font-sans font-black uppercase text-xs text-zinc-950 mb-1">
+                      <div className="border-2 border-black p-2">
+                        <span className="block font-sans font-black uppercase text-xs text-zinc-950 mb-0.5">
                           EFFORT
                         </span>
-                        <span className="font-display font-black text-lg uppercase leading-tight">
+                        <span className="font-display text-sm uppercase leading-tight">
                           {difficultyLabel[recipe.difficulty]}
                         </span>
                       </div>
                     </div>
 
-                    <div className="w-full bg-zinc-950 text-white font-display font-black text-2xl uppercase tracking-tighter text-center py-4 border-4 border-black group-hover:bg-red-600 transition-none">
+                    <div className="w-full bg-zinc-950 text-white font-sans font-black text-sm uppercase tracking-tight text-center py-2.5 border-2 border-black group-hover:bg-red-600 transition-none">
                       COOK IT →
                     </div>
                   </div>

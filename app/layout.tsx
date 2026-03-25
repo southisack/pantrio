@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Epilogue } from 'next/font/google'
+import { Space_Grotesk, EB_Garamond } from 'next/font/google'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -8,9 +8,9 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-sans',
 })
 
-const epilogue = Epilogue({
+const ebGaramond = EB_Garamond({
   subsets: ['latin'],
-  weight: ['800', '900'],
+  weight: ['400', '500', '600', '700', '800'],
   style: ['normal', 'italic'],
   variable: '--font-display',
 })
@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${epilogue.variable}`}>
+      <body className={`${spaceGrotesk.variable} ${ebGaramond.variable}`}>
         {children}
       </body>
     </html>
