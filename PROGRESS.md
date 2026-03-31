@@ -8,9 +8,9 @@ Update this file at the end of every coding session. Read this at the start of e
 
 ## Current Status
 
-**Phase:** Design refinement — brand pivot complete, all three screens updated
-**Last updated:** 2026-03-25
-**Last session summary:** Major design session. Scaled down all component sizes (borders, text, spacing) to standard web proportions. Switched display font from Epilogue → Titan One → EB Garamond (final). Pivoted color palette to "Warm Editorial" (Option A): deep crimson #A51C30, warm cream #F7F3EC background, herb olive #5C6B3A, golden mustard #D4A843, warm near-black #1C1410. Reworked input screen layout to two-column (text + form left, image placeholder right) inspired by Graza olive oil brand. Added design system page at /design-system. Fixed font synthesis bug (removed font-black from display elements). Added hover states to buttons from neobrutalism.dev. Renamed blue-700 → olive-700 as a clean custom token.
+**Phase:** Core UI complete — ingredient picker, recipe grid, recipe detail all built and polished
+**Last updated:** 2026-03-30
+**Last session summary:** Major redesign of ingredient picker — replaced text input + chip system with a 2×4 grid of big square cards (proteins row + starches row). Added press animation (scale-down + starburst impact lines on select), hover yellow fill, and smooth transitions. Switched display font to Orelega One, added Outfit as UI font for buttons/links/inputs. Added family star ratings (Johnny, Marie-Eve, Mia) to recipe detail pages. Loaded all 51 family cookbook recipes into data/recipes.json. Fixed all olive/green color tokens to pure black. Added hatch shadow and fade-up animation utilities. Removed unused results page and IngredientInput component — filtering now happens inline on the home page.
 
 ---
 
@@ -20,51 +20,38 @@ Update this file at the end of every coding session. Read this at the start of e
 - [x] Next.js project initialized (with TypeScript, Tailwind, App Router)
 - [x] Folder structure created (`/app`, `/data`, `/src/components`, `/src/lib`, `/src/types`)
 - [x] `tailwind.config.ts` updated with design tokens (colors, fonts, spacing)
-- [x] `globals.css` set up with font imports and base resets
+- [x] `globals.css` set up with font imports, hatch shadow, fade-up and impact burst animations
 - [x] TypeScript strict mode configured
-- [x] `/src/types/index.ts` created with `Recipe`, `RecipeIngredient`, `MatchedRecipe`, `Difficulty` types
-- [x] `/data/recipes.json` created with at least 5 sample recipes for dev/testing
-- [x] Design system page at `/app/design-system` — all components documented
+- [x] `/src/types/index.ts` — `Recipe`, `RecipeIngredient`, `RecipeRatings`, `Difficulty` types
 
-### Matching Logic (`/src/lib`)
-- [x] `matchRecipes.ts` — pure function, takes user ingredients + recipe array, returns ranked `MatchedRecipe[]`
-- [x] Normalization (lowercase, trim) applied to both user input and recipe ingredients
-- [x] Recipes below 30% match filtered out
-- [x] Sorted by match score descending
-- [x] Tested manually with a few ingredient combinations
+### Matching Logic
+- [x] Ingredient filtering — inline on home page via `useMemo`, toggleable by ingredient category
+- [x] Normalization (lowercase) applied to both selected ingredients and recipe data
+- [x] Filtered results update instantly on toggle — no navigation required
+- [x] URL sync — selected ingredients persisted to `?ingredients=` query param
 
-### Screen: Ingredient Input (`/app/page.tsx`)
-- [x] Input field renders, focused on load
-- [x] Typing and pressing Enter adds an ingredient chip
-- [x] Pasting comma-separated list splits and adds all at once
-- [x] Each chip has a remove button
-- [x] "Find Recipes" button navigates to `/results?ingredients=...`
-- [x] Empty submit state has branded copy (not a generic validation error)
-- [x] Two-column layout — text/form left, image placeholder right
-- [x] Eyebrow label above headline
-
-### Screen: Recipe Results (`/app/results/page.tsx`)
-- [x] Reads `ingredients` from URL search params
-- [x] Runs `matchRecipes()` against `/data/recipes.json`
-- [x] Recipe cards render with: name, match score, time, difficulty
-- [x] Cards sorted by match score
-- [x] Tapping a card navigates to `/recipe/[id]`
-- [x] Empty state (no recipes above 30%) has branded copy
-- [x] Back navigation to input works
+### Screen: Ingredient Input + Recipe Grid (`/app/page.tsx`)
+- [x] 2×4 grid of ingredient cards — Row 1: proteins (chicken, beef, pork, fish), Row 2: starches (pasta, rice, potato, noodles)
+- [x] Cards: white bg → yellow hover, yellow fill + scale-down when selected
+- [x] Starburst impact animation on card select (radiating lines from center)
+- [x] Recipe count label with brand copy ("All 51. Take your pick." / "X recipes. Start somewhere.")
+- [x] Recipe grid — 4-column on xl, 3-col lg, 2-col sm, 1-col mobile
+- [x] Cards with hatch shadow, hover translate to cover shadow
+- [x] Fade-up animation on grid when filter changes
+- [x] Empty state — "Nothing matched." / "Either your fridge is very sparse or very unusual."
+- [x] Clicking a card navigates to `/recipe/[id]` (with ingredients in URL if filtered)
 
 ### Screen: Recipe Detail (`/app/recipe/[id]/page.tsx`)
 - [x] Reads recipe ID from URL params
-- [x] Looks up recipe from `/data/recipes.json`
-- [x] Reads user's ingredients from URL to distinguish matched vs. missing
-- [x] Full ingredient list renders — matched (GOT IT) vs missing (NEED IT)
-- [x] Step-by-step instructions render
+- [x] Full ingredient list — matched (GOT IT) vs missing (NEED IT)
+- [x] Step-by-step instructions
 - [x] Time, difficulty, servings shown
-- [x] Back navigation to results works
+- [x] Family star ratings — Johnny, Marie-Eve, Mia (0 = "Not yet rated")
+- [x] Back navigation to home
 
 ### Recipe Directory (`/data/recipes.json`)
-- [x] 8 sample recipes added
-- [x] Schema matches `Recipe` type exactly
-- [ ] Final curated set of recipes authored and added (target: 20–30)
+- [x] 51 family cookbook recipes — full schema with ingredients, steps, ratings
+- [x] Schema: id, name, summary, time, servings, difficulty, ingredients, steps, ratings
 
 ---
 
@@ -72,38 +59,25 @@ Update this file at the end of every coding session. Read this at the start of e
 
 | Token | Value | Usage |
 |---|---|---|
-| `red-600` | `#A51C30` | Primary CTA, logo, NEED IT badge |
-| `red-700` | `#7D1524` | Hover state |
-| `olive-700` | `#5C6B3A` | Section badges (DO THIS) |
-| `amber-400` | `#D4A843` | Ingredient chips |
-| `zinc-50` | `#F7F3EC` | Warm cream background |
-| `zinc-950` / `black` | `#1C1410` | Borders, body text, shadows |
-| Font display | EB Garamond | Headlines, badges, logo |
-| Font sans | Space Grotesk | Body, UI labels, buttons |
+| `zinc-50` | `#FFEA59` | Yellow — page background, selected card fill, hover fill |
+| `zinc-100` | `#FFF9B0` | Lighter yellow |
+| `zinc-950` / `black` | `#000000` | Borders, body text, shadows |
+| Font display | Orelega One | Headlines |
+| Font sans | Space Grotesk | Body, data labels |
+| Font ui | Outfit | Buttons, links, inputs |
 
 ---
 
 ## Known Issues
 
-- Ingredient display on detail screen runs quantity and unit together without a space (e.g. "1TSP CUMIN") — minor formatting fix needed (actually partially fixed this session — unit spacing added with a space in the template literal)
-- Image placeholder on input screen right column — needs a real photo
-
----
-
-## Decisions Made This Session
-
-- EB Garamond chosen as display font — editorial food brand aesthetic, true italic support, pairs well with warm palette
-- `font-black` (weight 900) removed from all `font-display` elements — EB Garamond's 800 weight handles visual weight naturally without browser synthesis artifacts
-- `blue-700` renamed to `olive-700` as a custom Tailwind token — avoids cache conflicts with Tailwind's built-in blue scale
-- Warm near-black `#1C1410` overrides Tailwind's `black` directly — all `border-black`, `bg-black`, shadow rgba values use warm tone
-- Input screen pivoted to Graza-style two-column layout (text left, image right)
+- Star ratings for all 51 recipes are set to 0 (not yet rated) — needs the family to actually rate them
+- No image support — recipe cards and detail pages are text-only
 
 ---
 
 ## Next Session — Start Here
 
-1. **Get a hero image** for the input screen right column — food photography or illustration
+1. **Rate the recipes** — fill in Johnny, Marie-Eve, Mia scores in `data/recipes.json`
 2. **Mobile layout pass** — screens work but haven't been reviewed at phone width
-3. **Author more recipes** — currently 8, aim for 20–30
-4. **Deploy to Vercel**
-5. Consider whether `uppercase` on headlines should stay or move to mixed case (EB Garamond reads beautifully either way)
+3. **Deploy to Vercel**
+4. Consider adding more ingredient categories beyond proteins and starches
