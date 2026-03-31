@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, EB_Garamond } from 'next/font/google'
+import { Space_Grotesk, Orelega_One, Outfit } from 'next/font/google'
 import './globals.css'
 
 const spaceGrotesk = Space_Grotesk({
@@ -8,11 +8,16 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-sans',
 })
 
-const ebGaramond = EB_Garamond({
+const orelegaOne = Orelega_One({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  style: ['normal', 'italic'],
+  weight: '400',
   variable: '--font-display',
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-ui',
 })
 
 export const metadata: Metadata = {
@@ -27,7 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${ebGaramond.variable}`}>
+      <body className={`${spaceGrotesk.variable} ${orelegaOne.variable} ${outfit.variable}`}>
         {children}
       </body>
     </html>

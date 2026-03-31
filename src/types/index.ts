@@ -10,6 +10,12 @@ export interface RecipeStep {
   instruction: string
 }
 
+export interface RecipeRatings {
+  johnny: number    // 0 = not yet rated, 1–5 stars
+  marieEve: number
+  mia: number
+}
+
 export interface Recipe {
   id: string
   name: string
@@ -19,6 +25,7 @@ export interface Recipe {
   difficulty: Difficulty
   ingredients: RecipeIngredient[]
   steps: RecipeStep[]
+  ratings: RecipeRatings
 }
 
 export interface MatchedRecipe {

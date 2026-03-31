@@ -8,45 +8,43 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm near-black — borders, shadows, body text
-        black: '#1C1410',
-        // Deep crimson — primary action, logo, key highlights
+        // Black — borders, shadows, primary text
+        black: '#000000',
+        // Olive — primary accent, badges, buttons
         red: {
-          600: '#A51C30',
-          700: '#7D1524',
+          600: '#000000',
+          700: '#000000',
         },
-        // Warm golden mustard — chips, accents
-        amber: {
-          400: '#D4A843',
-        },
-        // Herb olive — section badges, secondary accents
+        // Olive secondary
         olive: {
-          700: '#5C6B3A',
+          700: '#000000',
         },
-        // Neutrals — backgrounds, surfaces, muted text
+        // Yellows and neutrals
         zinc: {
-          50:  '#F7F3EC',  // warm cream background
-          100: '#EDE8DE',  // matched ingredient bg
-          200: '#DDD8CE',
-          300: '#C8C2B5',  // placeholder text
-          400: '#9E9488',  // muted/strikethrough text
-          950: '#1C1410',  // warm near-black
+          50:  '#FFEA59',  // yellow — page background
+          100: '#FFF9B0',  // lighter yellow — matched ingredient bg
+          200: '#FFF280',
+          300: '#333333',  // muted placeholder text
+          400: '#666666',  // muted / strikethrough text
+          950: '#000000',  // body text
         },
       },
       fontFamily: {
         // Body and UI text
         sans: ['var(--font-sans)', 'sans-serif'],
         // Headlines and display type
-        display: ['var(--font-display)', 'sans-serif'],
+        display: ['var(--font-display)', 'serif'],
+        // Links, buttons, inputs
+        ui: ['var(--font-ui)', 'sans-serif'],
       },
       borderRadius: {
         DEFAULT: '0px',
-        sm:  '0px',
-        md:  '0px',
-        lg:  '0px',
-        xl:  '0px',
-        '2xl': '0px',
-        '3xl': '0px',
+        sm:  '4px',
+        md:  '8px',
+        lg:  '12px',
+        xl:  '16px',
+        '2xl': '20px',
+        '3xl': '24px',
         full: '9999px',
       },
     },
