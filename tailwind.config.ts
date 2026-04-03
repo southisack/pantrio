@@ -22,7 +22,7 @@ const config: Config = {
         // Yellows and neutrals
         zinc: {
           50:  '#FFEA59',  // yellow — page background
-          100: '#FFF9B0',  // lighter yellow — matched ingredient bg
+          100: '#58C2B9',  // teal — hero section background
           200: '#FFF280',
           300: '#333333',  // muted placeholder text
           400: '#666666',  // muted / strikethrough text

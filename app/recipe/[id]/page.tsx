@@ -3,21 +3,6 @@ import { notFound } from 'next/navigation'
 import type { Recipe, Difficulty } from '@/src/types'
 import recipesData from '@/data/recipes.json'
 
-function Stars({ score }: { score: number }) {
-  return (
-    <span className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map(i => (
-        <span
-          key={i}
-          className={`text-lg leading-none ${i <= score ? 'text-zinc-950' : 'text-zinc-950 opacity-15'}`}
-        >
-          ★
-        </span>
-      ))}
-    </span>
-  )
-}
-
 const recipes = recipesData as Recipe[]
 
 const difficultyLabel: Record<Difficulty, string> = {
@@ -60,138 +45,92 @@ export default async function RecipeDetailPage({
   }
 
   return (
-    <>
-      <nav className="sticky top-0 z-50 bg-zinc-50 border-b-2 border-black shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-between px-6 py-3">
-        <span className="font-display font-bold text-2xl text-zinc-950 tracking-tight">
-          Pantrio
-        </span>
+    <div className="min-h-screen flex flex-col">
+
+      {/* Full-width nav */}
+      <nav className="sticky top-0 z-50 bg-zinc-50 border-b border-black flex items-center justify-center relative px-6 py-4">
+        <span className="font-display font-bold text-xl text-zinc-950 tracking-tight">Pantrio</span>
         <Link
           href={resultsHref}
-          className="font-ui font-bold text-sm text-zinc-950 border-2 border-black px-3 py-1.5 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-none"
+          className="absolute left-6 font-ui font-bold text-sm text-zinc-950 border border-black px-3 py-1.5 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-none"
         >
           ← Back
         </Link>
       </nav>
 
-      <main className="px-6 md:px-10 lg:px-16 py-10">
+      {/* Two-column body */}
+      <div className="flex flex-col lg:flex-row flex-1">
 
-        {/* Title + summary */}
-        <div className="mb-8 max-w-3xl">
-          <h1 className="font-display leading-[0.9] text-4xl sm:text-5xl lg:text-6xl mb-4 text-zinc-950 tracking-tight">
+      {/* Left panel — image */}
+      <div className="lg:sticky lg:top-[61px] lg:h-[calc(100vh-61px)] lg:w-1/2 bg-zinc-100 border-r border-black flex flex-col">
+
+        {/* Image placeholder */}
+        <div className="flex-1 relative">
+          <img
+            src="/icons/alfredo-burgos-HaO8q859TQo-unsplash.jpg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </div>
+
+      </div>
+
+      {/* Right panel — content */}
+      <div className="lg:w-1/2 bg-zinc-50 border-l-0">
+
+        {/* Hero: title + meta */}
+        <div className="px-14 pt-12 pb-8">
+          <h1 className="font-display text-5xl lg:text-6xl leading-[0.9] text-zinc-950 tracking-tight mb-4">
             {recipe.name}
           </h1>
-          <p className="font-sans text-sm leading-snug border-l-4 border-black pl-4 text-zinc-950 opacity-70">
+          <p className="font-sans text-sm leading-snug text-zinc-950 mb-6">
             {recipe.summary}
           </p>
-        </div>
-
-        {/* Meta row */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          <div className="border-2 border-black rounded-full px-4 py-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-            <span className="font-sans font-black uppercase text-xs text-zinc-950 opacity-50 mr-1.5">Time</span>
-            <span className="font-sans font-bold text-sm text-zinc-950">{formatTime(recipe.time)}</span>
-          </div>
-          <div className="border-2 border-black rounded-full px-4 py-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-            <span className="font-sans font-black uppercase text-xs text-zinc-950 opacity-50 mr-1.5">Serves</span>
-            <span className="font-sans font-bold text-sm text-zinc-950">{recipe.servings}</span>
-          </div>
-          <div className="border-2 border-black rounded-full px-4 py-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-            <span className="font-sans font-black uppercase text-xs text-zinc-950 opacity-50 mr-1.5">Effort</span>
-            <span className="font-sans font-bold text-sm text-zinc-950">{difficultyLabel[recipe.difficulty]}</span>
+          <div className="flex flex-wrap gap-4">
+            <span className="font-sans font-black uppercase text-xs text-zinc-950 tracking-widest">{formatTime(recipe.time)}</span>
+            <span className="font-sans font-black uppercase text-xs text-zinc-950 tracking-widest">{difficultyLabel[recipe.difficulty]}</span>
+            <span className="font-sans font-black uppercase text-xs text-zinc-950 tracking-widest">Serves {recipe.servings}</span>
           </div>
         </div>
 
-        {/* Family ratings */}
-        <div className="flex flex-wrap gap-6 mb-10">
-          {([
-            { key: 'johnny',   label: 'Johnny' },
-            { key: 'marieEve', label: 'Marie-Eve' },
-            { key: 'mia',      label: 'Mia' },
-          ] as const).map(({ key, label }) => (
-            <div key={key} className="flex items-center gap-3">
-              <span className="font-sans font-bold text-xs text-zinc-950 uppercase tracking-wide opacity-50 w-20">{label}</span>
-              {recipe.ratings[key] === 0
-                ? <span className="font-sans text-xs text-zinc-950 opacity-30 italic">Not yet rated</span>
-                : <Stars score={recipe.ratings[key]} />}
-            </div>
-          ))}
+        {/* Kit + Steps */}
+        <div className="px-14 py-4">
+          <div className="hatch-shadow">
+          <div className="border border-black rounded-3xl p-8 bg-white relative z-10">
+          <h2 className="font-display text-2xl leading-tight text-zinc-950 tracking-tight mb-4">The Kit</h2>
+          <ul className="space-y-2 mb-8">
+            {recipe.ingredients.map(ingredient => {
+              const matched = isMatched(ingredient.name)
+              return (
+                <li key={ingredient.name} className={`font-sans text-sm flex items-center gap-2 ${matched ? 'text-zinc-400 line-through' : 'text-zinc-950'}`}>
+                  <span className="w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
+                  {ingredient.quantity && ingredient.unit
+                    ? `${ingredient.quantity} ${ingredient.unit} ${ingredient.name}`
+                    : ingredient.quantity
+                    ? `${ingredient.quantity} ${ingredient.name}`
+                    : ingredient.name}
+                </li>
+              )
+            })}
+          </ul>
+          <hr className="border-black mb-8" />
+          <h2 className="font-display text-2xl leading-tight text-zinc-950 tracking-tight mb-4">Do This</h2>
+          <div className="space-y-2">
+            {recipe.steps.map((step, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-950 flex-shrink-0 mt-2" />
+                <p className="font-sans text-sm leading-relaxed text-zinc-950">
+                  {step.instruction}
+                </p>
+              </div>
+            ))}
+          </div>
+          </div>
+          </div>
         </div>
 
-        {/* Two column: ingredients + steps */}
-        <div className="flex flex-col lg:flex-row gap-12">
-
-          {/* THE KIT */}
-          <section className="lg:w-1/3">
-            <div className="inline-block bg-zinc-950 text-white font-sans font-black uppercase tracking-widest text-xs px-4 py-2 mb-6 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-              The Kit
-            </div>
-
-            <div className="space-y-2">
-              {recipe.ingredients.map(ingredient => {
-                const matched = isMatched(ingredient.name)
-                return (
-                  <div
-                    key={ingredient.name}
-                    className={
-                      matched
-                        ? 'border-2 border-black rounded-2xl p-3 bg-zinc-100 flex items-center justify-between'
-                        : 'border-2 border-black rounded-2xl p-3 bg-white flex items-center justify-between shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                    }
-                  >
-                    <div>
-                      <span
-                        className={
-                          matched
-                            ? 'font-sans text-zinc-400 line-through text-sm'
-                            : 'font-sans font-bold text-zinc-950 text-sm'
-                        }
-                      >
-                        {ingredient.quantity && ingredient.unit
-                          ? `${ingredient.quantity} ${ingredient.unit} ${ingredient.name}`
-                          : ingredient.quantity
-                          ? `${ingredient.quantity} ${ingredient.name}`
-                          : ingredient.name}
-                      </span>
-                    </div>
-                    <span
-                      className={
-                        matched
-                          ? 'font-sans font-black uppercase text-xs text-zinc-400 flex-shrink-0 ml-3'
-                          : 'font-sans font-black uppercase text-xs bg-zinc-950 text-white px-2 py-0.5 rounded-full flex-shrink-0 ml-3'
-                      }
-                    >
-                      {matched ? 'Got it' : 'Need it'}
-                    </span>
-                  </div>
-                )
-              })}
-            </div>
-          </section>
-
-          {/* DO THIS */}
-          <section className="lg:w-2/3">
-            <div className="inline-block bg-zinc-950 text-white font-sans font-black uppercase tracking-widest text-xs px-4 py-2 mb-6 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-              Do This
-            </div>
-
-            <div className="space-y-6">
-              {recipe.steps.map((step, index) => (
-                <div key={index} className="flex gap-5">
-                  <div className="flex-none w-10 h-10 rounded-full border-2 border-black bg-zinc-950 text-white flex items-center justify-center font-sans font-black text-xs shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-                  <div className="flex-grow pt-2.5">
-                    <p className="font-sans text-sm leading-relaxed text-zinc-950">
-                      {step.instruction}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-        </div>
-      </main>
-    </>
+      </div>
+      </div>
+    </div>
   )
 }

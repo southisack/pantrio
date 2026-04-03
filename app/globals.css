@@ -18,9 +18,48 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes levitate {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
 @layer utilities {
+  .bg-teal {
+    background-color: #58C2B9;
+  }
+  .pixelate {
+    width: 8% !important;
+    height: 8% !important;
+    image-rendering: pixelated;
+    transform: scale(14);
+    transform-origin: top left;
+  }
+  .hero-heading {
+    line-height: 0.85 !important;
+  }
   .animate-fade-up {
     animation: fade-up 200ms ease-out;
+  }
+  .animate-levitate {
+    animation: levitate 1.8s ease-in-out infinite;
+  }
+  .text-outlined {
+    color: #FFEA59;
+    -webkit-text-stroke: 2px #000000;
+    text-stroke: 2px #000000;
+  }
+  .text-hatch-shadow {
+    background: repeating-linear-gradient(
+      45deg,
+      #000000 0px,
+      #000000 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #000000;
   }
 }
 
