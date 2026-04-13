@@ -8,26 +8,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Black — borders, shadows, primary text
         black: '#000000',
-        // Olive — primary accent, badges, buttons
-        red: {
-          600: '#000000',
-          700: '#000000',
-        },
-        // Olive secondary
-        olive: {
-          700: '#000000',
-        },
-        // Yellows and neutrals
-        zinc: {
-          50:  '#FFEA59',  // yellow — page background
-          100: '#58C2B9',  // teal — hero section background
-          200: '#FFF280',
-          300: '#333333',  // muted placeholder text
-          400: '#666666',  // muted / strikethrough text
-          950: '#000000',  // body text
-        },
+        yellow: '#FFEA59',   // page background, overlays
+        teal: '#58C2B9',     // hero section background
+        'teal-dark': '#2A7A72', // darker teal for depth / hover states
+        coral: '#E8503A',    // warm accent — badges, highlights, ratings
+        cream: '#FFF9EF',    // warm off-white — softer card backgrounds
+        gray: '#666666',     // muted / strikethrough text
       },
       fontFamily: {
         // Body and UI text

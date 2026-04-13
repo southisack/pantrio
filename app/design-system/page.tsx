@@ -1,391 +1,445 @@
+import Link from 'next/link'
+
 export default function DesignSystemPage() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-yellow min-h-screen">
 
-      {/* Page Header */}
-      <div className="border-b-4 border-black px-6 py-3 flex items-center justify-between sticky top-0 bg-white z-50">
-        <div className="flex items-center gap-3">
-          <span className="font-display italic tracking-tighter text-2xl text-red-600">PANTRIO</span>
-          <span className="font-sans font-black uppercase text-xs tracking-tight text-zinc-950 opacity-40">/ Design System</span>
-        </div>
-        <a
+      {/* Nav */}
+      <nav className="sticky top-0 z-50 bg-yellow border-b border-black flex items-center justify-center relative px-6 py-4">
+        <span className="font-display font-bold text-xl text-black tracking-tight">Pantrio</span>
+        <Link
           href="/"
-          className="font-sans font-black uppercase text-xs tracking-tight border-2 border-black px-3 py-1.5 shadow-[3px_3px_0px_0px_rgba(28,20,16,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-none"
+          className="absolute left-6 font-ui font-bold text-sm text-black border border-black px-3 py-1.5 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-none"
         >
-          ← HOME
-        </a>
-      </div>
+          ← Back
+        </Link>
+        <span className="absolute right-6 font-ui text-xs text-gray uppercase tracking-widest">Design System</span>
+      </nav>
 
-      <div className="px-6 py-10 max-w-5xl mx-auto space-y-14">
+      <div className="max-w-3xl mx-auto px-4 py-14 space-y-16">
 
         {/* ─── COLOR PALETTE ─── */}
         <section>
           <SectionLabel>Color Palette</SectionLabel>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 mt-5">
-            <Swatch hex="#EB0000" name="Red 600" label="Primary / Logo / CTA" textClass="text-white" />
-            <Swatch hex="#BC0100" name="Red 700" label="Red Hover" textClass="text-white" />
-            <Swatch hex="#FFC130" name="Amber 400" label="Chip Accent" textClass="text-zinc-950" />
-            <Swatch hex="#004BE4" name="Blue 700" label="Section Accent" textClass="text-white" />
-            <Swatch hex="#1B1B1B" name="Zinc 950" label="Border / Body" textClass="text-white" />
-            <Swatch hex="#F9F9F9" name="Zinc 50" label="Background" textClass="text-zinc-950" bordered />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+            <Swatch hex="#FFEA59" name="Yellow" token="yellow" label="Page background / overlay" dark={false} />
+            <Swatch hex="#58C2B9" name="Teal" token="teal" label="Hero background" dark={false} />
+            <Swatch hex="#2A7A72" name="Teal Dark" token="teal-dark" label="Depth / hover states" dark={true} />
+            <Swatch hex="#E8503A" name="Coral" token="coral" label="Warm accent — badges, highlights" dark={true} />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
+            <Swatch hex="#FFF9EF" name="Cream" token="cream" label="Softer card backgrounds" dark={false} bordered />
+            <Swatch hex="#000000" name="Black" token="black" label="Text / borders / UI" dark={true} />
+            <Swatch hex="#FFFFFF" name="White" token="white" label="Card backgrounds" dark={false} bordered />
+            <Swatch hex="#666666" name="Gray" token="gray" label="Strikethrough / muted text" dark={true} />
           </div>
         </section>
 
         {/* ─── TYPOGRAPHY ─── */}
         <section>
           <SectionLabel>Typography</SectionLabel>
-          <div className="mt-5 space-y-6 border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]">
+          <div className="mt-6 space-y-8">
 
-            <Row label="Display / Epilogue 900 — Headline XL">
-              <p className="font-display uppercase tracking-tighter leading-[0.85] text-4xl">
-                WHAT ARE YOU <span className="text-red-600 italic">COOKING</span> WITH?
-              </p>
+            <Row label="font-display — Hero Headline (text-6xl, tracking-tight)">
+              <h1 className="font-display text-6xl leading-[0.9] text-black tracking-tight">
+                What are you <span className="text-outlined">working</span> with?
+              </h1>
             </Row>
 
-            <Row label="Display / Epilogue 900 — Headline LG">
-              <p className="font-display uppercase tracking-tighter leading-[0.85] text-2xl">
-                HERE'S WHAT YOU CAN <span className="text-red-600 italic">ACTUALLY</span> COOK.
-              </p>
+            <Row label="font-display — Recipe Title (text-5xl, tracking-tight)">
+              <h1 className="font-display text-5xl leading-[0.9] text-black tracking-tight">
+                Spaghetti Aglio e Olio
+              </h1>
             </Row>
 
-            <Row label="Display / Epilogue 900 — Component">
-              <p className="font-display uppercase tracking-tighter text-xl">
-                SPAGHETTI AGLIO E OLIO
-              </p>
+            <Row label="font-display — Section Header (text-2xl, tracking-tight)">
+              <h2 className="font-display text-2xl leading-tight text-black tracking-tight">The Kit</h2>
             </Row>
 
-            <Row label="Display / Epilogue 900 — Logo">
-              <p className="font-display italic tracking-tighter text-2xl text-red-600">
-                PANTRIO
-              </p>
+            <Row label="font-display — Recipe Card Title (text-2xl, tracking-tight)">
+              <h3 className="font-display text-2xl leading-tight text-black tracking-tight">Shakshuka</h3>
             </Row>
 
-            <Row label="Sans / Space Grotesk 700 — Body Bold">
-              <p className="font-sans font-bold text-base leading-snug">
-                Found 4 recipes. Not bad at all.
-              </p>
+            <Row label="font-display — Nav Logo (text-xl, font-bold, tracking-tight)">
+              <span className="font-display font-bold text-xl text-black tracking-tight">Pantrio</span>
             </Row>
 
-            <Row label="Sans / Space Grotesk 400 — Body Regular">
-              <p className="font-sans text-sm leading-relaxed max-w-md">
+            <Row label="font-ui — Body / Summary (text-sm, leading-snug)">
+              <p className="font-ui text-sm leading-snug text-black max-w-md">
                 A deceptively simple Italian classic that transforms pantry staples into something genuinely satisfying. The key is patience with the garlic.
               </p>
             </Row>
 
-            <Row label="Sans / Space Grotesk 900 — Label / Tag">
-              <p className="font-sans font-black uppercase text-xs tracking-tight">
-                INGREDIENTS · TIME · EFFORT
-              </p>
-            </Row>
-
-          </div>
-        </section>
-
-        {/* ─── SHADOWS & BORDERS ─── */}
-        <section>
-          <SectionLabel>Shadows & Borders</SectionLabel>
-          <div className="mt-5 grid grid-cols-4 gap-6">
-            {[
-              { size: 'XS — 4px', cls: 'shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]', border: 'border-4' },
-              { size: 'SM — 6px', cls: 'shadow-[6px_6px_0px_0px_rgba(28,20,16,1)]', border: 'border-4' },
-              { size: 'MD — 8px', cls: 'shadow-[8px_8px_0px_0px_rgba(28,20,16,1)]', border: 'border-8' },
-              { size: 'LG — 12px', cls: 'shadow-[12px_12px_0px_0px_rgba(28,20,16,1)]', border: 'border-8' },
-            ].map(({ size, cls, border }) => (
-              <div key={size} className={`${border} border-black ${cls} bg-white p-4 flex items-end h-20`}>
-                <span className="font-sans font-black uppercase text-xs">{size}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ─── BUTTONS ─── */}
-        <section>
-          <SectionLabel>Buttons</SectionLabel>
-          <div className="mt-5 space-y-5">
-
-            <Row label="Primary — Full Width">
-              <button className="w-full max-w-xs bg-red-600 text-white border-4 border-black px-5 py-3 font-display text-xl uppercase tracking-tighter shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none active:translate-x-1 active:translate-y-1 active:shadow-none transition-none">
-                FIND RECIPES
-              </button>
-            </Row>
-
-            <Row label="Primary — Inline (Empty State CTA)">
-              <a href="#" className="inline-block bg-red-600 text-white font-display uppercase tracking-tighter text-lg border-4 border-black px-6 py-3 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none active:translate-x-1 active:translate-y-1 active:shadow-none transition-none">
-                TRY AGAIN
-              </a>
-            </Row>
-
-            <Row label="Secondary — Nav / Back">
-              <div className="flex gap-3">
-                <a href="#" className="inline-block font-sans font-black uppercase text-xs tracking-tight border-2 border-black px-3 py-1.5 shadow-[3px_3px_0px_0px_rgba(28,20,16,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-none">
-                  ← BACK
-                </a>
-                <a href="#" className="inline-block font-sans font-black uppercase text-xs tracking-tight border-2 border-black px-3 py-1.5 shadow-[3px_3px_0px_0px_rgba(28,20,16,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-none">
-                  ← RESULTS
-                </a>
+            <Row label="font-ui — Metadata strip (font-black, uppercase, text-xs, tracking-widest)">
+              <div className="flex flex-wrap gap-4">
+                <span className="font-ui font-black uppercase text-xs text-black tracking-widest">20 mins</span>
+                <span className="font-ui font-black uppercase text-xs text-black tracking-widest">Easy</span>
+                <span className="font-ui font-black uppercase text-xs text-black tracking-widest">Serves 4</span>
               </div>
             </Row>
 
-            <Row label="CTA Strip — Recipe Card">
-              <div className="w-48 bg-zinc-950 text-white font-display text-base uppercase tracking-tighter text-center py-2 border-2 border-black">
-                COOK IT →
+            <Row label="font-ui — Button / Back link (font-bold, text-sm)">
+              <span className="font-ui font-bold text-sm text-black">← Back</span>
+            </Row>
+
+            <Row label="text-outlined — Accent word treatment">
+              <span className="font-display text-5xl leading-none text-outlined">working</span>
+            </Row>
+
+          </div>
+        </section>
+
+        {/* ─── SHADOWS & EFFECTS ─── */}
+        <section>
+          <SectionLabel>Shadows & Effects</SectionLabel>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-8">
+
+            <Row label="hatch-shadow — Used on recipe cards, ingredient cards, kit sections">
+              <div className="hatch-shadow">
+                <div className="border border-black rounded-3xl p-6 bg-white relative z-10">
+                  <p className="font-ui text-sm text-black">Bordered card with hatch shadow offset.</p>
+                </div>
               </div>
             </Row>
 
-          </div>
-        </section>
-
-        {/* ─── INPUTS ─── */}
-        <section>
-          <SectionLabel>Inputs</SectionLabel>
-          <div className="mt-5 space-y-5">
-
-            <Row label="Text Input — Default">
-              <input
-                type="text"
-                placeholder="harissa, chickpeas..."
-                readOnly
-                className="w-full max-w-sm bg-white border-4 border-black px-4 py-2.5 text-base font-display uppercase placeholder:text-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]"
-              />
+            <Row label="hatch-shadow-sm — Smaller variant">
+              <div className="hatch-shadow-sm">
+                <div className="border border-black rounded-3xl p-6 bg-white relative z-10">
+                  <p className="font-ui text-sm text-black">Smaller hatch shadow variant.</p>
+                </div>
+              </div>
             </Row>
 
-            <Row label="Text Input — With Value">
-              <input
-                type="text"
-                defaultValue="GARLIC, OLIVE OIL"
-                readOnly
-                className="w-full max-w-sm bg-white border-4 border-black px-4 py-2.5 text-base font-display uppercase placeholder:text-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]"
-              />
-            </Row>
-
-            <Row label="Error State">
-              <p className="font-sans font-bold uppercase tracking-tight text-red-600 text-sm">
-                Add something first. Even one ingredient.
-              </p>
-            </Row>
-
-          </div>
-        </section>
-
-        {/* ─── INGREDIENT CHIPS ─── */}
-        <section>
-          <SectionLabel>Ingredient Chips</SectionLabel>
-          <div className="mt-5 flex flex-wrap gap-3 items-start">
-            {[
-              { label: 'GARLIC', color: 'bg-red-600 text-white', rotate: '-rotate-2' },
-              { label: 'OLIVE OIL', color: 'bg-olive-700 text-white', rotate: 'rotate-3' },
-              { label: 'CHICKPEAS', color: 'bg-amber-400 text-zinc-950', rotate: '-rotate-1' },
-              { label: 'HARISSA', color: 'bg-zinc-950 text-white', rotate: 'rotate-2' },
-              { label: 'PASTA', color: 'bg-red-600 text-white', rotate: '-rotate-3' },
-              { label: 'LEMON', color: 'bg-olive-700 text-white', rotate: 'rotate-1' },
-            ].map(({ label, color, rotate }) => (
-              <button
-                key={label}
-                className={`${color} ${rotate} border-4 border-black px-4 py-2 font-sans font-black text-sm uppercase tracking-tight shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center gap-2 transition-none`}
-              >
-                {label}
-                <span className="opacity-60 text-xs">✕</span>
-              </button>
-            ))}
           </div>
         </section>
 
         {/* ─── NAVIGATION ─── */}
         <section>
           <SectionLabel>Navigation</SectionLabel>
-          <div className="mt-5 space-y-4">
+          <div className="mt-6 space-y-6">
 
-            <Row label="Nav — Home (Logo only)">
-              <div className="border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] flex items-center px-4 py-3 bg-white max-w-lg">
-                <span className="font-display italic tracking-tighter text-2xl text-red-600">PANTRIO</span>
+            <Row label="Nav — Home (centered logo, no back button)">
+              <div className="border border-black rounded-md overflow-hidden">
+                <nav className="bg-yellow border-b border-black flex items-center justify-center px-6 py-4">
+                  <span className="font-display font-bold text-xl text-black tracking-tight">Pantrio</span>
+                </nav>
+                <div className="h-8 bg-yellow" />
               </div>
             </Row>
 
-            <Row label="Nav — With Back Button">
-              <div className="border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] flex items-center justify-between px-4 py-3 bg-white max-w-lg">
-                <span className="font-display italic tracking-tighter text-2xl text-red-600">PANTRIO</span>
-                <a href="#" className="font-sans font-black uppercase text-xs tracking-tight border-2 border-black px-3 py-1.5 shadow-[3px_3px_0px_0px_rgba(28,20,16,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-none">
-                  ← BACK
-                </a>
+            <Row label="Nav — With back button (absolute left)">
+              <div className="border border-black rounded-md overflow-hidden">
+                <nav className="bg-yellow border-b border-black flex items-center justify-center relative px-6 py-4">
+                  <span className="font-display font-bold text-xl text-black tracking-tight">Pantrio</span>
+                  <span className="absolute left-6 font-ui font-bold text-sm text-black border border-black px-3 py-1.5 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                    ← Back
+                  </span>
+                </nav>
+                <div className="h-8 bg-yellow" />
               </div>
             </Row>
 
           </div>
         </section>
 
-        {/* ─── RECIPE CARD ─── */}
+        {/* ─── BUTTONS ─── */}
         <section>
-          <SectionLabel>Recipe Card</SectionLabel>
-          <div className="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <SectionLabel>Buttons</SectionLabel>
+          <div className="mt-6 space-y-6">
 
-            <div className="group block bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(28,20,16,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] transition-none cursor-pointer">
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-4">
-                  <h2 className="font-display uppercase tracking-tighter leading-none text-2xl flex-1">
-                    SPAGHETTI AGLIO E OLIO
-                  </h2>
-                  <div className="flex-shrink-0 bg-red-600 text-white font-display text-sm border-2 border-black shadow-[2px_2px_0px_0px_rgba(28,20,16,1)] px-2 py-1 leading-none">
-                    87%
-                  </div>
-                </div>
-                <p className="font-sans text-sm leading-snug mb-4 text-zinc-950">
-                  A deceptively simple Italian classic that transforms pantry staples into something genuinely satisfying.
-                </p>
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  <MiniStatBox label="INGREDIENTS" value="6 OF 7" valueClass="text-red-600" />
-                  <MiniStatBox label="TIME" value="20 MINS" />
-                  <MiniStatBox label="EFFORT" value="EASY" />
-                </div>
-                <div className="w-full bg-zinc-950 text-white font-display text-base uppercase tracking-tighter text-center py-2.5 border-2 border-black group-hover:bg-red-600 transition-none">
-                  COOK IT →
+            <Row label="Back / nav button — pill with hatch shadow">
+              <div className="flex gap-3 flex-wrap">
+                <button className="font-ui font-bold text-sm text-black border border-black px-3 py-1.5 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-none">
+                  ← Back
+                </button>
+                <button className="font-ui font-bold text-sm text-black border border-black px-3 py-1.5 rounded-full shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-none">
+                  ← Results
+                </button>
+              </div>
+            </Row>
+
+            <Row label="Sticky count bar — fixed bottom pill (black bg, yellow text)">
+              <div className="flex">
+                <div className="border border-black rounded-2xl px-6 py-3 font-ui font-bold text-lg bg-black text-yellow-300 whitespace-nowrap">
+                  6 recipes found.
                 </div>
               </div>
+            </Row>
+
+          </div>
+        </section>
+
+        {/* ─── INGREDIENT CARDS ─── */}
+        <section>
+          <SectionLabel>Ingredient Cards</SectionLabel>
+          <div className="mt-6 grid grid-cols-3 sm:grid-cols-5 gap-3">
+
+            {/* Default state — text only */}
+            <div className="relative">
+              <div className="relative transition-transform duration-200 ease-out scale-100">
+                <div className="relative">
+                  <button className="relative flex flex-col items-center justify-center gap-2 aspect-[2/3] w-full rounded-3xl border border-black font-ui font-bold text-xl capitalize tracking-tight overflow-hidden bg-yellow">
+                    <span className="text-black">eggs</span>
+                  </button>
+                </div>
+              </div>
+              <p className="font-ui text-xs text-gray mt-2 text-center">Default</p>
             </div>
 
-            <div className="group block bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(28,20,16,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] transition-none cursor-pointer">
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-4">
-                  <h2 className="font-display uppercase tracking-tighter leading-none text-2xl flex-1">
-                    SHAKSHUKA
-                  </h2>
-                  <div className="flex-shrink-0 bg-red-600 text-white font-display text-sm border-2 border-black shadow-[2px_2px_0px_0px_rgba(28,20,16,1)] px-2 py-1 leading-none">
-                    54%
-                  </div>
-                </div>
-                <p className="font-sans text-sm leading-snug mb-4 text-zinc-950">
-                  Eggs poached in a spiced tomato sauce. Works for breakfast, lunch, or dinner — no one will judge you.
-                </p>
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  <MiniStatBox label="INGREDIENTS" value="4 OF 8" valueClass="text-red-600" />
-                  <MiniStatBox label="TIME" value="35 MINS" />
-                  <MiniStatBox label="EFFORT" value="EASY" />
-                </div>
-                <div className="w-full bg-zinc-950 text-white font-display text-base uppercase tracking-tighter text-center py-2.5 border-2 border-black group-hover:bg-red-600 transition-none">
-                  COOK IT →
+            {/* Hover state (simulated — scale-110) */}
+            <div className="relative">
+              <div className="relative transition-transform duration-200 ease-out scale-110 mt-2">
+                <div className="relative animate-levitate">
+                  <button className="relative flex flex-col items-center justify-center gap-2 aspect-[2/3] w-full rounded-3xl border border-black font-ui font-bold text-xl capitalize tracking-tight overflow-hidden bg-yellow">
+                    <span className="text-black">onion</span>
+                  </button>
                 </div>
               </div>
+              <p className="font-ui text-xs text-gray mt-4 text-center">Hover (levitate)</p>
+            </div>
+
+            {/* Selected state — text only */}
+            <div className="relative">
+              <div className="relative transition-transform duration-200 ease-out scale-95">
+                <div className="relative">
+                  <button className="relative flex flex-col items-center justify-center gap-2 aspect-[2/3] w-full rounded-3xl border border-black font-ui font-bold text-xl capitalize tracking-tight overflow-hidden bg-yellow">
+                    <div className="absolute inset-0 bg-yellow/70 z-10" />
+                    <span className="text-black relative z-20">lemon</span>
+                  </button>
+                </div>
+              </div>
+              <p className="font-ui text-xs text-gray mt-2 text-center">Selected</p>
+            </div>
+
+            {/* Photo card — default */}
+            <div className="relative">
+              <div className="relative transition-transform duration-200 ease-out scale-100">
+                <div className="relative">
+                  <button className="relative flex flex-col items-center justify-center gap-2 aspect-[2/3] w-full rounded-3xl border border-black font-ui font-bold text-xl capitalize tracking-tight overflow-hidden">
+                    <div className="absolute inset-0" style={{ backgroundImage: 'url(/icons/chicken.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                    <span className="absolute bottom-3 left-3 right-3 bg-yellow border border-black rounded-2xl py-2 text-black text-center z-10 text-sm">chicken</span>
+                  </button>
+                </div>
+              </div>
+              <p className="font-ui text-xs text-gray mt-2 text-center">Photo default</p>
+            </div>
+
+            {/* Photo card — selected */}
+            <div className="relative">
+              <div className="relative transition-transform duration-200 ease-out scale-95">
+                <div className="relative">
+                  <button className="relative flex flex-col items-center justify-center gap-2 aspect-[2/3] w-full rounded-3xl border border-black font-ui font-bold text-xl capitalize tracking-tight overflow-hidden">
+                    <div className="absolute inset-0" style={{ backgroundImage: 'url(/icons/pasta.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                    <div className="absolute inset-0 bg-yellow/70 z-10" />
+                    <span className="absolute bottom-3 left-3 right-3 bg-yellow border border-black rounded-2xl py-2 text-black text-center z-20 text-sm">pasta</span>
+                  </button>
+                </div>
+              </div>
+              <p className="font-ui text-xs text-gray mt-2 text-center">Photo selected</p>
             </div>
 
           </div>
         </section>
 
-        {/* ─── STAT BOXES ─── */}
+        {/* ─── RECIPE CARDS ─── */}
         <section>
-          <SectionLabel>Stat Boxes</SectionLabel>
-          <div className="mt-5 flex flex-wrap gap-8">
+          <SectionLabel>Recipe Cards</SectionLabel>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-            <div>
-              <Label>Card Stat (border-4)</Label>
-              <div className="flex gap-3">
-                <MiniStatBox label="INGREDIENTS" value="6 OF 7" valueClass="text-red-600" />
-                <MiniStatBox label="TIME" value="20 MINS" />
-                <MiniStatBox label="EFFORT" value="EASY" />
-              </div>
-            </div>
-
-            <div>
-              <Label>Detail Meta (border-8)</Label>
-              <div className="flex gap-3">
-                {['TIME / 20 MINS', 'SERVES / 4', 'EFFORT / EASY'].map((item) => {
-                  const [lbl, val] = item.split(' / ')
-                  return (
-                    <div key={lbl} className="border-4 border-black p-3 text-center w-24">
-                      <span className="block font-sans font-black uppercase text-xs mb-1">{lbl}</span>
-                      <span className="font-display text-base uppercase leading-tight">{val}</span>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        {/* ─── SECTION HEADERS ─── */}
-        <section>
-          <SectionLabel>Section Headers</SectionLabel>
-          <div className="mt-5 flex gap-6 flex-wrap items-start">
-            <div className="inline-block bg-zinc-950 text-white font-display uppercase tracking-tighter text-xl px-3 py-1.5 rotate-1 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]">
-              THE KIT
-            </div>
-            <div className="inline-block bg-olive-700 text-white font-display uppercase tracking-tighter text-xl px-3 py-1.5 -rotate-1 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]">
-              DO THIS
-            </div>
-          </div>
-        </section>
-
-        {/* ─── INGREDIENT ROWS ─── */}
-        <section>
-          <SectionLabel>Ingredient Rows</SectionLabel>
-          <div className="mt-5 max-w-sm space-y-2">
-            <div className="border-4 border-black p-3 bg-white flex items-center justify-between shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] translate-x-1">
-              <span className="font-sans font-black uppercase text-red-600 text-sm">3 CLOVES GARLIC</span>
-              <span className="font-sans font-black uppercase text-xs bg-red-600 text-white px-2 py-0.5 flex-shrink-0 ml-3">NEED IT</span>
-            </div>
-            <div className="border-4 border-black p-3 bg-white flex items-center justify-between shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] translate-x-1">
-              <span className="font-sans font-black uppercase text-red-600 text-sm">200G SPAGHETTI</span>
-              <span className="font-sans font-black uppercase text-xs bg-red-600 text-white px-2 py-0.5 flex-shrink-0 ml-3">NEED IT</span>
-            </div>
-            <div className="border-4 border-black p-3 bg-zinc-100 flex items-center justify-between">
-              <span className="font-sans font-bold uppercase text-zinc-400 line-through text-sm">OLIVE OIL</span>
-              <span className="font-sans font-black uppercase text-xs text-zinc-400 flex-shrink-0 ml-3">GOT IT</span>
-            </div>
-            <div className="border-4 border-black p-3 bg-zinc-100 flex items-center justify-between">
-              <span className="font-sans font-bold uppercase text-zinc-400 line-through text-sm">PARMESAN</span>
-              <span className="font-sans font-black uppercase text-xs text-zinc-400 flex-shrink-0 ml-3">GOT IT</span>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── STEP BLOCK ─── */}
-        <section>
-          <SectionLabel>Step Block</SectionLabel>
-          <div className="mt-5 space-y-5 max-w-xl">
             {[
-              { n: '01', text: 'Bring a large pot of heavily salted water to a boil. Cook spaghetti until al dente.' },
-              { n: '02', text: 'Warm olive oil over medium-low heat. Add sliced garlic and cook until golden — not brown.' },
-              { n: '03', text: 'Reserve 1 cup pasta water before draining. Toss pasta with garlic oil to emulsify.' },
-            ].map(({ n, text }) => (
-              <div key={n} className="flex gap-4">
-                <div className="flex-none w-12 h-12 border-4 border-black bg-zinc-950 text-white flex items-center justify-center font-display text-xl shadow-[4px_4px_0px_0px_rgba(28,20,16,1)]">
-                  {n}
-                </div>
-                <div className="flex-grow pt-1">
-                  <p className="font-sans text-sm leading-relaxed">{text}</p>
+              {
+                name: 'Spaghetti Aglio e Olio',
+                summary: 'A deceptively simple Italian classic that transforms pantry staples into something genuinely satisfying.',
+                time: '20 mins',
+                difficulty: 'Easy',
+                servings: 4,
+                matched: 6,
+                total: 7,
+              },
+              {
+                name: 'Shakshuka',
+                summary: 'Eggs poached in a spiced tomato sauce. Works for breakfast, lunch, or dinner — no one will judge you.',
+                time: '35 mins',
+                difficulty: 'Easy',
+                servings: 4,
+                matched: 3,
+                total: 8,
+              },
+            ].map((recipe) => (
+              <div key={recipe.name} className="hatch-shadow">
+                <div className="border border-black rounded-3xl p-6 bg-white relative z-10 flex flex-col gap-3">
+                  <div>
+                    <h3 className="font-display text-2xl leading-tight text-black tracking-tight mb-1">{recipe.name}</h3>
+                    <p className="font-ui text-sm leading-snug text-black">{recipe.summary}</p>
+                  </div>
+                  <div className="flex gap-3 flex-wrap">
+                    <span className="font-ui font-black uppercase text-xs text-black tracking-widest">{recipe.time}</span>
+                    <span className="font-ui font-black uppercase text-xs text-black tracking-widest">{recipe.difficulty}</span>
+                    <span className="font-ui font-black uppercase text-xs text-black tracking-widest">Serves {recipe.servings}</span>
+                  </div>
+                  <div className="pt-1">
+                    <span className="font-ui text-xs text-gray">{recipe.matched} of {recipe.total} ingredients matched</span>
+                  </div>
                 </div>
               </div>
             ))}
+
           </div>
         </section>
 
-        {/* ─── SUMMARY BLOCK ─── */}
+        {/* ─── RECIPE DETAIL COMPONENTS ─── */}
         <section>
-          <SectionLabel>Summary / Quote Block</SectionLabel>
-          <div className="mt-5 max-w-lg">
-            <p className="font-sans text-base leading-snug border-l-4 border-black pl-4">
-              A deceptively simple Italian classic that transforms pantry staples into something genuinely satisfying. The key is patience with the garlic.
-            </p>
+          <SectionLabel>Recipe Detail — Sections</SectionLabel>
+          <div className="mt-6 space-y-6">
+
+            <Row label="The Kit + Do This — white bordered card on yellow background">
+              <div className="bg-yellow rounded-2xl p-6 border border-black">
+                <div className="hatch-shadow">
+                  <div className="border border-black rounded-3xl p-8 bg-white relative z-10">
+
+                    <h2 className="font-display text-2xl leading-tight text-black tracking-tight mb-4">The Kit</h2>
+
+                    <ul className="space-y-2 mb-8">
+                      {[
+                        { qty: '200g', unit: '', name: 'spaghetti', matched: false },
+                        { qty: '4', unit: 'cloves', name: 'garlic', matched: true },
+                        { qty: '60ml', unit: '', name: 'olive oil', matched: true },
+                        { qty: '1', unit: 'bunch', name: 'flat-leaf parsley', matched: false },
+                        { qty: '', unit: '', name: 'salt', matched: false },
+                      ].map((ing) => (
+                        <li key={ing.name} className={`font-ui text-sm flex items-center gap-2 ${ing.matched ? 'text-gray line-through' : 'text-black'}`}>
+                          <span className="w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
+                          {ing.qty && ing.unit ? `${ing.qty} ${ing.unit} ${ing.name}` : ing.qty ? `${ing.qty} ${ing.name}` : ing.name}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <hr className="border-black mb-8" />
+
+                    <h2 className="font-display text-2xl leading-tight text-black tracking-tight mb-4">Do This</h2>
+
+                    <div className="space-y-2">
+                      {[
+                        'Bring a large pot of heavily salted water to a boil. Cook spaghetti until al dente.',
+                        'Warm olive oil over medium-low heat. Add sliced garlic and cook until golden — not brown.',
+                        'Reserve 1 cup pasta water before draining. Toss pasta with garlic oil, adding water as needed to emulsify.',
+                      ].map((step, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <span className="w-1.5 h-1.5 rounded-full bg-black flex-shrink-0 mt-2" />
+                          <p className="font-ui text-sm leading-relaxed text-black">{step}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </Row>
+
           </div>
         </section>
 
-        {/* ─── EMPTY STATE ─── */}
+        {/* ─── INGREDIENT LIST STATES ─── */}
         <section>
-          <SectionLabel>Empty State</SectionLabel>
-          <div className="mt-5 max-w-lg">
-            <div className="border-4 border-black border-dashed p-8 text-center">
-              <p className="font-display uppercase tracking-tighter text-2xl mb-2">
-                NOTHING MATCHED.
-              </p>
-              <p className="font-sans font-bold text-sm max-w-xs mx-auto">
-                Either your fridge is very sparse or very unusual. Try adding a few more ingredients.
-              </p>
-              <a
-                href="#"
-                className="inline-block mt-5 bg-red-600 text-white font-display uppercase tracking-tighter text-base border-4 border-black px-6 py-2.5 shadow-[4px_4px_0px_0px_rgba(28,20,16,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-none"
-              >
-                TRY AGAIN
-              </a>
+          <SectionLabel>Ingredient List — States</SectionLabel>
+          <div className="mt-6 flex gap-8 flex-wrap">
+            <div>
+              <p className="font-ui font-black uppercase text-xs text-black tracking-widest mb-3">Unmatched</p>
+              <ul className="space-y-2">
+                {['200g spaghetti', '1 bunch flat-leaf parsley', 'salt'].map(i => (
+                  <li key={i} className="font-ui text-sm flex items-center gap-2 text-black">
+                    <span className="w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
+                    {i}
+                  </li>
+                ))}
+              </ul>
             </div>
+            <div>
+              <p className="font-ui font-black uppercase text-xs text-black tracking-widest mb-3">Matched (strikethrough)</p>
+              <ul className="space-y-2">
+                {['4 cloves garlic', '60ml olive oil'].map(i => (
+                  <li key={i} className="font-ui text-sm flex items-center gap-2 text-gray line-through">
+                    <span className="w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
+                    {i}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── METADATA STRIP ─── */}
+        <section>
+          <SectionLabel>Metadata Strip</SectionLabel>
+          <div className="mt-6 space-y-4">
+            <Row label="Recipe detail metadata (font-ui, font-black, uppercase, text-xs, tracking-widest)">
+              <div className="flex flex-wrap gap-4">
+                <span className="font-ui font-black uppercase text-xs text-black tracking-widest">20 mins</span>
+                <span className="font-ui font-black uppercase text-xs text-black tracking-widest">Some effort</span>
+                <span className="font-ui font-black uppercase text-xs text-black tracking-widest">Serves 2</span>
+              </div>
+            </Row>
+          </div>
+        </section>
+
+        {/* ─── HERO SECTION ─── */}
+        <section>
+          <SectionLabel>Hero Section</SectionLabel>
+          <div className="mt-6 bg-teal rounded-2xl p-8 border border-black">
+            <p className="font-ui font-black uppercase text-xs text-black tracking-widest mb-4">Teal hero background (teal = #58C2B9)</p>
+            <h1 className="font-display font-bold text-5xl lg:text-6xl leading-[0.85] hero-heading text-black tracking-tight">
+              What are you <span className="text-outlined">working</span> with?
+            </h1>
+          </div>
+        </section>
+
+        {/* ─── ANIMATIONS ─── */}
+        <section>
+          <SectionLabel>Animations</SectionLabel>
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
+
+            <div className="flex flex-col items-center gap-3">
+              <div className="animate-levitate">
+                <button className="flex flex-col items-center justify-center gap-2 aspect-[2/3] w-24 rounded-3xl border border-black font-ui font-bold text-sm capitalize tracking-tight bg-yellow text-black">
+                  garlic
+                </button>
+              </div>
+              <p className="font-ui text-xs text-gray text-center">animate-levitate<br />1.8s ease-in-out infinite</p>
+            </div>
+
+            <div className="flex flex-col items-center gap-3">
+              <div className="animate-fade-up">
+                <div className="hatch-shadow-sm">
+                  <div className="border border-black rounded-3xl px-5 py-3 bg-white relative z-10">
+                    <p className="font-ui text-sm text-black">Recipe card</p>
+                  </div>
+                </div>
+              </div>
+              <p className="font-ui text-xs text-gray text-center">animate-fade-up<br />200ms ease-out</p>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ─── SPACING / BORDER RADIUS ─── */}
+        <section>
+          <SectionLabel>Border Radius Tokens</SectionLabel>
+          <div className="mt-6 flex flex-wrap gap-4 items-end">
+            {[
+              { label: 'rounded-sm', cls: 'rounded-sm', size: '4px' },
+              { label: 'rounded-md', cls: 'rounded-md', size: '8px' },
+              { label: 'rounded-lg', cls: 'rounded-lg', size: '12px' },
+              { label: 'rounded-xl', cls: 'rounded-xl', size: '16px' },
+              { label: 'rounded-2xl', cls: 'rounded-2xl', size: '20px' },
+              { label: 'rounded-3xl', cls: 'rounded-3xl', size: '24px' },
+              { label: 'rounded-full', cls: 'rounded-full', size: '9999px' },
+            ].map(({ label, cls, size }) => (
+              <div key={label} className="flex flex-col items-center gap-2">
+                <div className={`w-14 h-14 bg-black ${cls}`} />
+                <span className="font-ui text-xs text-black">{label}</span>
+                <span className="font-ui text-xs text-gray">{size}</span>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -398,23 +452,17 @@ export default function DesignSystemPage() {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-4">
-      <h2 className="font-display uppercase tracking-tighter text-xl whitespace-nowrap">{children}</h2>
-      <div className="flex-1 h-1 bg-zinc-950" />
+    <div className="flex items-center gap-4 mb-2">
+      <h2 className="font-display text-2xl leading-tight text-black tracking-tight whitespace-nowrap">{children}</h2>
+      <div className="flex-1 h-px bg-black" />
     </div>
-  )
-}
-
-function Label({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="font-sans font-black uppercase text-xs tracking-tight text-zinc-950 opacity-40 mb-2">{children}</p>
   )
 }
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <Label>{label}</Label>
+      <p className="font-ui font-black uppercase text-xs text-black tracking-widest mb-3">{label}</p>
       {children}
     </div>
   )
@@ -423,45 +471,31 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 function Swatch({
   hex,
   name,
+  token,
   label,
-  textClass,
+  dark,
   bordered,
 }: {
   hex: string
   name: string
+  token: string
   label: string
-  textClass: string
+  dark: boolean
   bordered?: boolean
 }) {
   return (
-    <div className="border-2 border-black">
+    <div className={`border border-black rounded-xl overflow-hidden ${bordered ? 'border' : ''}`}>
       <div
-        className={`h-14 flex items-end p-2 border-b-2 border-black`}
+        className="h-16 flex items-end p-2"
         style={{ backgroundColor: hex }}
       >
-        <span className={`font-sans font-black text-xs ${textClass}`}>{hex}</span>
+        <span className={`font-ui font-black text-xs ${dark ? 'text-white' : 'text-black'}`}>{hex}</span>
       </div>
-      <div className="p-2 bg-white">
-        <p className="font-sans font-black uppercase text-xs">{name}</p>
-        <p className="font-sans text-xs text-zinc-950 opacity-50">{label}</p>
+      <div className="p-3 bg-white">
+        <p className="font-ui font-black text-xs text-black">{name}</p>
+        <p className="font-ui text-xs text-gray mt-0.5">{token}</p>
+        <p className="font-ui text-xs text-gray mt-0.5">{label}</p>
       </div>
-    </div>
-  )
-}
-
-function MiniStatBox({
-  label,
-  value,
-  valueClass = '',
-}: {
-  label: string
-  value: string
-  valueClass?: string
-}) {
-  return (
-    <div className="border-2 border-black p-2 min-w-[72px]">
-      <span className="block font-sans font-black uppercase text-xs text-zinc-950 mb-0.5">{label}</span>
-      <span className={`font-display text-sm uppercase leading-tight ${valueClass}`}>{value}</span>
     </div>
   )
 }
