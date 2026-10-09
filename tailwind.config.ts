@@ -24,6 +24,30 @@ const config: Config = {
         // Links, buttons, inputs
         ui: ['var(--font-ui)', 'sans-serif'],
       },
+      keyframes: {
+        'modal-in': {
+          from: { opacity: '0', transform: 'scale(0.95) translateY(12px)' },
+          to:   { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        'modal-out': {
+          from: { opacity: '1', transform: 'scale(1) translateY(0)' },
+          to:   { opacity: '0', transform: 'scale(0.95) translateY(12px)' },
+        },
+        'fade-in': {
+          from: { opacity: '0' },
+          to:   { opacity: '1' },
+        },
+        'fade-out': {
+          from: { opacity: '1' },
+          to:   { opacity: '0' },
+        },
+      },
+      animation: {
+        'modal-in':  'modal-in 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards',
+        'modal-out': 'modal-out 180ms cubic-bezier(0.4, 0, 0.2, 1) forwards',
+        'fade-in':   'fade-in 220ms ease-out forwards',
+        'fade-out':  'fade-out 180ms ease-in forwards',
+      },
       borderRadius: {
         DEFAULT: '0px',
         sm:  '4px',
