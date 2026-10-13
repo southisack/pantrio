@@ -3729,5 +3729,110 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "pork-skewers-yogurt-tomato-sauce",
+    "name": "Pork Skewers with Yogurt and Tomato Sauce",
+    "summary": "Grilled pork skewers slid over pita soaked in hot beef stock, then yogurt and tomato sauce on top. Part kebab, part soup, fully Greek.",
+    "time": 60,
+    "servings": 4,
+    "difficulty": "medium",
+    "mainIngredient": "pork",
+    "cuisine": "Greek",
+    "ingredients": [
+      {
+        "name": "boneless pork, cubed",
+        "quantity": "2¼",
+        "unit": "lb"
+      },
+      {
+        "name": "dried oregano",
+        "quantity": "1",
+        "unit": "pinch"
+      },
+      {
+        "name": "pepper",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "olive oil, for brushing",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "pita breads for souvlaki",
+        "quantity": "8",
+        "unit": ""
+      },
+      {
+        "name": "butter, melted (for the pita)",
+        "quantity": "5",
+        "unit": "tbsp"
+      },
+      {
+        "name": "beef stock",
+        "quantity": "1½",
+        "unit": "cups"
+      },
+      {
+        "name": "strained plain or thick Greek yogurt",
+        "quantity": "2¼",
+        "unit": "cups"
+      },
+      {
+        "name": "cayenne pepper",
+        "quantity": "2",
+        "unit": "pinches"
+      },
+      {
+        "name": "butter (for the tomato sauce)",
+        "quantity": "3",
+        "unit": "tbsp"
+      },
+      {
+        "name": "garlic clove, finely chopped",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "puréed fresh tomatoes",
+        "quantity": "1½",
+        "unit": "cups"
+      },
+      {
+        "name": "sugar",
+        "quantity": "1",
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Thread the pork cubes onto 8 wooden skewers and set them on a platter. Sprinkle with oregano, season with pepper, and brush with olive oil. Cover and refrigerate until needed."
+      },
+      {
+        "instruction": "Make the tomato sauce: melt 3 tbsp butter in a pan. Add the garlic and cook over low heat, stirring often, for 1–2 minutes."
+      },
+      {
+        "instruction": "Add the tomatoes, sugar, and a pinch of cayenne. Season with pepper and simmer 5–10 minutes until thickened. Let cool, then chill."
+      },
+      {
+        "instruction": "An hour before serving, preheat the broiler or light the barbecue. Brush both sides of the pitas with the 5 tbsp melted butter and broil or grill for a couple of minutes. Keep warm."
+      },
+      {
+        "instruction": "Cook the skewers under the broiler or over charcoal for 10–15 minutes until cooked through, brushing with oil and turning often."
+      },
+      {
+        "instruction": "Meanwhile, heat the beef stock and the tomato sauce in separate pans. Cut the pitas into pieces and divide among individual soup plates."
+      },
+      {
+        "instruction": "Spoon 5–6 tbsp hot beef stock into each plate and spread 2–3 tbsp yogurt on top. Slide the meat off 2 skewers onto each plate and spoon 3–4 tbsp tomato sauce over it. Sprinkle with pepper and cayenne. Serve immediately."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
