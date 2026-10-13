@@ -26,6 +26,11 @@ export interface Recipe {
   ingredients: RecipeIngredient[]
   steps: RecipeStep[]
   ratings: RecipeRatings
+  mainIngredient?: string   // one of PROTEINS / STARCHES in src/lib/ingredients.ts
+  image?: string            // path under /public, e.g. /icons/lemon-chicken.jpg
+  tags?: string[]           // lowercase, e.g. ["weeknight", "bbq"]
+  cuisine?: string
+  source?: string           // who it came from, e.g. "Mom" or a URL
 }
 
 export interface MatchedRecipe {
