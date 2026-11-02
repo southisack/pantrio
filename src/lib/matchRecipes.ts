@@ -4,7 +4,8 @@ const MIN_MATCH_SCORE = 0.3
 
 export function matchRecipes(
   userIngredients: string[],
-  recipes: Recipe[]
+  recipes: Recipe[],
+  minScore: number = MIN_MATCH_SCORE
 ): MatchedRecipe[] {
   const normalized = userIngredients.map(i => i.toLowerCase().trim())
 
@@ -34,6 +35,6 @@ export function matchRecipes(
         missingIngredients: missing,
       }
     })
-    .filter(m => m.matchScore >= MIN_MATCH_SCORE)
+    .filter(m => m.matchedIngredients.length > 0 && m.matchScore >= minScore)
     .sort((a, b) => b.matchScore - a.matchScore)
 }
