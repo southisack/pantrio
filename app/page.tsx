@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo, useEffect, useRef, Suspense } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { IngredientCard } from '@/src/components/IngredientCard'
 import { PROTEINS, STARCHES, difficultyLabel, formatTime } from '@/src/lib/ingredients'
 import type { Recipe } from '@/src/types'
@@ -133,7 +133,6 @@ function RecipeModal({ recipe, onClose, isMatched }: {
     </div>
   )
 }
-const VIEW_ORDER: View[] = ['picker', 'results']
 
 export default function HomePage() {
   return (
@@ -235,179 +234,128 @@ function HomePageInner() {
     return () => observer.disconnect()
   }, [view])
 
-  const viewIndex = VIEW_ORDER.indexOf(view)
-
-  function panelClasses(panelView: View) {
-    const i = VIEW_ORDER.indexOf(panelView)
-    if (i === viewIndex) return 'opacity-100 translate-y-0 pointer-events-auto'
-    if (i < viewIndex) return 'opacity-0 translate-y-8 pointer-events-none'
-    return 'opacity-0 -translate-y-8 pointer-events-none'
+  function resetToStart() {
+    setSelected(new Set())
+    setView('picker')
+    setExpandedRecipeId(null)
+    window.history.replaceState({ view: 'picker', selected: [] }, '', '/')
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [view])
+
+  const logo = (
+    <button
+      onClick={resetToStart}
+      className="font-display font-bold text-xl text-black tracking-tight text-left hover:opacity-70 transition-opacity"
+    >
+      Pantrio
+    </button>
+  )
+
+  const ctaLabel = selected.size === 0 ? 'Staring into the fridge...' : `I've done worse with less — show me →`
 
   return (
     <>
-      <main className="lg:flex lg:flex-row lg:items-start">
+      <main>
+        {view === 'picker' ? (
+          <div className="animate-fade-up min-h-screen flex flex-col">
 
-        {/* ── LEFT PANEL (desktop only) ── */}
-        <div className="left-panel hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:w-1/2 bg-cream border-r border-black flex-col p-12">
-          <button
-            onClick={() => { setSelected(new Set()); setView('picker'); setExpandedRecipeId(null); window.history.replaceState({ view: 'picker', selected: [] }, '', '/') }}
-            className="font-display font-bold text-xl text-black tracking-tight text-left hover:opacity-70 transition-opacity"
-          >
-            Pantrio
-          </button>
-
-          <div className="flex-1 relative overflow-hidden">
-
-            {/* Picker */}
-            <div className={`absolute inset-0 flex flex-col justify-center gap-10 transition-all duration-500 ease-in-out ${panelClasses('picker')}`}>
-              <h1 className="font-display hero-heading text-8xl 2xl:text-9xl text-black tracking-tight">
-                What are you{' '}
-                <span className="relative inline-block">
-                  <span className="text-hatch-shadow absolute top-[5px] left-[5px] pointer-events-none select-none" aria-hidden="true">working</span>
-                  <span className="text-outlined relative">working</span>
-                </span>
-                {' '}with?
-              </h1>
-              <p className="font-ui text-2xl leading-snug text-black">
-                Pick your main ingredient. We'll surface recipes that actually make sense with what you've got.
-              </p>
-              <span className="animate-arrow-nudge inline-block text-7xl text-black leading-none self-start">→</span>
+            <div className="flex-1 bg-teal border-b border-black py-8 sm:py-12">
+              <div className="w-full max-w-3xl mx-auto px-4">
+                <div className="mb-10 sm:mb-14">{logo}</div>
+                <div className="flex flex-col items-center text-center">
+                  <h1 className="font-display hero-heading text-7xl sm:text-8xl mb-6 text-black tracking-tight">
+                    What are you{' '}
+                    <span className="relative inline-block">
+                      <span className="text-hatch-shadow absolute top-[5px] left-[5px] pointer-events-none select-none" aria-hidden="true">working</span>
+                      <span className="text-outlined relative">working</span>
+                    </span>
+                    {' '}with?
+                  </h1>
+                  <p className="font-ui text-lg sm:text-xl leading-snug text-black mb-12 max-w-xl">
+                    Pick your main ingredient. We'll surface recipes that actually make sense with what you've got.
+                  </p>
+                  <div className="w-full grid grid-cols-3 sm:grid-cols-4 gap-3">
+                    {[...PROTEINS, ...STARCHES].map(ingredient => (
+                      <IngredientCard key={ingredient} ingredient={ingredient} isSelected={selected.has(ingredient)} onToggle={() => toggle(ingredient)} />
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Results */}
-            <div className={`absolute inset-0 flex flex-col justify-center gap-10 transition-all duration-500 ease-in-out ${panelClasses('results')}`}>
-              <h1 className="font-display hero-heading text-8xl 2xl:text-9xl text-black tracking-tight">
+            <div className="bg-yellow px-4 py-4">
+              <div className="w-full max-w-3xl mx-auto">
+                <button
+                  onClick={() => selected.size > 0 && navigateTo('results')}
+                  className={`w-full font-ui font-bold text-lg border border-black rounded-2xl px-6 py-4 transition-all duration-200 ${
+                    selected.size > 0 ? 'bg-black text-yellow cursor-pointer' : 'bg-yellow/60 text-black cursor-default'
+                  }`}
+                >
+                  {ctaLabel}
+                </button>
+              </div>
+            </div>
+
+          </div>
+        ) : (
+          <div className="animate-fade-up min-h-screen bg-yellow">
+
+            <div className="w-full max-w-3xl mx-auto px-4 pt-8 sm:pt-12 pb-8">
+              <div className="mb-10 sm:mb-14">{logo}</div>
+              <h1 className="font-display hero-heading text-7xl sm:text-8xl mb-6 text-black tracking-tight">
                 Not bad,{' '}actually.
               </h1>
-              <p className="font-ui text-2xl leading-snug text-black">
+              <p className="font-ui text-lg sm:text-xl leading-snug text-black max-w-xl">
                 Toggle ingredients to narrow things down. Or just cook everything.
               </p>
-              <span className="animate-arrow-nudge inline-block text-7xl text-black leading-none self-start">→</span>
             </div>
 
-          </div>
-        </div>
+            <div className="bg-yellow border-y border-black sticky top-0 z-40">
+              <div className="w-full max-w-3xl mx-auto px-4 py-3 flex items-center gap-2 flex-wrap">
+                {[...PROTEINS, ...STARCHES].map(ing => (
+                  <button
+                    key={ing}
+                    onClick={() => toggle(ing)}
+                    className={`font-ui text-xs capitalize border border-black rounded-full px-3 py-1 transition-colors ${
+                      selected.has(ing) ? 'bg-black text-white' : 'bg-white text-black'
+                    }`}
+                  >
+                    {ing}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-        {/* ── RIGHT PANEL ── */}
-        <div className="right-panel lg:w-1/2 lg:relative lg:h-screen lg:overflow-hidden">
+            <div ref={recipesSectionRef} className="w-full max-w-3xl mx-auto px-4 py-8">
+              <p className="font-display text-black tracking-tight mb-6">
+                {displayedRecipes.length > 0 && `${displayedRecipes.length} recipe${displayedRecipes.length === 1 ? '' : 's'}. Start somewhere.`}
+              </p>
 
-          {/* ── PICKER VIEW ── */}
-          <div className={`${view === 'picker' ? 'block' : 'hidden lg:block'} lg:absolute lg:inset-0 lg:transition-all lg:duration-500 lg:ease-in-out ${panelClasses('picker')}`}>
-
-            {/* Mobile hero */}
-            <div className="lg:hidden bg-teal py-16 border-b border-black">
-              <div className="w-full max-w-3xl mx-auto px-4 flex flex-col items-center text-center">
-                <h1 className="font-display hero-heading text-7xl sm:text-8xl mb-12 text-black tracking-tight">
-                  What are you{' '}
-                  <span className="relative inline-block">
-                    <span className="text-hatch-shadow absolute top-[5px] left-[5px] pointer-events-none select-none" aria-hidden="true">working</span>
-                    <span className="text-outlined relative">working</span>
-                  </span>
-                  {' '}with?
-                </h1>
-                <div className="w-full flex flex-col gap-4">
-                  <div className="grid grid-cols-3 gap-3">
-                    {PROTEINS.map(ingredient => (
-                      <IngredientCard key={ingredient} ingredient={ingredient} isSelected={selected.has(ingredient)} onToggle={() => toggle(ingredient)} />
+              <div key={filterKey} className="animate-fade-up">
+                {displayedRecipes.length === 0 ? (
+                  <div className="text-center py-20">
+                    <p className="font-display text-3xl text-black tracking-tight mb-3">Nothing matched.</p>
+                    <p className="font-ui text-sm text-black">Either your fridge is very sparse or very unusual.</p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    {displayedRecipes.map(recipe => (
+                      <RecipeCard
+                        key={recipe.id}
+                        recipe={recipe}
+                        onOpen={() => setExpandedRecipeId(recipe.id)}
+                      />
                     ))}
                   </div>
-                  <div className="grid grid-cols-3 gap-3">
-                    {STARCHES.map(ingredient => (
-                      <IngredientCard key={ingredient} ingredient={ingredient} isSelected={selected.has(ingredient)} onToggle={() => toggle(ingredient)} />
-                    ))}
-                  </div>
-                </div>
+                )}
               </div>
-            </div>
-
-            {/* Desktop ingredient picker */}
-            <div className="hidden lg:flex flex-col h-screen bg-teal">
-              <div className="ingredient-scroll flex-1 overflow-y-auto p-8 pb-4">
-                <h2 className="font-display text-xl text-black tracking-tight mb-6 text-center">Ingredients</h2>
-                <div className="grid grid-cols-3 gap-3">
-                  {[...PROTEINS, ...STARCHES].map(ingredient => (
-                    <IngredientCard key={ingredient} ingredient={ingredient} isSelected={selected.has(ingredient)} onToggle={() => toggle(ingredient)} />
-                  ))}
-                </div>
-              </div>
-              <button
-                onClick={() => selected.size > 0 && navigateTo('results')}
-                className={`w-full font-ui font-bold text-xl border-t border-black px-8 py-6 text-center transition-colors ${
-                  selected.size > 0
-                    ? 'bg-black text-yellow cursor-pointer hover:bg-yellow hover:text-black'
-                    : 'bg-teal/60 text-black cursor-default'
-                }`}
-              >
-                {selected.size === 0 ? 'Staring into the fridge...' : `I've done worse with less — show me →`}
-              </button>
-            </div>
-
-            {/* Mobile CTA */}
-            <div className="lg:hidden bg-yellow border-t border-black px-4 py-4">
-              <button
-                onClick={() => selected.size > 0 && navigateTo('results')}
-                className={`w-full font-ui font-bold text-lg border border-black rounded-2xl px-6 py-4 transition-all duration-200 ${
-                  selected.size > 0 ? 'bg-black text-yellow cursor-pointer' : 'bg-yellow/60 text-black cursor-default'
-                }`}
-              >
-                {selected.size === 0 ? 'Staring into the fridge...' : `I've done worse with less — show me →`}
-              </button>
             </div>
 
           </div>
-
-          {/* ── RESULTS VIEW ── */}
-          <div className={`${view === 'results' ? 'block' : 'hidden lg:block'} lg:absolute lg:inset-0 lg:transition-all lg:duration-500 lg:ease-in-out ${panelClasses('results')}`}>
-            <div className="lg:h-screen lg:flex lg:flex-col">
-
-              {/* Ingredient bar */}
-              <div className="bg-yellow border-b border-black flex items-center flex-wrap sticky top-0 z-40">
-                <div className="px-4 py-3 flex items-center gap-2 flex-wrap">
-                  {[...PROTEINS, ...STARCHES].map(ing => (
-                    <button
-                      key={ing}
-                      onClick={() => toggle(ing)}
-                      className={`font-ui text-xs capitalize border border-black rounded-full px-3 py-1 transition-colors ${
-                        selected.has(ing) ? 'bg-black text-white' : 'bg-white text-black'
-                      }`}
-                    >
-                      {ing}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Recipe list */}
-              <div ref={recipesSectionRef} className="lg:flex-1 lg:overflow-y-auto py-8 px-6">
-                <p className="font-display text-black tracking-tight mb-6">
-                  {displayedRecipes.length > 0 && `${displayedRecipes.length} recipe${displayedRecipes.length === 1 ? '' : 's'}. Start somewhere.`}
-                </p>
-
-                <div key={filterKey} className="animate-fade-up">
-                  {displayedRecipes.length === 0 ? (
-                    <div className="text-center py-20">
-                      <p className="font-display text-3xl text-black tracking-tight mb-3">Nothing matched.</p>
-                      <p className="font-ui text-sm text-black">Either your fridge is very sparse or very unusual.</p>
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {displayedRecipes.map(recipe => (
-                        <RecipeCard
-                          key={recipe.id}
-                          recipe={recipe}
-                          onOpen={() => setExpandedRecipeId(recipe.id)}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
+        )}
       </main>
 
       {/* Recipe modal */}
