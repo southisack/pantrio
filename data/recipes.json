@@ -3834,5 +3834,120 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "chicken-shawarma",
+    "name": "Chicken Shawarma",
+    "summary": "Sliced chicken breast marinated an hour in seven spices and lemon, pan-cooked, then rolled in warm flatbread with hummus and a crisp parsley-cilantro salad.",
+    "time": 40,
+    "servings": 2,
+    "difficulty": "easy",
+    "mainIngredient": "chicken",
+    "cuisine": "Lebanese",
+    "tags": [
+      "marinated",
+      "wrap",
+      "lebanese"
+    ],
+    "source": "Cookbook, p. 152 (Mezze and Salads)",
+    "ingredients": [
+      {
+        "name": "skinless boneless chicken breasts, sliced",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "garlic cloves, crushed",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "olive oil",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "seven spices seasoning",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "sea salt",
+        "quantity": "1/2",
+        "unit": "tsp"
+      },
+      {
+        "name": "chili flakes",
+        "quantity": "1/4",
+        "unit": "tsp"
+      },
+      {
+        "name": "lemon, juiced",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "iceberg lettuce, shredded",
+        "quantity": "1/4",
+        "unit": ""
+      },
+      {
+        "name": "chopped fresh parsley",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "chopped fresh cilantro (coriander)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "cherry tomatoes, halved",
+        "quantity": "8",
+        "unit": ""
+      },
+      {
+        "name": "lemon juice, to taste",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "Lebanese flatbreads, warmed",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "hummus",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "salt and pepper",
+        "quantity": "",
+        "unit": ""
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Put the chicken, garlic, olive oil, seven spices seasoning, 1 teaspoon pepper, sea salt, chili flakes, and lemon juice into a bowl, mix well, and let marinate for 1 hour."
+      },
+      {
+        "instruction": "Meanwhile, put the lettuce, parsley, cilantro (coriander), and tomatoes in another bowl and season with salt and pepper."
+      },
+      {
+        "instruction": "Heat a large skillet or frying pan, add all the chicken and marinade, and cook over medium heat, stirring frequently, for 10-15 minutes until the chicken is cooked through."
+      },
+      {
+        "instruction": "Add a squeeze of lemon juice and remove the pan from the heat."
+      },
+      {
+        "instruction": "Lay out the warm flatbreads and divide the salad between them. Spoon the chicken on top, add a spoonful of hummus to each, and roll up tightly. Serve immediately."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
