@@ -3949,5 +3949,92 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "napa-cabbage-leek-spicy-chicken-rice-porridge",
+    "name": "Napa Cabbage & Leek Spicy Chicken Rice Porridge",
+    "summary": "A one-pot spicy rice porridge from napa cabbage, leeks and shredded chicken, built to use whatever vegetables are on hand.",
+    "time": 40,
+    "servings": 2,
+    "difficulty": "easy",
+    "mainIngredient": "rice",
+    "cuisine": "Korean-inspired",
+    "tags": [
+      "weeknight",
+      "soup",
+      "porridge",
+      "healthy",
+      "freezer-friendly"
+    ],
+    "source": "Johnny",
+    "ingredients": [
+      {
+        "name": "leeks, white and light green parts, sliced",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "napa cabbage, sliced",
+        "quantity": "300",
+        "unit": "g"
+      },
+      {
+        "name": "chicken breast",
+        "quantity": "250",
+        "unit": "g"
+      },
+      {
+        "name": "short-grain rice, uncooked",
+        "quantity": "100",
+        "unit": "g"
+      },
+      {
+        "name": "water",
+        "quantity": "1.2",
+        "unit": "l"
+      },
+      {
+        "name": "chicken broth powder",
+        "quantity": "2",
+        "unit": "tsp"
+      },
+      {
+        "name": "gochujang",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "Korean pepper flakes (gochugaru)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "neutral oil",
+        "quantity": "1",
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Heat the oil in a pot over medium heat. Cook the leeks for 3 minutes until soft, then stir in the gochujang and pepper flakes for 30 seconds."
+      },
+      {
+        "instruction": "Add the water, chicken broth powder, rice and whole chicken breast. Bring to a boil, then lower to a gentle simmer for 20 minutes, stirring now and then so the rice doesn't stick."
+      },
+      {
+        "instruction": "Lift the chicken out, shred it with two forks, and return it to the pot."
+      },
+      {
+        "instruction": "Add the napa cabbage and cook for about 8 minutes, until the cabbage is soft and the rice has broken down into a porridge. Add a splash of water if it gets too thick."
+      },
+      {
+        "instruction": "Taste and add more gochujang, pepper flakes or broth powder if needed."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
