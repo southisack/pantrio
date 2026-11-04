@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { IngredientMenu } from '@/src/components/IngredientMenu'
 import { OrderCard } from '@/src/components/OrderCard'
 import { RecipeCarousel } from '@/src/components/RecipeCarousel'
-import { FEATURED_RECIPE_IDS, PROTEINS, STARCHES, difficultyLabel, formatTime } from '@/src/lib/ingredients'
+import { FEATURED_RECIPE_IDS, PROTEINS, SIDES, SIDE_TAG, STARCHES, difficultyLabel, formatTime } from '@/src/lib/ingredients'
 import type { Recipe } from '@/src/types'
 import recipesData from '@/data/recipes.json'
 
@@ -209,14 +209,18 @@ function HomePageInner() {
 
   function isMatched(ingredientName: string): boolean {
     const name = ingredientName.toLowerCase().trim()
-    const selectedList = [...selected].map(s => s.toLowerCase())
+    const selectedList = [...selected].filter(s => s !== SIDES).map(s => s.toLowerCase())
     return selectedList.some(ui => name.includes(ui) || ui.includes(name))
   }
 
+  // "Sides" is a category, not an ingredient: it adds every recipe tagged as a side
+  // on top of whatever the ingredient picks match.
   const displayedRecipes = useMemo(() => {
     if (selected.size === 0) return recipes
-    const selectedList = [...selected].map(s => s.toLowerCase())
+    const wantsSides = selected.has(SIDES)
+    const selectedList = [...selected].filter(s => s !== SIDES).map(s => s.toLowerCase())
     return recipes.filter(recipe =>
+      (wantsSides && recipe.tags?.includes(SIDE_TAG)) ||
       recipe.ingredients.some(ingredient =>
         selectedList.some(sel =>
           ingredient.name.toLowerCase().includes(sel) || sel.includes(ingredient.name.toLowerCase())
@@ -293,7 +297,7 @@ function HomePageInner() {
 
             <div className="bg-yellow border-y border-black sticky top-0 z-40">
               <div className="w-full max-w-3xl mx-auto px-4 py-3 flex items-center gap-2 flex-wrap">
-                {[...PROTEINS, ...STARCHES].map(ing => (
+                {[...PROTEINS, ...STARCHES, SIDES].map(ing => (
                   <button
                     key={ing}
                     onClick={() => toggle(ing)}

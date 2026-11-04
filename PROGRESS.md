@@ -9,7 +9,7 @@ Update this file at the end of every coding session. Read this at the start of e
 ## Current Status
 
 **Phase:** Core UI complete — ingredient picker, recipe grid, recipe detail all built and polished
-**Last updated:** 2026-03-30
+**Last updated:** 2026-11-04
 **Last session summary:** Major redesign of ingredient picker — replaced text input + chip system with a 2×4 grid of big square cards (proteins row + starches row). Added press animation (scale-down + starburst impact lines on select), hover yellow fill, and smooth transitions. Switched display font to Orelega One, added Outfit as UI font for buttons/links/inputs. Added family star ratings (Johnny, Marie-Eve, Mia) to recipe detail pages. Loaded all 51 family cookbook recipes into data/recipes.json. Fixed all olive/green color tokens to pure black. Added hatch shadow and fade-up animation utilities. Removed unused results page and IngredientInput component — filtering now happens inline on the home page.
 
 ---
@@ -80,4 +80,4 @@ Update this file at the end of every coding session. Read this at the start of e
 1. **Rate the recipes** — fill in Johnny, Marie-Eve, Mia scores in `data/recipes.json`
 2. **Mobile layout pass** — screens work but haven't been reviewed at phone width
 3. **Deploy to Vercel**
-4. Consider adding more ingredient categories beyond proteins and starches
+4. ~~Consider adding more ingredient categories~~ Done: "On the side" > "sides" on the picker (2026-11-04). It is a category, not an ingredient: it shows every recipe tagged `side` in data/recipes.json, plus whatever the ingredient picks match. Tagged so far: pickles, coleslaw, corn-blueberry salad, love salad, smashed cucumber salad. Tag new sides with `side` and they appear.

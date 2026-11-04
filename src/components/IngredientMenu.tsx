@@ -1,10 +1,11 @@
 'use client'
 
-import { PROTEINS, STARCHES } from '@/src/lib/ingredients'
+import { PROTEINS, SIDES, STARCHES } from '@/src/lib/ingredients'
 
 const GROUPS = [
   { title: 'Proteins', ingredients: PROTEINS, firstNumber: 1 },
   { title: 'Starches', ingredients: STARCHES, firstNumber: PROTEINS.length + 1 },
+  { title: 'On the side', ingredients: [SIDES], firstNumber: PROTEINS.length + STARCHES.length + 1 },
 ]
 
 export function IngredientMenu({ selected, onToggle }: {

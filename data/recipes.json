@@ -522,6 +522,9 @@
     "time": 30,
     "servings": 8,
     "difficulty": "easy",
+    "tags": [
+      "side"
+    ],
     "ingredients": [
       {
         "name": "cooked rice",
@@ -1230,6 +1233,9 @@
     "time": 10,
     "servings": 4,
     "difficulty": "easy",
+    "tags": [
+      "side"
+    ],
     "ingredients": [
       {
         "name": "Lebanese cucumbers",
@@ -3052,6 +3058,9 @@
     "time": 15,
     "servings": 6,
     "difficulty": "easy",
+    "tags": [
+      "side"
+    ],
     "ingredients": [
       {
         "name": "green cabbage",
@@ -3113,6 +3122,9 @@
     "time": 20,
     "servings": 4,
     "difficulty": "easy",
+    "tags": [
+      "side"
+    ],
     "ingredients": [
       {
         "name": "corn cobs",

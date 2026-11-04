@@ -1,6 +1,10 @@
 export const PROTEINS = ['chicken', 'beef', 'pork', 'fish']
 export const STARCHES = ['pasta', 'rice', 'potato', 'noodles']
 
+// Not an ingredient: picking this shows every recipe tagged "side" in data/recipes.json.
+export const SIDES = 'sides'
+export const SIDE_TAG = 'side'
+
 export const FEATURED_RECIPE_IDS = [
   'chicken-shawarma',
   'pad-thai',
