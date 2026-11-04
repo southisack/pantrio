@@ -82,3 +82,8 @@ If you encounter a situation not covered here, flag it — don't decide unilater
 **Decision:** Every string in the UI — including empty states and validation messages — must follow the voice in TASTE.md.
 **Why:** The copy is half the personality of Pantrio. Generic copy makes it feel like any other app.
 **Implication:** Before writing any UI string, read TASTE.md. No "Loading...", no "No results found.", no "Please enter at least one ingredient."
+
+### D4 — Landing page is a split menu, no images
+**Decision:** The landing page has text and an auto-scrolling recipe carousel on a yellow panel, with ingredients as a white menu beside them. Type is Inter Tight (headline, body), Fraunces (ingredient and recipe names) and Space Mono (small labels). Yellow is `#FFE63B`.
+**Why:** Chosen through design iterations on the canvas. It replaces the photo cards on teal and the Orelega One slab.
+**Implication:** `IngredientCard` is no longer used on the landing page. It stays in the repo in case photos come back.

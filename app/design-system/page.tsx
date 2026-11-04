@@ -22,7 +22,7 @@ export default function DesignSystemPage() {
         <section>
           <SectionLabel>Color Palette</SectionLabel>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
-            <Swatch hex="#FFEA59" name="Yellow" token="yellow" label="Page background / overlay" dark={false} />
+            <Swatch hex="#FFE63B" name="Yellow" token="yellow" label="Page background / overlay" dark={false} />
             <Swatch hex="#58C2B9" name="Teal" token="teal" label="Hero background" dark={false} />
             <Swatch hex="#2A7A72" name="Teal Dark" token="teal-dark" label="Depth / hover states" dark={true} />
             <Swatch hex="#E8503A" name="Coral" token="coral" label="Warm accent — badges, highlights" dark={true} />

@@ -1,6 +1,21 @@
 export const PROTEINS = ['chicken', 'beef', 'pork', 'fish']
 export const STARCHES = ['pasta', 'rice', 'potato', 'noodles']
 
+export const FEATURED_RECIPE_IDS = [
+  'chicken-shawarma',
+  'pad-thai',
+  'burrito-bowl',
+  'mediterranean-grilled-salmon',
+  'pork-souvlaki',
+  'marry-me-chicken-pasta',
+  'poke-bowl',
+  'piri-piri-chicken',
+  'miso-ginger-chicken',
+  'pesto-cauliflower-pasta',
+  'chicken-satay',
+  'al-pastor-pork',
+]
+
 export const INGREDIENT_PHOTOS: Record<string, string> = {
   chicken: '/icons/chicken.jpg',
   pork: '/icons/pork.jpg',

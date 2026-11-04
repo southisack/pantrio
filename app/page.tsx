@@ -2,12 +2,15 @@
 
 import { useState, useMemo, useEffect, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { IngredientCard } from '@/src/components/IngredientCard'
-import { PROTEINS, STARCHES, difficultyLabel, formatTime } from '@/src/lib/ingredients'
+import { IngredientMenu } from '@/src/components/IngredientMenu'
+import { OrderCard } from '@/src/components/OrderCard'
+import { RecipeCarousel } from '@/src/components/RecipeCarousel'
+import { FEATURED_RECIPE_IDS, PROTEINS, STARCHES, difficultyLabel, formatTime } from '@/src/lib/ingredients'
 import type { Recipe } from '@/src/types'
 import recipesData from '@/data/recipes.json'
 
 const recipes = recipesData as Recipe[]
+const featuredRecipes = FEATURED_RECIPE_IDS.flatMap(id => recipes.filter(recipe => recipe.id === id))
 
 type View = 'picker' | 'results'
 
@@ -254,50 +257,25 @@ function HomePageInner() {
     </button>
   )
 
-  const ctaLabel = selected.size === 0 ? 'Staring into the fridge...' : `I've done worse with less — show me →`
-
   return (
     <>
       <main>
         {view === 'picker' ? (
-          <div className="animate-fade-up min-h-screen flex flex-col">
+          <div className="animate-fade-up min-h-screen flex flex-col lg:flex-row [html:has(&)]:bg-white">
 
-            <div className="flex-1 bg-teal border-b border-black py-8 sm:py-12">
-              <div className="w-full max-w-3xl mx-auto px-4">
-                <div className="mb-10 sm:mb-14">{logo}</div>
-                <div className="flex flex-col items-center text-center">
-                  <h1 className="font-display hero-heading text-7xl sm:text-8xl mb-6 text-black tracking-tight">
-                    What are you{' '}
-                    <span className="relative inline-block">
-                      <span className="text-hatch-shadow absolute top-[5px] left-[5px] pointer-events-none select-none" aria-hidden="true">working</span>
-                      <span className="text-outlined relative">working</span>
-                    </span>
-                    {' '}with?
-                  </h1>
-                  <p className="font-ui text-lg sm:text-xl leading-snug text-black mb-12 max-w-xl">
-                    Pick your main ingredient. We'll surface recipes that actually make sense with what you've got.
-                  </p>
-                  <div className="w-full grid grid-cols-3 sm:grid-cols-4 gap-3">
-                    {[...PROTEINS, ...STARCHES].map(ingredient => (
-                      <IngredientCard key={ingredient} ingredient={ingredient} isSelected={selected.has(ingredient)} onToggle={() => toggle(ingredient)} />
-                    ))}
-                  </div>
-                </div>
-              </div>
+            <div className="min-w-0 flex flex-col px-4 pt-11 pb-10 bg-yellow text-black lg:flex-none lg:w-panel lg:min-w-panel lg:pl-14 lg:pr-12 lg:pb-panel-bottom">
+              <h1 className="mb-hero-gap font-ui font-semibold text-6xl leading-none tracking-tight lg:text-hero">
+                What are you working with?
+              </h1>
+              <p className="max-w-lede font-ui text-2xl leading-tight">
+                Pick your main ingredient. We'll surface recipes that actually make sense with what you've got.
+              </p>
+              <RecipeCarousel recipes={featuredRecipes} onOpen={setExpandedRecipeId} />
             </div>
 
-            <div className="bg-yellow px-4 py-4">
-              <div className="w-full max-w-3xl mx-auto">
-                <button
-                  onClick={() => selected.size > 0 && navigateTo('results')}
-                  className={`w-full font-ui font-bold text-lg border border-black rounded-2xl px-6 py-4 transition-all duration-200 ${
-                    selected.size > 0 ? 'bg-black text-yellow cursor-pointer' : 'bg-yellow/60 text-black cursor-default'
-                  }`}
-                >
-                  {ctaLabel}
-                </button>
-              </div>
-            </div>
+            <IngredientMenu selected={selected} onToggle={toggle} />
+
+            <OrderCard chosen={[...selected]} onSubmit={() => navigateTo('results')} />
 
           </div>
         ) : (

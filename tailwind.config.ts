@@ -9,7 +9,7 @@ const config: Config = {
     extend: {
       colors: {
         black: '#000000',
-        yellow: '#FFEA59',   // page background, overlays
+        yellow: '#FFE63B',   // page background, overlays
         teal: '#58C2B9',     // hero section background
         'teal-dark': '#2A7A72', // darker teal for depth / hover states
         coral: '#E8503A',    // warm accent — badges, highlights, ratings
@@ -23,8 +23,44 @@ const config: Config = {
         display: ['var(--font-display)', 'serif'],
         // Links, buttons, inputs
         ui: ['var(--font-ui)', 'sans-serif'],
+        // Small labels: section titles, recipe times, order status
+        mono: ['var(--font-mono)', 'monospace'],
+      },
+      fontSize: {
+        hero: ['80px', { lineHeight: '1', letterSpacing: '-0.03em' }],
+        menu: ['44px', { lineHeight: '1', letterSpacing: '-0.03em' }],
+        'card-title': ['32px', { lineHeight: '1.02', letterSpacing: '-0.03em' }],
+        cta: ['21px', { letterSpacing: '0.01em' }],
+        label: ['12px', { letterSpacing: '0.06em' }],
+        'card-label': ['11px', { letterSpacing: '0.06em' }],
+        index: '13px',
+      },
+      spacing: {
+        'panel-bottom': '168px',    // clears the order card once it slides up
+        'hero-gap': '26px',
+        row: '18px',
+        index: '30px',
+        card: '220px',
+        'card-tall': '210px',
+        cta: '400px',
+      },
+      width: {
+        panel: '43.333%',
+      },
+      minWidth: {
+        panel: '520px',
+      },
+      maxWidth: {
+        lede: '390px',
+      },
+      transitionTimingFunction: {
+        pop: 'cubic-bezier(0.2, 0.9, 0.3, 1)',
       },
       keyframes: {
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to:   { transform: 'translateX(-50%)' },
+        },
         'modal-in': {
           from: { opacity: '0', transform: 'scale(0.95) translateY(12px)' },
           to:   { opacity: '1', transform: 'scale(1) translateY(0)' },
@@ -43,6 +79,8 @@ const config: Config = {
         },
       },
       animation: {
+        // 47s = one set of 12 cards (2832px) at 60px per second
+        marquee: 'marquee 47s linear infinite',
         'modal-in':  'modal-in 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards',
         'modal-out': 'modal-out 180ms cubic-bezier(0.4, 0, 0.2, 1) forwards',
         'fade-in':   'fade-in 220ms ease-out forwards',
@@ -56,6 +94,9 @@ const config: Config = {
         xl:  '16px',
         '2xl': '20px',
         '3xl': '24px',
+        row: '18px',
+        card: '22px',
+        order: '28px',
         full: '9999px',
       },
     },
