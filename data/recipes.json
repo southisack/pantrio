@@ -4037,5 +4037,87 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "chinese-smashed-cucumber-salad",
+    "name": "Chinese Smashed Cucumber Salad",
+    "summary": "Smashed cucumber in a sharp soy, rice vinegar and sesame dressing. Cold, crunchy, and built to sit next to something rich like char siu.",
+    "time": 25,
+    "servings": 4,
+    "difficulty": "easy",
+    "cuisine": "Chinese",
+    "tags": [
+      "side",
+      "vegetable",
+      "salad",
+      "cold",
+      "chinese"
+    ],
+    "ingredients": [
+      {
+        "name": "English cucumbers (or 4 small Persian cucumbers)",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "salt",
+        "quantity": "1/2",
+        "unit": "tsp"
+      },
+      {
+        "name": "rice vinegar",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "soy sauce",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "sesame oil",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "sugar",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "garlic clove, grated",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "sesame seeds, for topping",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "chili flakes or chili oil, optional",
+        "quantity": "",
+        "unit": ""
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Smash the cucumbers with the flat of a knife, then cut them into bite-size chunks."
+      },
+      {
+        "instruction": "Toss with the salt and let sit 10 minutes. Drain off the water."
+      },
+      {
+        "instruction": "Whisk the rice vinegar, soy sauce, sesame oil, sugar and garlic. Toss with the cucumber."
+      },
+      {
+        "instruction": "Chill 10-15 minutes if you have time. Top with sesame seeds, and chili if using."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
