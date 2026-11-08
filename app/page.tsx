@@ -5,7 +5,11 @@ import { useSearchParams } from 'next/navigation'
 import { IngredientMenu } from '@/src/components/IngredientMenu'
 import { OrderCard } from '@/src/components/OrderCard'
 import { RecipeCarousel } from '@/src/components/RecipeCarousel'
-import { FEATURED_RECIPE_IDS, PROTEINS, SIDES, SIDE_TAG, STARCHES, difficultyLabel, formatTime } from '@/src/lib/ingredients'
+import { RecipeDetail } from '@/src/components/RecipeDetail'
+import { RecipePanel } from '@/src/components/RecipePanel'
+import { RecipeList } from '@/src/components/RecipeList'
+import { FEATURED_RECIPE_IDS, SIDES, SIDE_TAG } from '@/src/lib/ingredients'
+import { useIsDesktop } from '@/src/lib/useIsDesktop'
 import type { Recipe } from '@/src/types'
 import recipesData from '@/data/recipes.json'
 
@@ -13,50 +17,17 @@ const recipes = recipesData as Recipe[]
 const featuredRecipes = FEATURED_RECIPE_IDS.flatMap(id => recipes.filter(recipe => recipe.id === id))
 
 type View = 'picker' | 'results'
+type Phase = 'idle' | 'intro' | 'leaving' | 'entering'
 
-function RecipeCard({ recipe, onOpen }: {
-  recipe: Recipe
-  onOpen: () => void
-}) {
-  const [hovered, setHovered] = useState(false)
+const LEAVE_MS = 520
+const ENTER_MS = 1300
+const INTRO_MS = 1300
 
-  return (
-    <div
-      className={`transition-transform duration-200 ease-out ${hovered ? 'scale-105' : 'scale-100'}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div className={`hatch-shadow ${hovered ? 'animate-levitate' : ''}`}>
-        <button
-          onClick={onOpen}
-          className="w-full text-left bg-white border border-black rounded-3xl overflow-hidden relative z-10 p-5 transition-colors duration-150"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1">
-              <h2 className="font-display text-2xl leading-tight text-black tracking-tight mb-2">
-                {recipe.name}
-              </h2>
-              <p className="font-ui text-xs leading-snug text-black mb-4 line-clamp-2">
-                {recipe.summary}
-              </p>
-              <div className="flex items-center gap-3 font-ui text-xs text-black font-bold uppercase tracking-wide">
-                <span>{formatTime(recipe.time)}</span>
-                <span>·</span>
-                <span>{difficultyLabel[recipe.difficulty]}</span>
-              </div>
-            </div>
-            <span className="font-ui text-lg text-black flex-shrink-0">+</span>
-          </div>
-        </button>
-      </div>
-    </div>
-  )
-}
-
-function RecipeModal({ recipe, onClose, isMatched }: {
+function RecipeModal({ recipe, onClose, isMatched, showStatus }: {
   recipe: Recipe
   onClose: () => void
   isMatched: (name: string) => boolean
+  showStatus: boolean
 }) {
   const [closing, setClosing] = useState(false)
 
@@ -75,63 +46,16 @@ function RecipeModal({ recipe, onClose, isMatched }: {
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center" onClick={handleClose}>
       <div className={`absolute inset-0 bg-black/80 backdrop-blur-sm ${closing ? 'animate-fade-out' : 'animate-fade-in'}`} />
       <div
-        className={`relative bg-white border border-black rounded-t-3xl sm:rounded-3xl overflow-hidden w-full sm:max-w-lg max-h-[92vh] overflow-y-auto ${closing ? 'animate-modal-out' : 'animate-modal-in'}`}
+        className={`relative bg-white text-black border-2 border-black rounded-t-card sm:rounded-card overflow-hidden w-full sm:max-w-xl max-h-[92vh] overflow-y-auto ${closing ? 'animate-modal-out' : 'animate-modal-in'}`}
         onClick={e => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-start justify-between p-6 border-b border-black sticky top-0 bg-white z-10">
-          <div>
-            <h2 className="font-display text-2xl leading-tight text-black tracking-tight mb-1">
-              {recipe.name}
-            </h2>
-            <div className="flex items-center gap-3 font-ui text-xs text-black font-bold uppercase tracking-wide">
-              <span>{formatTime(recipe.time)}</span>
-              <span>·</span>
-              <span>{difficultyLabel[recipe.difficulty]}</span>
-            </div>
-          </div>
-          <button onClick={handleClose} className="font-ui text-xl text-black flex-shrink-0 rotate-45 leading-none mt-1">+</button>
-        </div>
-
-        {/* Image */}
-        <div className="w-full h-56 relative">
-          <img
-            src={`/icons/${recipe.id}.jpg`}
-            onError={(e) => { (e.target as HTMLImageElement).src = '/icons/alfredo-burgos-HaO8q859TQo-unsplash.jpg' }}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Content */}
-        <div className="p-8">
-          <h3 className="font-display text-xl leading-tight text-black tracking-tight mb-4">What you need</h3>
-          <ul className="space-y-2 mb-8">
-            {recipe.ingredients.map(ingredient => {
-              const matched = isMatched(ingredient.name)
-              return (
-                <li key={ingredient.name} className={`font-ui text-base flex items-center gap-2 ${matched ? 'text-zinc-400 line-through' : 'text-black'}`}>
-                  <span className="w-1.5 h-1.5 rounded-full bg-current flex-shrink-0" />
-                  {ingredient.quantity && ingredient.unit
-                    ? `${ingredient.quantity} ${ingredient.unit} ${ingredient.name}`
-                    : ingredient.quantity
-                    ? `${ingredient.quantity} ${ingredient.name}`
-                    : ingredient.name}
-                </li>
-              )
-            })}
-          </ul>
-          <hr className="border-black mb-8" />
-          <h3 className="font-display text-xl leading-tight text-black tracking-tight mb-4">How to cook it</h3>
-          <div className="space-y-2">
-            {recipe.steps.map((step, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-black flex-shrink-0 mt-2" />
-                <p className="font-ui text-base leading-relaxed text-black">{step.instruction}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <RecipeDetail
+          recipe={recipe}
+          variant="modal"
+          isMatched={isMatched}
+          showStatus={showStatus}
+          onClose={handleClose}
+        />
       </div>
     </div>
   )
@@ -147,6 +71,7 @@ export default function HomePage() {
 
 function HomePageInner() {
   const searchParams = useSearchParams()
+  const isDesktop = useIsDesktop()
 
   const [view, setView] = useState<View>(() => {
     if (searchParams.get('ingredients')) return 'results'
@@ -160,14 +85,44 @@ function HomePageInner() {
 
   const [expandedRecipeId, setExpandedRecipeId] = useState<string | null>(null)
 
+  // 'leaving': the current view's rows slip out. 'entering': the next view mounts and its rows rise in.
+  // 'intro': first load, rows rise in without the panel color fade.
+  const [phase, setPhase] = useState<Phase>('intro')
+  const transitionId = useRef(0)
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setPhase(current => (current === 'intro' ? 'idle' : current)), INTRO_MS)
+    return () => window.clearTimeout(timer)
+  }, [])
+
+  function runTransition(applyChange: () => void) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) {
+      applyChange()
+      return
+    }
+    const id = ++transitionId.current
+    setPhase('leaving')
+    window.setTimeout(() => {
+      if (id !== transitionId.current) return
+      applyChange()
+      setPhase('entering')
+      window.setTimeout(() => {
+        if (id === transitionId.current) setPhase('idle')
+      }, ENTER_MS)
+    }, LEAVE_MS)
+  }
+
   function navigateTo(newView: View) {
     let url = '/'
     if (newView === 'results') {
       url = selected.size > 0 ? `/?ingredients=${encodeURIComponent([...selected].join(','))}` : '/?view=results'
     }
     window.history.pushState({ view: newView, selected: [...selected] }, '', url)
-    setView(newView)
-    setExpandedRecipeId(null)
+    runTransition(() => {
+      setView(newView)
+      setExpandedRecipeId(null)
+    })
   }
 
   useEffect(() => {
@@ -203,10 +158,6 @@ function HomePageInner() {
     })
   }
 
-  function toggleRecipe(id: string) {
-    setExpandedRecipeId(prev => prev === id ? null : id)
-  }
-
   function isMatched(ingredientName: string): boolean {
     const name = ingredientName.toLowerCase().trim()
     const selectedList = [...selected].filter(s => s !== SIDES).map(s => s.toLowerCase())
@@ -229,129 +180,118 @@ function HomePageInner() {
     )
   }, [selected])
 
-  const filterKey = [...selected].sort().join(',')
-
-  const recipesSectionRef = useRef<HTMLDivElement>(null)
-  const [recipesInView, setRecipesInView] = useState(false)
-  useEffect(() => {
-    const el = recipesSectionRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => setRecipesInView(entry.isIntersecting), { threshold: 0.1 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [view])
-
   function resetToStart() {
-    setSelected(new Set())
-    setView('picker')
-    setExpandedRecipeId(null)
-    window.history.replaceState({ view: 'picker', selected: [] }, '', '/')
+    runTransition(() => {
+      setSelected(new Set())
+      setView('picker')
+      setExpandedRecipeId(null)
+      window.history.replaceState({ view: 'picker', selected: [] }, '', '/')
+    })
   }
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [view])
 
-  const logo = (
-    <button
-      onClick={resetToStart}
-      className="font-display font-bold text-xl text-black tracking-tight text-left hover:opacity-70 transition-opacity"
-    >
-      Pantrio
-    </button>
-  )
+  const expandedRecipe = recipes.find(recipe => recipe.id === expandedRecipeId) ?? null
+  const showsPanel = view === 'results' && isDesktop
+  // On desktop the right panel always shows a recipe: the picked one if it is still in the list, else the first.
+  const panelRecipe = showsPanel
+    ? displayedRecipes.find(recipe => recipe.id === expandedRecipeId) ?? displayedRecipes[0] ?? null
+    : null
+  const showsModal = expandedRecipe !== null && !showsPanel
+
+  // Up/down arrows step through the recipe list while the side panel is showing.
+  const panelRecipeId = panelRecipe?.id ?? null
+  useEffect(() => {
+    if (!showsPanel) return
+    function onKey(event: KeyboardEvent) {
+      if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+      if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable="true"]')) return
+      const currentIndex = displayedRecipes.findIndex(recipe => recipe.id === panelRecipeId)
+      const nextRecipe = displayedRecipes[currentIndex + (event.key === 'ArrowDown' ? 1 : -1)]
+      event.preventDefault()
+      if (nextRecipe) setExpandedRecipeId(nextRecipe.id)
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [showsPanel, displayedRecipes, panelRecipeId])
 
   return (
     <>
-      <main>
+      <main data-phase={phase}>
         {view === 'picker' ? (
-          <div className="animate-fade-up min-h-screen flex flex-col lg:flex-row [html:has(&)]:bg-white">
+          <div className="min-h-screen flex flex-col lg:flex-row lg:h-screen lg:overflow-hidden [html:has(&)]:bg-white">
 
-            <div className="min-w-0 flex flex-col px-4 pt-11 pb-10 bg-yellow text-black lg:flex-none lg:w-panel lg:min-w-panel lg:pl-14 lg:pr-12 lg:pb-panel-bottom">
-              <h1 className="mb-hero-gap font-ui font-semibold text-6xl leading-none tracking-tight lg:text-hero">
+            <div className="cascade-bg-to-yellow min-w-0 flex flex-col px-4 pt-11 pb-8 bg-yellow text-black lg:flex-none lg:w-panel lg:min-w-panel lg:h-screen lg:overflow-y-auto lg:pl-14 lg:pr-11 lg:pb-panel-bottom lg:border-r-2 lg:border-black">
+              <h1 className="cascade-item cascade-up cascade-d0 mb-hero-gap max-w-lede font-ui font-semibold text-6xl leading-none tracking-tight lg:text-hero">
                 What are you working with?
               </h1>
-              <p className="max-w-lede font-ui text-2xl leading-tight">
+              <p className="cascade-item cascade-up cascade-d1 max-w-lede font-ui text-2xl leading-tight">
                 Pick your main ingredient. We'll surface recipes that actually make sense with what you've got.
               </p>
               <RecipeCarousel recipes={featuredRecipes} onOpen={setExpandedRecipeId} />
             </div>
 
-            <IngredientMenu selected={selected} onToggle={toggle} />
-
-            <OrderCard chosen={[...selected]} onSubmit={() => navigateTo('results')} />
+            <IngredientMenu
+              selected={selected}
+              onToggle={toggle}
+              footer={<OrderCard chosen={[...selected]} onSubmit={() => navigateTo('results')} />}
+            />
 
           </div>
         ) : (
-          <div className="animate-fade-up min-h-screen bg-yellow">
+          <div className="min-h-screen flex flex-col lg:flex-row lg:h-screen lg:overflow-hidden bg-yellow text-black">
 
-            <div className="w-full max-w-3xl mx-auto px-4 pt-8 sm:pt-12 pb-8">
-              <div className="mb-10 sm:mb-14">{logo}</div>
-              <h1 className="font-display hero-heading text-7xl sm:text-8xl mb-6 text-black tracking-tight">
-                Not bad,{' '}actually.
-              </h1>
-              <p className="font-ui text-lg sm:text-xl leading-snug text-black max-w-xl">
-                Toggle ingredients to narrow things down. Or just cook everything.
-              </p>
-            </div>
-
-            <div className="bg-yellow border-y border-black sticky top-0 z-40">
-              <div className="w-full max-w-3xl mx-auto px-4 py-3 flex items-center gap-2 flex-wrap">
-                {[...PROTEINS, ...STARCHES, SIDES].map(ing => (
-                  <button
-                    key={ing}
-                    onClick={() => toggle(ing)}
-                    className={`font-ui text-xs capitalize border border-black rounded-full px-3 py-1 transition-colors ${
-                      selected.has(ing) ? 'bg-black text-white' : 'bg-white text-black'
-                    }`}
-                  >
-                    {ing}
-                  </button>
-                ))}
+            <div data-panel-scroll className="cascade-bg-to-yellow min-w-0 px-4 pt-11 pb-8 bg-yellow lg:order-2 lg:flex-1 lg:h-screen lg:overflow-y-auto lg:px-14 lg:pb-16">
+              <div className="lg:hidden">
+                <button
+                  onClick={resetToStart}
+                  className="cascade-item cascade-d0 mb-10 font-mono font-bold text-label uppercase text-left hover:opacity-70 transition-opacity"
+                >
+                  ← Pantrio
+                </button>
+                <h1 className="cascade-item cascade-d1 mb-hero-gap max-w-lede font-ui font-semibold text-6xl leading-none tracking-tight">
+                  Not bad, actually.
+                </h1>
+                <p className="cascade-item cascade-d2 max-w-lede font-ui text-2xl leading-tight">
+                  Toggle ingredients to narrow things down. Or just cook everything.
+                </p>
               </div>
+
+              {panelRecipe && (
+                <RecipePanel
+                  recipe={panelRecipe}
+                  index={displayedRecipes.findIndex(recipe => recipe.id === panelRecipe.id)}
+                  isMatched={isMatched}
+                  showStatus={selected.size > 0}
+                  canAnimate={phase === 'idle'}
+                />
+              )}
             </div>
 
-            <div ref={recipesSectionRef} className="w-full max-w-3xl mx-auto px-4 py-8">
-              <p className="font-display text-black tracking-tight mb-6">
-                {displayedRecipes.length > 0 && `${displayedRecipes.length} recipe${displayedRecipes.length === 1 ? '' : 's'}. Start somewhere.`}
-              </p>
-
-              <div key={filterKey} className="animate-fade-up">
-                {displayedRecipes.length === 0 ? (
-                  <div className="text-center py-20">
-                    <p className="font-display text-3xl text-black tracking-tight mb-3">Nothing matched.</p>
-                    <p className="font-ui text-sm text-black">Either your fridge is very sparse or very unusual.</p>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    {displayedRecipes.map(recipe => (
-                      <RecipeCard
-                        key={recipe.id}
-                        recipe={recipe}
-                        onOpen={() => setExpandedRecipeId(recipe.id)}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
+            <RecipeList
+              recipes={displayedRecipes}
+              selected={selected}
+              onToggle={toggle}
+              activeId={panelRecipe?.id ?? null}
+              onSelect={setExpandedRecipeId}
+              onBack={resetToStart}
+            />
 
           </div>
         )}
       </main>
 
-      {/* Recipe modal */}
-      {expandedRecipeId && (() => {
-        const recipe = recipes.find(r => r.id === expandedRecipeId)
-        return recipe ? <RecipeModal recipe={recipe} onClose={() => setExpandedRecipeId(null)} isMatched={isMatched} /> : null
-      })()}
-
-      {/* Sticky recipe count bar */}
-      <div className={`fixed bottom-0 left-0 right-0 flex justify-center pb-6 pointer-events-none transition-all duration-300 ease-out ${view === 'results' && selected.size > 0 && !recipesInView ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
-        <div className="border border-black rounded-2xl px-6 py-3 font-ui font-bold text-lg pointer-events-auto bg-black text-yellow whitespace-nowrap">
-          {displayedRecipes.length} recipe{displayedRecipes.length === 1 ? '' : 's'} found.
-        </div>
-      </div>
+      {showsModal && expandedRecipe && (
+        <RecipeModal
+          recipe={expandedRecipe}
+          onClose={() => setExpandedRecipeId(null)}
+          isMatched={isMatched}
+          showStatus={selected.size > 0}
+        />
+      )}
     </>
   )
 }

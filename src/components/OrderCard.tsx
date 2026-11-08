@@ -1,5 +1,6 @@
 'use client'
 
+// Lives inside the menu column and sticks to the bottom of its scroll area, so it always lines up with the rows.
 export function OrderCard({ chosen, onSubmit }: {
   chosen: string[]
   onSubmit: () => void
@@ -8,22 +9,15 @@ export function OrderCard({ chosen, onSubmit }: {
 
   return (
     <>
-      {!hasOrder && (
-        <p className="fixed inset-x-4 bottom-11 z-30 text-center pointer-events-none font-mono font-bold text-label uppercase lg:inset-x-14">
-          <span className="px-3.5 py-1 bg-black text-yellow rounded-full">
-            Staring into the fridge... pick something.
-          </span>
-        </p>
-      )}
       <div
         aria-hidden={!hasOrder}
-        className={`fixed inset-x-4 bottom-6 z-40 flex flex-col gap-4 py-row pl-7 pr-5 bg-black text-yellow border-2 border-yellow rounded-order ring-4 ring-black transition-[transform,opacity,visibility] duration-300 ease-pop lg:inset-x-14 lg:flex-row lg:items-center lg:gap-6 ${
+        className={`cascade-item cascade-down cascade-d1 sticky bottom-6 z-40 mt-8 mb-6 flex flex-col gap-4 py-row pl-7 pr-5 bg-black text-yellow border-2 border-yellow rounded-order ring-4 ring-black transition-[transform,opacity,visibility] duration-300 ease-pop xl:flex-row xl:items-center xl:gap-6 ${
           hasOrder ? 'translate-y-0 opacity-100 visible' : 'translate-y-40 opacity-0 invisible'
         }`}
       >
         <div className="flex-1 min-w-0">
           <p className="mb-2 font-mono font-bold text-label uppercase">
-            Your order · {chosen.length} {chosen.length === 1 ? 'item' : 'items'}
+            Working with
           </p>
           <div className="flex flex-wrap gap-1.5">
             {chosen.map(ingredient => (
@@ -35,9 +29,9 @@ export function OrderCard({ chosen, onSubmit }: {
         </div>
         <button
           onClick={onSubmit}
-          className="flex-none px-7 py-row bg-yellow text-black rounded-row font-semibold text-lg uppercase lg:w-cta lg:text-cta"
+          className="flex-none px-7 py-row bg-yellow text-black rounded-row font-semibold text-lg uppercase lg:text-cta xl:w-64"
         >
-          I've done worse with less — show me →
+          Show recipes
         </button>
       </div>
     </>

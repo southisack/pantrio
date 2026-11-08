@@ -69,7 +69,7 @@ export function RecipeCarousel({ recipes, onOpen }: {
   }
 
   return (
-    <div className="mt-12 -mx-4 lg:mt-auto lg:-ml-14 lg:-mr-12">
+    <div className="cascade-item cascade-up cascade-d3 hidden lg:block lg:mt-auto lg:-ml-14 lg:-mr-11">
       <h2 className="pb-2 pl-4 font-mono font-bold text-label uppercase lg:pl-14">
         Fresh from the cookbook
       </h2>

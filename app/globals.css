@@ -228,3 +228,123 @@
     pointer-events: none;
   }
 }
+
+/* Home <-> results cascade. The page sets data-phase on <main>; items opt in with .cascade-item + .cascade-dN. */
+@keyframes cascade-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(48px); }
+}
+@keyframes cascade-out-up {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-20px); }
+}
+@keyframes cascade-out-down {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(24px); }
+}
+@keyframes cascade-in {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cascade-bg-to-white {
+  from { background-color: #FFE63B; }
+  to   { background-color: #FFFFFF; }
+}
+@keyframes cascade-bg-to-yellow {
+  from { background-color: #FFFFFF; }
+  to   { background-color: #FFE63B; }
+}
+
+[data-phase='leaving'] .cascade-item {
+  animation: cascade-out 240ms ease both;
+  animation-delay: calc(var(--cascade-n, 0) * 24ms);
+}
+[data-phase='entering'] .cascade-item,
+[data-phase='intro'] .cascade-item {
+  animation: cascade-in 480ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(150ms + var(--cascade-n, 0) * 55ms);
+}
+
+/* Items that would cross a panel edge (or the screen edge) leave vertically instead of sliding right. */
+[data-phase='leaving'] .cascade-item.cascade-up {
+  animation-name: cascade-out-up;
+}
+[data-phase='leaving'] .cascade-item.cascade-down {
+  animation-name: cascade-out-down;
+}
+
+/* Desktop only: the left and right panels trade colors, so fade them across while the rows arrive. */
+@media (min-width: 1024px) {
+  [data-phase='entering'] .cascade-bg-to-white {
+    animation: cascade-bg-to-white 520ms ease 120ms both;
+  }
+  [data-phase='entering'] .cascade-bg-to-yellow {
+    animation: cascade-bg-to-yellow 520ms ease 120ms both;
+  }
+}
+
+.cascade-d0  { --cascade-n: 0; }
+.cascade-d1  { --cascade-n: 1; }
+.cascade-d2  { --cascade-n: 2; }
+.cascade-d3  { --cascade-n: 3; }
+.cascade-d4  { --cascade-n: 4; }
+.cascade-d5  { --cascade-n: 5; }
+.cascade-d6  { --cascade-n: 6; }
+.cascade-d7  { --cascade-n: 7; }
+.cascade-d8  { --cascade-n: 8; }
+.cascade-d9  { --cascade-n: 9; }
+.cascade-d10 { --cascade-n: 10; }
+.cascade-d11 { --cascade-n: 11; }
+.cascade-d12 { --cascade-n: 12; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-phase] .cascade-item,
+  [data-phase] .cascade-bg-to-white,
+  [data-phase] .cascade-bg-to-yellow {
+    animation: none;
+  }
+}
+
+/* Switching recipes in the desktop panel: the old recipe leaves and the new one arrives in the direction of the move. */
+@keyframes switch-out-a {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(var(--switch-dy-out)); }
+}
+@keyframes switch-out-b {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(var(--switch-dy-out)); }
+}
+@keyframes switch-in-a {
+  from { opacity: 0; transform: translateY(var(--switch-dy-in)); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes switch-in-b {
+  from { opacity: 0; transform: translateY(var(--switch-dy-in)); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+[data-switch-dir='down'] { --switch-dy-out: -24px; --switch-dy-in: 24px; }
+[data-switch-dir='up']   { --switch-dy-out: 24px;  --switch-dy-in: -24px; }
+
+[data-switch='out'][data-switch-flip='a'] .switch-item {
+  animation: switch-out-a 110ms ease both;
+  animation-delay: calc(var(--cascade-n, 0) * 8ms);
+}
+[data-switch='out'][data-switch-flip='b'] .switch-item {
+  animation: switch-out-b 110ms ease both;
+  animation-delay: calc(var(--cascade-n, 0) * 8ms);
+}
+[data-switch='in'][data-switch-flip='a'] .switch-item {
+  animation: switch-in-a 300ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--cascade-n, 0) * 24ms);
+}
+[data-switch='in'][data-switch-flip='b'] .switch-item {
+  animation: switch-in-b 300ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--cascade-n, 0) * 24ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-switch] .switch-item {
+    animation: none;
+  }
+}

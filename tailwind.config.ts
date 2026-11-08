@@ -38,6 +38,7 @@ const config: Config = {
       spacing: {
         'panel-bottom': '168px',    // clears the order card once it slides up
         'hero-gap': '26px',
+        'menu-top': '54.5px',       // top of the 80px hero title's capitals (44px padding + 10.5px inside the line box)
         row: '18px',
         index: '30px',
         card: '220px',
@@ -48,10 +49,10 @@ const config: Config = {
         panel: '43.333%',
       },
       minWidth: {
-        panel: '520px',
+        panel: '540px',     // content width left of the padding is 436px; "you working" at 80px is 414px, so the title never needs a 4th line
       },
       maxWidth: {
-        lede: '390px',
+        lede: '480px',      // shared by the hero title and the line under it; "working with?" at 80px is 473px wide
       },
       transitionTimingFunction: {
         pop: 'cubic-bezier(0.2, 0.9, 0.3, 1)',
