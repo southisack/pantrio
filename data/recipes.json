@@ -1,59 +1,5 @@
 [
   {
-    "id": "pizza-stuffed-chicken",
-    "name": "Pizza-Style Stuffed Chicken",
-    "summary": "Chicken stuffed with pizza sauce, pepperoni, and melted mozzarella. Sounds like a gimmick. Tastes like a good idea.",
-    "time": 33,
-    "servings": 4,
-    "difficulty": "easy",
-    "ingredients": [
-      {
-        "name": "chicken breasts",
-        "quantity": "4",
-        "unit": ""
-      },
-      {
-        "name": "pizza sauce",
-        "quantity": "½",
-        "unit": "cup"
-      },
-      {
-        "name": "pepperoni slices",
-        "quantity": "12",
-        "unit": ""
-      },
-      {
-        "name": "green bell pepper",
-        "quantity": "1",
-        "unit": "thinly sliced"
-      },
-      {
-        "name": "shredded mozzarella",
-        "quantity": "¾",
-        "unit": "cup"
-      }
-    ],
-    "steps": [
-      {
-        "instruction": "Preheat oven to 205°C (400°F)."
-      },
-      {
-        "instruction": "Butterfly the chicken breasts — cut through the middle without going all the way through."
-      },
-      {
-        "instruction": "Stuff each breast with pizza sauce, pepperoni, green pepper, and mozzarella. Secure closed with toothpicks."
-      },
-      {
-        "instruction": "Place on a parchment-lined baking sheet. Season with pepper. Bake 18–20 minutes until no longer pink inside."
-      }
-    ],
-    "ratings": {
-      "johnny": 0,
-      "marieEve": 0,
-      "mia": 0
-    }
-  },
-  {
     "id": "piri-piri-chicken",
     "name": "Piri Piri Chicken",
     "summary": "A whole spatchcocked chicken, slowly basted on the BBQ with a garlicky piri piri sauce. Patience required. Worth it.",
