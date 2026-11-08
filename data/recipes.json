@@ -4131,5 +4131,145 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "nam-khao-lao-crispy-rice-salad",
+    "name": "Nam Khao (Lao Crispy Rice Salad)",
+    "summary": "Curry-spiced rice balls fried until crunchy, crumbled and tossed with cured pork, herbs and lime, then wrapped in lettuce. Crunchy, sour and salty all at once.",
+    "time": 75,
+    "servings": 6,
+    "difficulty": "medium",
+    "mainIngredient": "rice",
+    "cuisine": "Laotian",
+    "tags": [
+      "laotian",
+      "rice",
+      "wraps",
+      "fried"
+    ],
+    "source": "Saeng's Kitchen (Saeng Douangdara), https://www.saengskitchen.com/laorecipes/nam-khao",
+    "ingredients": [
+      {
+        "name": "jasmine rice, rinsed",
+        "quantity": "2",
+        "unit": "cups"
+      },
+      {
+        "name": "water",
+        "quantity": "2 1/2",
+        "unit": "cups"
+      },
+      {
+        "name": "egg",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "red curry paste",
+        "quantity": "3",
+        "unit": "tbsp"
+      },
+      {
+        "name": "sugar",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "dried unsweetened coconut shreds",
+        "quantity": "1",
+        "unit": "cup"
+      },
+      {
+        "name": "lime leaves, minced",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "fish sauce",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "lime, juiced",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "salt, to taste",
+        "quantity": "1",
+        "unit": "large pinch"
+      },
+      {
+        "name": "cured pork (som moo), diced",
+        "quantity": "1",
+        "unit": "cup"
+      },
+      {
+        "name": "pork skin",
+        "quantity": "1",
+        "unit": "cup"
+      },
+      {
+        "name": "cilantro, diced",
+        "quantity": "1/2",
+        "unit": "cup"
+      },
+      {
+        "name": "green onion, diced",
+        "quantity": "1/2",
+        "unit": "cup"
+      },
+      {
+        "name": "roasted peanuts, lightly crushed",
+        "quantity": "1/4",
+        "unit": "cup"
+      },
+      {
+        "name": "fried chili, for garnish",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "lettuce leaves, for serving",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "cooking oil, for frying",
+        "quantity": "",
+        "unit": ""
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Cook the rinsed jasmine rice with the water: bring to a boil, drop to low, cover and cook 15 minutes. Spread it on a tray and let it cool for about an hour. Do not refrigerate it."
+      },
+      {
+        "instruction": "Whisk the egg with the red curry paste and sugar in a small bowl."
+      },
+      {
+        "instruction": "Put the cooled rice in a large bowl. Pour in the curry egg mixture, add the coconut shreds and lime leaves, and mix well."
+      },
+      {
+        "instruction": "Pack the rice mixture firmly into handful-sized balls or disks."
+      },
+      {
+        "instruction": "Fry the rice balls in oil at 350F for about 10 minutes, until deep golden brown."
+      },
+      {
+        "instruction": "Crumble the fried rice balls into a large bowl. Add the fish sauce and lime juice, mix, and season with salt."
+      },
+      {
+        "instruction": "Fold in the cured pork, pork skin, cilantro, green onion and peanuts."
+      },
+      {
+        "instruction": "Top with fried chili and serve in lettuce leaves as wraps. Best eaten right away."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
