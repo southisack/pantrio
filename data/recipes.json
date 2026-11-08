@@ -4271,5 +4271,81 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "maple-garlic-roasted-carrots",
+    "name": "Maple Garlic Roasted Carrots",
+    "summary": "Oven-roasted carrots glazed with maple syrup and garlic, caramelized at the edges. Built to sit next to BBQ pulled pork.",
+    "time": 35,
+    "servings": 4,
+    "difficulty": "easy",
+    "cuisine": "American",
+    "tags": [
+      "side",
+      "vegetable",
+      "roasted",
+      "maple"
+    ],
+    "ingredients": [
+      {
+        "name": "carrots, peeled",
+        "quantity": "1",
+        "unit": "lb"
+      },
+      {
+        "name": "olive oil",
+        "quantity": "1 1/2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "maple syrup",
+        "quantity": "1 1/2 to 2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "garlic cloves, minced",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "salt",
+        "quantity": "1/2",
+        "unit": "tsp"
+      },
+      {
+        "name": "pepper",
+        "quantity": "1",
+        "unit": "pinch"
+      },
+      {
+        "name": "smoked paprika or chili flakes, optional",
+        "quantity": "1",
+        "unit": "pinch"
+      },
+      {
+        "name": "lemon juice or cider vinegar, to finish",
+        "quantity": "1",
+        "unit": "squeeze"
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Heat the oven to 425F and line a sheet pan. Cut the peeled carrots into sticks or halve them lengthwise, and pat dry."
+      },
+      {
+        "instruction": "Toss the carrots with the olive oil, maple syrup, garlic, salt, pepper, and paprika or chili flakes if using."
+      },
+      {
+        "instruction": "Spread in a single layer without crowding the pan. Roast 25 to 30 minutes, flipping once halfway, until tender and caramelized at the edges."
+      },
+      {
+        "instruction": "If the garlic browns too fast, stir it in for the last 10 minutes instead. Finish with a squeeze of lemon or a splash of cider vinegar."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
