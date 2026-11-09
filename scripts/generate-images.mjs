@@ -25,6 +25,7 @@ const force = args.includes('--force')
 const missingOnly = args.includes('--missing')
 const styleOverride = flagValue('--style', null)
 const outputDir = flagValue('--out', path.join(root, 'public', 'icons'))
+const skipIngredients = args.includes('--no-ingredients')
 const modelName = flagValue('--model', 'zimage')
 const fixedSeed = flagValue('--seed', null)
 const requestedIds = args.filter((arg, index) => !arg.startsWith('--') && !['--port', '--limit', '--style', '--out', '--model', '--seed'].includes(args[index - 1]))
@@ -38,7 +39,8 @@ const STYLE =
 
 function buildPrompt(recipe) {
   const mainIngredients = recipe.ingredients.slice(0, 5).map(ingredient => ingredient.name).join(', ')
-  return `${recipe.name}, plated and ready to eat. ${recipe.summary} Made with ${mainIngredients}. ${styleOverride ?? STYLE}`
+  const madeWith = skipIngredients ? '' : ` Made with ${mainIngredients}.`
+  return `${recipe.name}, plated and ready to eat. ${recipe.summary}${madeWith} ${styleOverride ?? STYLE}`
 }
 
 function buildFluxWorkflow(prompt, seed) {
