@@ -11,11 +11,9 @@ export const FEATURED_RECIPE_IDS = [
   'burrito-bowl',
   'mediterranean-grilled-salmon',
   'pork-souvlaki',
-  'marry-me-chicken-pasta',
   'poke-bowl',
   'piri-piri-chicken',
   'miso-ginger-chicken',
-  'pesto-cauliflower-pasta',
   'chicken-satay',
   'al-pastor-pork',
 ]
