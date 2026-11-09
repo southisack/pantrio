@@ -47,7 +47,7 @@ export function RecipeDetail({ recipe, variant, isMatched, showStatus, onClose }
 
       <div
         className={`relative w-full overflow-hidden ${
-          isModal ? 'h-56 border-b-2 border-black' : 'cascade-item switch-item cascade-d2 mt-8 h-72 border-2 border-black rounded-card'
+          isModal ? 'aspect-photo border-b-2 border-black' : 'cascade-item switch-item cascade-d2 mt-8 aspect-photo border-2 border-black rounded-card'
         }`}
       >
         <img

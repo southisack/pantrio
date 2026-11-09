@@ -48,6 +48,9 @@ const config: Config = {
       width: {
         panel: '43.333%',
       },
+      aspectRatio: {
+        photo: '5 / 3',     // the shape recipe photos are generated in
+      },
       minWidth: {
         panel: '540px',     // content width left of the padding is 436px; "you working" at 80px is 414px, so the title never needs a 4th line
       },
