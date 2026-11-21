@@ -3180,5 +3180,88 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "cucumber-saengchae-oi-saengchae",
+    "name": "Cucumber Saengchae (Oi-Saengchae)",
+    "summary": "Salted, rinsed cucumber half-moons tossed in a sharp gochugaru-vinegar sauce; serves 2 to 4.",
+    "time": 20,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": "Korean",
+    "tags": [
+      "korean",
+      "korean-bbq",
+      "banchan",
+      "side",
+      "raw",
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "gluten-free",
+      "no-cook"
+    ],
+    "source": "Korean cookbook (Oi-Saengchae, 오이 생채)",
+    "ingredients": [
+      {
+        "name": "cucumber",
+        "quantity": "7",
+        "unit": "oz (200 g)"
+      },
+      {
+        "name": "salt",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "fine gochugaru (red chili powder) (sauce)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "rice vinegar (sauce)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "sugar (sauce)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "minced garlic (sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "minced scallion (spring onion) (sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "sesame seeds (sauce)",
+        "quantity": "1",
+        "unit": "tbsp"
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "In-season farmers' market cucumbers will probably have tiny stiff hairs; use coarse salt or a clean scrub to wipe down any spikes."
+      },
+      {
+        "instruction": "Halve the cucumber lengthwise and cut crosswise into 1/4-inch (6 mm) half-moons."
+      },
+      {
+        "instruction": "In a bowl, combine the sliced cucumber with the salt and let brine for 10 minutes. After 10 minutes, thoroughly rinse off the salt in cold water. Drain and gently squeeze with your hands to get rid of any excess moisture and set aside."
+      },
+      {
+        "instruction": "Make the sauce: Combine all the sauce ingredients into a bowl and mix until well combined. Combine with the cucumbers and mix until evenly seasoned. Plate and serve."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
