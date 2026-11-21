@@ -3342,5 +3342,105 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "bean-sprout-namul-kongnamul",
+    "name": "Bean Sprout Namul (Kongnamul)",
+    "summary": "Soybean sprouts boiled 2 minutes and tossed in garlic, scallion and sesame oil, with spicy, tangy and mung bean variations; serves 2 to 4.",
+    "time": 20,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": "Korean",
+    "tags": [
+      "korean",
+      "korean-bbq",
+      "banchan",
+      "side",
+      "namul",
+      "vegan",
+      "vegetarian",
+      "dairy-free"
+    ],
+    "source": "Korean cookbook (Kongnamul, 콩나물)",
+    "ingredients": [
+      {
+        "name": "soybean sprouts",
+        "quantity": "9",
+        "unit": "oz (250 g)"
+      },
+      {
+        "name": "salt (for the water)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "minced garlic (sauce)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "minced scallion (spring onion) (sauce)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "cheongjang (light Korean soy sauce) (sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "salt (sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "sesame oil (sauce)",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "Korean red chili threads (garnish, optional)",
+        "quantity": "1",
+        "unit": "pinch"
+      },
+      {
+        "name": "sesame seeds (garnish, optional)",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "water (for boiling)",
+        "quantity": "8 1/2",
+        "unit": "cups (68 fl oz / 2 liters)"
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Remove any bruised or dirty parts of the bean sprouts, including all the stringy roots, with your hands or scissors. Quickly rinse the sprouts in cold water and transfer to a sieve. The bean sprouts will easily start to go bad after washing, so it's best to use them as soon as possible."
+      },
+      {
+        "instruction": "In a large pot, combine 8 1/2 cups (68 fl oz / 2 liters) water and the salt and bring to a boil. Add the bean sprouts, return to a boil, and boil for 2 minutes. Scoop the bean sprouts out of the water with a sieve and let cool to room temperature."
+      },
+      {
+        "instruction": "Make the sauce: In a large bowl, mix together the garlic, scallion, soy sauce, salt, and sesame oil."
+      },
+      {
+        "instruction": "Fold the bean sprouts into the sauce and lightly toss until evenly coated. Mound the bean sprouts on a flat plate or shallow bowl and garnish with the chili threads and sesame seeds, if desired."
+      },
+      {
+        "instruction": "Variation (spicy): add 1 tablespoon gochugaru (red chili flakes) to the sauce."
+      },
+      {
+        "instruction": "Variation (refreshing): add 1 tablespoon rice vinegar and 1 teaspoon sugar to the sauce."
+      },
+      {
+        "instruction": "Variation (Mung Bean Sprout Namul): make this with mung bean sprouts instead of soybean sprouts, reducing the blanching time and making up for the lack of texture by adding blanched minari and julienned mild red peppers."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
