@@ -3521,5 +3521,78 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "ssamjang-korean-spicy-dipping-sauce",
+    "name": "Ssamjang (Korean Spicy Dipping Sauce)",
+    "summary": "Doenjang and gochujang dipping sauce for grilled meat, rice and lettuce wraps; keeps about 10 days chilled, best fresh.",
+    "time": 5,
+    "servings": 4,
+    "difficulty": "easy",
+    "cuisine": "Korean",
+    "tags": [
+      "korean",
+      "korean-bbq",
+      "sauce",
+      "dipping-sauce",
+      "no-cook",
+      "dairy-free"
+    ],
+    "source": "Maangchi (https://www.maangchi.com/recipe/ssamjang)",
+    "ingredients": [
+      {
+        "name": "doenjang (fermented soybean paste)",
+        "quantity": "1/4",
+        "unit": "cup"
+      },
+      {
+        "name": "gochujang (hot pepper paste)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "stalk green onion, minced",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "clove garlic, minced",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "chopped onion",
+        "quantity": "1/4",
+        "unit": "cup"
+      },
+      {
+        "name": "honey (use less or skip to reduce sweetness)",
+        "quantity": "2",
+        "unit": "tsp"
+      },
+      {
+        "name": "toasted sesame seeds",
+        "quantity": "2",
+        "unit": "tsp"
+      },
+      {
+        "name": "sesame oil",
+        "quantity": "2",
+        "unit": "tsp"
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Using a spoon, thoroughly mix all the ingredients in a large bowl."
+      },
+      {
+        "instruction": "Transfer the mixture to a small bowl and serve with rice and lettuce, or alongside grilled meat. Keeps about 10 days in the refrigerator, though it tastes best freshly made."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
