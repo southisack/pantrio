@@ -3263,5 +3263,84 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "doenjang-napa-cabbage-namul-doenjang-baechu-namul",
+    "name": "Doenjang Napa Cabbage Namul (Doenjang Baechu Namul)",
+    "summary": "Quick-blanched napa cabbage, iced, squeezed dry and massaged with doenjang, soy sauce and sesame oil; serves 2 to 4.",
+    "time": 25,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": "Korean",
+    "tags": [
+      "korean",
+      "korean-bbq",
+      "banchan",
+      "side",
+      "namul",
+      "vegan",
+      "vegetarian",
+      "dairy-free"
+    ],
+    "source": "Korean cookbook (Doenjang Baechu Namul, 된장 배추 나물)",
+    "ingredients": [
+      {
+        "name": "napa cabbage (Chinese leaf)",
+        "quantity": "7",
+        "unit": "oz (200 g)"
+      },
+      {
+        "name": "salt",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "doenjang (fermented soybean paste)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "cheongjang (light Korean soy sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "sesame oil",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "sliced scallion (spring onion) (optional)",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "water (for blanching)",
+        "quantity": "8 1/2",
+        "unit": "cups (68 fl oz / 2 liters)"
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Remove any bruised or discolored leaves from the napa cabbage and cut out the tough root. Separate each leaf and rinse well with cold running water."
+      },
+      {
+        "instruction": "Set up a bowl of ice and water. In a large pot, combine 8 1/2 cups (68 fl oz / 2 liters) water and the salt and bring to a boil. Holding all the leaves together, dip the bottom (thicker) halves into the boiling water and blanch for 30 seconds. Drop the leaves in and blanch for another 30 seconds, a total of 1 minute. Immediately remove and transfer to the ice bath (or under cold running water) to stop further cooking."
+      },
+      {
+        "instruction": "Once fully cooled, remove the leaves and gently squeeze with your hands to remove all water. Cut the drained leaves into 2-inch (5 cm) lengths and tear with your hands along the grain of the cabbage into bite-size pieces."
+      },
+      {
+        "instruction": "In a bowl, combine the doenjang, soy sauce, and sesame oil and mix until fully combined. Add the shredded cabbage pieces and massage to marinate until well combined."
+      },
+      {
+        "instruction": "Serve garnished with the sliced scallion, if desired."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
