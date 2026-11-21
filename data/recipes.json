@@ -2999,5 +2999,117 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "la-short-rib-gui-la-galbi",
+    "name": "LA Short Rib Gui (LA Galbi)",
+    "summary": "Flanken-cut short ribs in a pear-and-soy marinade for 12 hours to a day, then a quick, gentle pan sear (35 minutes active).",
+    "time": 35,
+    "servings": 2,
+    "difficulty": "easy",
+    "mainIngredient": "beef",
+    "cuisine": "Korean",
+    "tags": [
+      "korean",
+      "korean-bbq",
+      "marinated",
+      "make-ahead",
+      "dairy-free"
+    ],
+    "source": "Korean cookbook (LA Galbi, LA갈비)",
+    "ingredients": [
+      {
+        "name": "LA-style Korean short ribs",
+        "quantity": "1 lb 5",
+        "unit": "oz (600 g)"
+      },
+      {
+        "name": "Asian pear, peeled (marinade)",
+        "quantity": "7",
+        "unit": "oz (200 g)"
+      },
+      {
+        "name": "jinjang (dark Korean soy sauce) (marinade)",
+        "quantity": "3",
+        "unit": "tbsp"
+      },
+      {
+        "name": "rice cooking wine (marinade)",
+        "quantity": "3",
+        "unit": "tbsp"
+      },
+      {
+        "name": "mirin (marinade)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "corn (golden) syrup (marinade)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "light brown sugar (marinade)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "minced garlic (marinade)",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "minced scallion (spring onion) (marinade)",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "sesame oil (marinade)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "minced fresh ginger (marinade)",
+        "quantity": "1/2",
+        "unit": "tsp"
+      },
+      {
+        "name": "freshly ground black pepper (marinade)",
+        "quantity": "1/4",
+        "unit": "tsp"
+      },
+      {
+        "name": "water (marinade)",
+        "quantity": "6",
+        "unit": "tbsp"
+      },
+      {
+        "name": "scallion (spring onion), slivered (to finish)",
+        "quantity": "1",
+        "unit": ""
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Because the short ribs were cut across a lot of bones, there may be impurities or bone fragments attached to the flesh. Rinse the ribs under cold running water, then set them in a sieve to drain well. Pat dry with paper towels."
+      },
+      {
+        "instruction": "Make the marinade: Grate the pear into a bowl. Add 6 tablespoons water, the soy sauce, wine, mirin, corn syrup, brown sugar, garlic, scallion, sesame oil, ginger, and black pepper and stir until well incorporated."
+      },
+      {
+        "instruction": "In a large airtight container, combine the short ribs and the marinade and mix until well incorporated. Let marinate for at least 12 hours and up to 1 day in the refrigerator."
+      },
+      {
+        "instruction": "To finish: When ready to cook, remove the container from the refrigerator. Place the marinated short ribs in a large, cold frying pan and set the pan over medium-low heat (higher heat will caramelize or burn the marinade). Cook for 2 minutes on each side, or until both sides are well cooked."
+      },
+      {
+        "instruction": "Serve the cooked short ribs garnished with the scallion. (Cooking time in the book: 10 to 15 minutes.)"
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
