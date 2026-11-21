@@ -2920,5 +2920,84 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "gwangyang-style-bulgogi",
+    "name": "Gwangyang-Style Bulgogi",
+    "summary": "Unmarinated bulgogi from Gwangyang, seasoned just before grilling so the charcoal and beef do the talking.",
+    "time": 20,
+    "servings": 2,
+    "difficulty": "easy",
+    "mainIngredient": "beef",
+    "cuisine": "Korean",
+    "tags": [
+      "korean",
+      "korean-bbq",
+      "grill",
+      "charcoal",
+      "dairy-free"
+    ],
+    "source": "Korean cookbook (Gwangyang Bulgogi, 광양 불고기)",
+    "ingredients": [
+      {
+        "name": "jinjang (dark Korean soy sauce)",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "light brown sugar",
+        "quantity": "1/2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "rice cooking wine",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "minced garlic",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "sesame oil",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "freshly ground black pepper",
+        "quantity": "1/4",
+        "unit": "tsp"
+      },
+      {
+        "name": "beef sirloin, thinly sliced to 1/8 inch (4 mm) thick",
+        "quantity": "14",
+        "unit": "oz (400 g)"
+      },
+      {
+        "name": "scallion, thinly sliced, or pine nut powder (optional)",
+        "quantity": "",
+        "unit": ""
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "In a large bowl, stir together the soy sauce, brown sugar, wine, garlic, sesame oil, and black pepper. Set aside."
+      },
+      {
+        "instruction": "Prepare an outdoor grill (barbecue), preferably charcoal."
+      },
+      {
+        "instruction": "Just before grilling, fold the beef into the soy mixture. Add the slices to the grill and cook evenly on both sides."
+      },
+      {
+        "instruction": "If desired, garnish the plated meat with thinly sliced scallion or pine nut powder to finish."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
