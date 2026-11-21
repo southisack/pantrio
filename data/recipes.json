@@ -3442,5 +3442,84 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "spinach-namul-sigeumchi-namul",
+    "name": "Spinach Namul (Sigeumchi Namul)",
+    "summary": "Spinach blanched for 20 seconds, iced and dressed in soy sauce, sesame oil and ground sesame seeds; keeps 2 days in the fridge.",
+    "time": 20,
+    "servings": 2,
+    "difficulty": "easy",
+    "cuisine": "Korean",
+    "tags": [
+      "korean",
+      "korean-bbq",
+      "banchan",
+      "side",
+      "namul",
+      "vegan",
+      "vegetarian",
+      "dairy-free"
+    ],
+    "source": "Korean cookbook (Sigeumchi Namul, 시금치 나물), Banchan chapter, p. 166",
+    "ingredients": [
+      {
+        "name": "spinach",
+        "quantity": "7",
+        "unit": "oz (200 g)"
+      },
+      {
+        "name": "sea salt (for the water)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "cheongjang (light Korean soy sauce) (sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "salt (sauce)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "sesame oil (sauce)",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "ground sesame seeds (sauce)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "water (for blanching)",
+        "quantity": "8 1/2",
+        "unit": "cups (68 fl oz / 2 liters)"
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Remove any blemished spinach leaves (and trim off roots if the spinach is from the farmers' market). Separate the leaves and stems. Halve the bottoms of the stems lengthwise and rinse the cut leaves in cold water two or three times until clean, making sure all dirt at the root end of the stems is washed away."
+      },
+      {
+        "instruction": "Set up a bowl of ice and water. In a large pot, bring 8 1/2 cups (68 fl oz / 2 liters) water and the salt to a boil. Add the spinach and blanch for 20 seconds. Scoop out immediately and transfer to the ice bath to cool completely. (Cooking time will vary depending on the type of spinach and its toughness, but spinach is easily overcooked and quickly loses its crunchy texture, which is important to this recipe.) Drain well and squeeze to remove excess moisture."
+      },
+      {
+        "instruction": "Make the sauce: In a bowl, stir together the soy sauce, salt, sesame oil, and sesame seeds."
+      },
+      {
+        "instruction": "Transfer the spinach to the bowl and toss well with the sauce until fully coated. Plate on a shallow bowl or a plate. Kept in an airtight container, this will keep up to 2 days in the refrigerator."
+      },
+      {
+        "instruction": "Variation: For a deeper and earthier taste, replace the soy sauce with 1 tablespoon doenjang (fermented soybean paste)."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
