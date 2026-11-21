@@ -3594,5 +3594,384 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "korean-bbq-spread",
+    "name": "Korean BBQ Spread",
+    "summary": "Three grilled meats (Gwangyang bulgogi, LA galbi, doenjang pork) with ssamjang and four cold or blanched sides; start the galbi the night before.",
+    "time": 120,
+    "servings": 2,
+    "difficulty": "medium",
+    "cuisine": "Korean",
+    "tags": [
+      "korean",
+      "korean-bbq",
+      "spread",
+      "feast",
+      "make-ahead",
+      "banchan"
+    ],
+    "source": "Korean cookbook (Gwangyang Bulgogi, LA Galbi, Doenjang Pork Gui, Banchan chapter) and Maangchi (ssamjang)",
+    "ingredients": [
+      {
+        "name": "BULGOGI: jinjang (dark Korean soy sauce)",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "BULGOGI: light brown sugar",
+        "quantity": "1/2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "BULGOGI: rice cooking wine",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "BULGOGI: minced garlic",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "BULGOGI: sesame oil",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "BULGOGI: freshly ground black pepper",
+        "quantity": "1/4",
+        "unit": "tsp"
+      },
+      {
+        "name": "BULGOGI: beef sirloin, thinly sliced to 1/8 inch (4 mm) thick",
+        "quantity": "14",
+        "unit": "oz (400 g)"
+      },
+      {
+        "name": "BULGOGI: scallion, thinly sliced, or pine nut powder (optional)",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "GALBI: LA-style Korean short ribs",
+        "quantity": "1 lb 5",
+        "unit": "oz (600 g)"
+      },
+      {
+        "name": "GALBI marinade: Asian pear, peeled",
+        "quantity": "7",
+        "unit": "oz (200 g)"
+      },
+      {
+        "name": "GALBI marinade: jinjang (dark Korean soy sauce)",
+        "quantity": "3",
+        "unit": "tbsp"
+      },
+      {
+        "name": "GALBI marinade: rice cooking wine",
+        "quantity": "3",
+        "unit": "tbsp"
+      },
+      {
+        "name": "GALBI marinade: mirin",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "GALBI marinade: corn (golden) syrup",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "GALBI marinade: light brown sugar",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "GALBI marinade: minced garlic",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "GALBI marinade: minced scallion (spring onion)",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "GALBI marinade: sesame oil",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "GALBI marinade: minced fresh ginger",
+        "quantity": "1/2",
+        "unit": "tsp"
+      },
+      {
+        "name": "GALBI marinade: freshly ground black pepper",
+        "quantity": "1/4",
+        "unit": "tsp"
+      },
+      {
+        "name": "GALBI marinade: water",
+        "quantity": "6",
+        "unit": "tbsp"
+      },
+      {
+        "name": "GALBI: scallion (spring onion), slivered, to finish",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "PORK GUI: doenjang (fermented soybean paste)",
+        "quantity": "4",
+        "unit": "tbsp"
+      },
+      {
+        "name": "PORK GUI: rice cooking wine",
+        "quantity": "4",
+        "unit": "tbsp"
+      },
+      {
+        "name": "PORK GUI: pork belly, thinly sliced to 1/16 inch (2 mm) thick",
+        "quantity": "14",
+        "unit": "oz (400 g)"
+      },
+      {
+        "name": "PORK GUI: sesame seeds",
+        "quantity": "1/2",
+        "unit": "tsp"
+      },
+      {
+        "name": "PORK GUI: garlic chives, slivered",
+        "quantity": "1/2",
+        "unit": "oz (10 g)"
+      },
+      {
+        "name": "PORK GUI: small scallion (spring onion), slivered",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "SSAMJANG: doenjang (fermented soybean paste)",
+        "quantity": "1/4",
+        "unit": "cup"
+      },
+      {
+        "name": "SSAMJANG: gochujang (hot pepper paste)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "SSAMJANG: stalk green onion, minced",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "SSAMJANG: clove garlic, minced",
+        "quantity": "1",
+        "unit": ""
+      },
+      {
+        "name": "SSAMJANG: chopped onion",
+        "quantity": "1/4",
+        "unit": "cup"
+      },
+      {
+        "name": "SSAMJANG: honey",
+        "quantity": "2",
+        "unit": "tsp"
+      },
+      {
+        "name": "SSAMJANG: toasted sesame seeds",
+        "quantity": "2",
+        "unit": "tsp"
+      },
+      {
+        "name": "SSAMJANG: sesame oil",
+        "quantity": "2",
+        "unit": "tsp"
+      },
+      {
+        "name": "CUCUMBER SAENGCHAE: cucumber",
+        "quantity": "7",
+        "unit": "oz (200 g)"
+      },
+      {
+        "name": "CUCUMBER SAENGCHAE: salt (for brining)",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "CUCUMBER SAENGCHAE sauce: fine gochugaru (red chili powder)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "CUCUMBER SAENGCHAE sauce: rice vinegar",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "CUCUMBER SAENGCHAE sauce: sugar",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "CUCUMBER SAENGCHAE sauce: minced garlic",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "CUCUMBER SAENGCHAE sauce: minced scallion (spring onion)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "CUCUMBER SAENGCHAE sauce: sesame seeds",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "NAPA CABBAGE NAMUL: napa cabbage (Chinese leaf)",
+        "quantity": "7",
+        "unit": "oz (200 g)"
+      },
+      {
+        "name": "NAPA CABBAGE NAMUL: salt (for blanching water)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "NAPA CABBAGE NAMUL: doenjang (fermented soybean paste)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "NAPA CABBAGE NAMUL: cheongjang (light Korean soy sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "NAPA CABBAGE NAMUL: sesame oil",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "NAPA CABBAGE NAMUL: sliced scallion (optional)",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "BEAN SPROUT NAMUL: soybean sprouts",
+        "quantity": "9",
+        "unit": "oz (250 g)"
+      },
+      {
+        "name": "BEAN SPROUT NAMUL: salt (for boiling water)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "BEAN SPROUT NAMUL sauce: minced garlic",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "BEAN SPROUT NAMUL sauce: minced scallion (spring onion)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "BEAN SPROUT NAMUL sauce: cheongjang (light Korean soy sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "BEAN SPROUT NAMUL sauce: salt",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "BEAN SPROUT NAMUL sauce: sesame oil",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "BEAN SPROUT NAMUL garnish: Korean red chili threads and sesame seeds (optional)",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "name": "SPINACH NAMUL: spinach",
+        "quantity": "7",
+        "unit": "oz (200 g)"
+      },
+      {
+        "name": "SPINACH NAMUL: sea salt (for blanching water)",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "SPINACH NAMUL sauce: cheongjang (light Korean soy sauce)",
+        "quantity": "1",
+        "unit": "tsp"
+      },
+      {
+        "name": "SPINACH NAMUL sauce: salt",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "SPINACH NAMUL sauce: sesame oil",
+        "quantity": "2",
+        "unit": "tbsp"
+      },
+      {
+        "name": "SPINACH NAMUL sauce: ground sesame seeds",
+        "quantity": "1",
+        "unit": "tbsp"
+      },
+      {
+        "name": "TO SERVE: lettuce leaves and steamed rice (for wraps)",
+        "quantity": "",
+        "unit": ""
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "The night before (12 hours up to 1 day ahead): make the galbi. Rinse the short ribs under cold water, drain well and pat dry. Grate the pear into a bowl, add 6 tablespoons water and the rest of the marinade ingredients, stir until incorporated, then mix with the ribs in an airtight container and refrigerate. See the LA Short Rib Gui recipe."
+      },
+      {
+        "instruction": "Make the ssamjang: mix all the ssamjang ingredients thoroughly with a spoon and transfer to a small bowl. See the Ssamjang recipe."
+      },
+      {
+        "instruction": "Make the cold side: salt the sliced cucumber for 10 minutes, rinse, squeeze, then toss with the sauce (Cucumber Saengchae)."
+      },
+      {
+        "instruction": "Make the blanched sides, using the same pot of salted water where you can: napa cabbage 1 minute total, spinach 20 seconds, then ice bath; bean sprouts boiled 2 minutes and cooled to room temperature. Squeeze the greens dry and dress each with its sauce (Doenjang Napa Cabbage Namul, Spinach Namul, Bean Sprout Namul)."
+      },
+      {
+        "instruction": "Prepare an outdoor grill (barbecue), preferably charcoal, or a frying pan. Stir the bulgogi seasoning together and the pork doenjang-and-wine baster."
+      },
+      {
+        "instruction": "Grill the bulgogi: just before grilling, fold the sirloin into the soy mixture, add to the grill and cook evenly on both sides. Garnish with scallion or pine nut powder if desired (Gwangyang-Style Bulgogi)."
+      },
+      {
+        "instruction": "Cook the pork gui: in a frying pan over medium heat, cook the pork belly slices without overlap, flip when the first side is cooked, brush with the doenjang-wine baster, repeat until cooked. Garnish with sesame seeds, chives and scallion (Doenjang-Marinated Pork Gui)."
+      },
+      {
+        "instruction": "Cook the galbi: place the marinated short ribs in a large, cold frying pan, set over medium-low heat and cook about 2 minutes per side until well cooked. Garnish with slivered scallion (LA Short Rib Gui)."
+      },
+      {
+        "instruction": "Serve everything together with lettuce, rice, ssamjang and the sides."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
