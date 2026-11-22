@@ -3973,5 +3973,121 @@
       "marieEve": 0,
       "mia": 0
     }
+  },
+  {
+    "id": "gallinas-borrachas-poulet-au-vin-blanc",
+    "name": "Gallinas Borrachas (Poulet au vin blanc)",
+    "summary": "Drunken chicken from Coahuila, simmered with chorizo, ham, white wine, raisins and almonds, with a quiet hit of cinnamon and clove.",
+    "time": 50,
+    "servings": 8,
+    "difficulty": "easy",
+    "mainIngredient": "chicken",
+    "cuisine": "Mexican",
+    "tags": [
+      "mexican",
+      "coahuila",
+      "chicken",
+      "wine"
+    ],
+    "source": "Cookbook (Région: Coahuila)",
+    "ingredients": [
+      {
+        "name": "grosses tomates hachées",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "huile de maïs",
+        "quantity": "4",
+        "unit": "c. à soupe"
+      },
+      {
+        "name": "poulets de 2 kg découpés",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "brins de persil ciselés",
+        "quantity": "2",
+        "unit": ""
+      },
+      {
+        "name": "chorizo tranché",
+        "quantity": "500",
+        "unit": "g"
+      },
+      {
+        "name": "jambon haché",
+        "quantity": "500",
+        "unit": "g"
+      },
+      {
+        "name": "vin blanc sec ou vinaigre de xérès",
+        "quantity": "1",
+        "unit": "l"
+      },
+      {
+        "name": "sucre en poudre",
+        "quantity": "1",
+        "unit": "c. à soupe"
+      },
+      {
+        "name": "clous de girofle en poudre",
+        "quantity": "1",
+        "unit": "pincée"
+      },
+      {
+        "name": "cannelle en poudre",
+        "quantity": "1",
+        "unit": "pincée"
+      },
+      {
+        "name": "poivre noir",
+        "quantity": "1",
+        "unit": "pincée"
+      },
+      {
+        "name": "noix muscade en poudre",
+        "quantity": "1",
+        "unit": "pincée"
+      },
+      {
+        "name": "raisins secs",
+        "quantity": "60",
+        "unit": "g"
+      },
+      {
+        "name": "amandes",
+        "quantity": "50",
+        "unit": "g"
+      },
+      {
+        "name": "sel de mer",
+        "quantity": "",
+        "unit": ""
+      }
+    ],
+    "steps": [
+      {
+        "instruction": "Dans le bol d'un mixeur, réduire les tomates en purée."
+      },
+      {
+        "instruction": "Dans une sauteuse, chauffer l'huile et ajouter les morceaux de poulet. Ajouter les tomates, l'ail et le persil. Cuire à feu moyen 10 à 15 minutes, en retournant les morceaux de poulet de temps à autre."
+      },
+      {
+        "instruction": "Ajouter le chorizo et le jambon et cuire encore 5 minutes. Verser le vin blanc et poursuivre la cuisson pour réduire le jus."
+      },
+      {
+        "instruction": "Incorporer le sucre, les clous de girofle, la cannelle, le poivre, la noix muscade, les raisins secs et les amandes. Saler. Réduire le feu et cuire 15 minutes ou jusqu'à ce que le poulet soit bien cuit et le jus suffisamment épais."
+      },
+      {
+        "instruction": "Disposer un morceau de poulet sur chaque assiette. Napper de sauce et servir avec du riz ou de la salade."
+      }
+    ],
+    "ratings": {
+      "johnny": 0,
+      "marieEve": 0,
+      "mia": 0
+    }
   }
 ]
