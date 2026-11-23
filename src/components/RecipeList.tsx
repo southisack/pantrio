@@ -2,13 +2,11 @@
 
 import { useEffect, useRef } from 'react'
 import { cascadeStep } from '@/src/lib/cascade'
-import { PROTEINS, SIDES, STARCHES, difficultyLabel, formatTime } from '@/src/lib/ingredients'
+import { difficultyLabel, formatTime } from '@/src/lib/ingredients'
 import type { Recipe } from '@/src/types'
 
-export function RecipeList({ recipes, selected, onToggle, activeId, onSelect, onBack }: {
+export function RecipeList({ recipes, activeId, onSelect, onBack }: {
   recipes: Recipe[]
-  selected: Set<string>
-  onToggle: (ingredient: string) => void
   activeId: string | null
   onSelect: (recipeId: string) => void
   onBack: () => void
@@ -25,30 +23,10 @@ export function RecipeList({ recipes, selected, onToggle, activeId, onSelect, on
         onClick={onBack}
         className="cascade-item cascade-d0 hidden lg:block mb-8 font-mono font-bold text-label uppercase text-left hover:opacity-70 transition-opacity"
       >
-        ← Pantrio
+        ← Ingredients
       </button>
 
       <div className="bg-white border-2 border-black rounded-card px-5 pt-5 pb-2 lg:p-0 lg:bg-transparent lg:border-0 lg:rounded-none">
-
-        <section aria-label="Filter by ingredient">
-          <div className="cascade-item cascade-d1 flex flex-wrap gap-1.5 pb-5">
-            {[...PROTEINS, ...STARCHES, SIDES].map(ingredient => {
-              const isSelected = selected.has(ingredient)
-              return (
-                <button
-                  key={ingredient}
-                  onClick={() => onToggle(ingredient)}
-                  aria-pressed={isSelected}
-                  className={`min-h-9 px-3 font-ui font-semibold text-sm capitalize border-2 border-black rounded-full transition-colors duration-150 ${
-                    isSelected ? 'bg-black text-yellow' : 'bg-transparent text-black hover:bg-yellow'
-                  }`}
-                >
-                  {ingredient}
-                </button>
-              )
-            })}
-          </div>
-        </section>
 
         <section aria-label="Recipes">
           {recipes.length === 0 ? (
@@ -66,7 +44,7 @@ export function RecipeList({ recipes, selected, onToggle, activeId, onSelect, on
                     ref={isActive ? activeRowRef : undefined}
                     onClick={() => onSelect(recipe.id)}
                     aria-current={isActive ? 'true' : undefined}
-                    className={`cascade-item ${cascadeStep(index + 2)} w-full scroll-my-6 min-h-16 flex items-center gap-4 px-row py-2.5 my-0.5 rounded-lg text-left transition-colors duration-200 ease-out ${
+                    className={`cascade-item ${cascadeStep(index + 1)} w-full scroll-my-6 min-h-16 flex items-center gap-4 px-row py-2.5 my-0.5 rounded-lg text-left transition-colors duration-200 ease-out ${
                       isActive ? 'bg-black text-yellow' : 'bg-transparent text-black hover:bg-yellow'
                     }`}
                   >

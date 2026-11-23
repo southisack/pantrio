@@ -13,11 +13,9 @@ type Mode = 'idle' | 'out' | 'in'
 // Shows one recipe at a time. When the chosen recipe changes, the one on screen leaves, then the new one
 // arrives, both moving in the direction of the move through the list (down the list = up the screen).
 // canAnimate is false while the page itself is mid-transition, in which case the swap is instant.
-export function RecipePanel({ recipe, index, isMatched, showStatus, canAnimate }: {
+export function RecipePanel({ recipe, index, canAnimate }: {
   recipe: Recipe
   index: number
-  isMatched: (ingredientName: string) => boolean
-  showStatus: boolean
   canAnimate: boolean
 }) {
   const [shown, setShown] = useState<Shown>({ recipe, index })
@@ -73,7 +71,7 @@ export function RecipePanel({ recipe, index, isMatched, showStatus, canAnimate }
       data-switch-flip={flip ? 'b' : 'a'}
       data-switch-dir={direction}
     >
-      <RecipeDetail recipe={shown.recipe} variant="panel" isMatched={isMatched} showStatus={showStatus} />
+      <RecipeDetail recipe={shown.recipe} variant="panel" />
     </div>
   )
 }

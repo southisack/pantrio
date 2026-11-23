@@ -29,7 +29,7 @@ export function OrderCard({ chosen, onSubmit }: {
         </div>
         <button
           onClick={onSubmit}
-          className="flex-none px-7 py-row bg-yellow text-black rounded-row font-semibold text-lg uppercase lg:text-cta xl:w-64"
+          className="flex-none px-6 py-3 bg-yellow text-black rounded-row font-semibold text-base uppercase xl:w-48"
         >
           Show recipes
         </button>

@@ -8,14 +8,14 @@ import { RecipeCarousel } from '@/src/components/RecipeCarousel'
 import { RecipeDetail } from '@/src/components/RecipeDetail'
 import { RecipePanel } from '@/src/components/RecipePanel'
 import { RecipeList } from '@/src/components/RecipeList'
-import { FEATURED_RECIPE_IDS, SIDES, SIDE_TAG } from '@/src/lib/ingredients'
+import { FEATURED_RECIPE_IDS } from '@/src/lib/ingredients'
+import { recipeMatchesPick } from '@/src/lib/matchRecipes'
 import { useIsDesktop } from '@/src/lib/useIsDesktop'
 import type { Recipe } from '@/src/types'
 import recipesData from '@/data/recipes.json'
 
 const recipes = recipesData as Recipe[]
 const featuredRecipes = FEATURED_RECIPE_IDS.flatMap(id => recipes.filter(recipe => recipe.id === id))
-
 type View = 'picker' | 'results'
 type Phase = 'idle' | 'intro' | 'leaving' | 'entering'
 
@@ -23,11 +23,9 @@ const LEAVE_MS = 520
 const ENTER_MS = 1300
 const INTRO_MS = 1300
 
-function RecipeModal({ recipe, onClose, isMatched, showStatus }: {
+function RecipeModal({ recipe, onClose }: {
   recipe: Recipe
   onClose: () => void
-  isMatched: (name: string) => boolean
-  showStatus: boolean
 }) {
   const [closing, setClosing] = useState(false)
 
@@ -52,8 +50,6 @@ function RecipeModal({ recipe, onClose, isMatched, showStatus }: {
         <RecipeDetail
           recipe={recipe}
           variant="modal"
-          isMatched={isMatched}
-          showStatus={showStatus}
           onClose={handleClose}
         />
       </div>
@@ -158,26 +154,10 @@ function HomePageInner() {
     })
   }
 
-  function isMatched(ingredientName: string): boolean {
-    const name = ingredientName.toLowerCase().trim()
-    const selectedList = [...selected].filter(s => s !== SIDES).map(s => s.toLowerCase())
-    return selectedList.some(ui => name.includes(ui) || ui.includes(name))
-  }
-
-  // "Sides" is a category, not an ingredient: it adds every recipe tagged as a side
-  // on top of whatever the ingredient picks match.
+  // A recipe shows up if it matches any of the picks.
   const displayedRecipes = useMemo(() => {
     if (selected.size === 0) return recipes
-    const wantsSides = selected.has(SIDES)
-    const selectedList = [...selected].filter(s => s !== SIDES).map(s => s.toLowerCase())
-    return recipes.filter(recipe =>
-      (wantsSides && recipe.tags?.includes(SIDE_TAG)) ||
-      recipe.ingredients.some(ingredient =>
-        selectedList.some(sel =>
-          ingredient.name.toLowerCase().includes(sel) || sel.includes(ingredient.name.toLowerCase())
-        )
-      )
-    )
+    return recipes.filter(recipe => [...selected].some(pick => recipeMatchesPick(recipe, pick)))
   }, [selected])
 
   function resetToStart() {
@@ -250,7 +230,7 @@ function HomePageInner() {
                   onClick={resetToStart}
                   className="cascade-item cascade-d0 mb-10 font-mono font-bold text-label uppercase text-left hover:opacity-70 transition-opacity"
                 >
-                  ← Pantrio
+                  ← Ingredients
                 </button>
                 <h1 className="cascade-item cascade-d1 mb-hero-gap max-w-lede font-ui font-semibold text-6xl leading-none tracking-tight">
                   Not bad, actually.
@@ -264,8 +244,6 @@ function HomePageInner() {
                 <RecipePanel
                   recipe={panelRecipe}
                   index={displayedRecipes.findIndex(recipe => recipe.id === panelRecipe.id)}
-                  isMatched={isMatched}
-                  showStatus={selected.size > 0}
                   canAnimate={phase === 'idle'}
                 />
               )}
@@ -273,8 +251,6 @@ function HomePageInner() {
 
             <RecipeList
               recipes={displayedRecipes}
-              selected={selected}
-              onToggle={toggle}
               activeId={panelRecipe?.id ?? null}
               onSelect={setExpandedRecipeId}
               onBack={resetToStart}
@@ -288,8 +264,6 @@ function HomePageInner() {
         <RecipeModal
           recipe={expandedRecipe}
           onClose={() => setExpandedRecipeId(null)}
-          isMatched={isMatched}
-          showStatus={selected.size > 0}
         />
       )}
     </>

@@ -1,6 +1,18 @@
+import { SIDES, SIDE_TAG } from '@/src/lib/ingredients'
 import type { Recipe, MatchedRecipe } from '@/src/types'
 
 const MIN_MATCH_SCORE = 0.3
+
+// Whether a recipe belongs to one pick on the home menu. "Sides" is a category, not an ingredient:
+// it matches every recipe tagged as a side.
+export function recipeMatchesPick(recipe: Recipe, pick: string): boolean {
+  if (pick === SIDES) return recipe.tags?.includes(SIDE_TAG) ?? false
+  const term = pick.toLowerCase()
+  return recipe.ingredients.some(ingredient => {
+    const name = ingredient.name.toLowerCase()
+    return name.includes(term) || term.includes(name)
+  })
+}
 
 export function matchRecipes(
   userIngredients: string[],
